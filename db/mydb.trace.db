@@ -1,0 +1,48 @@
+2017-03-14 15:05:51 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "PESSOA" not found; SQL statement:
+select this_.id as id1_0_0_, this_.nome as nome2_0_0_, this_.sobrenome as sobrenom3_0_0_ from pessoa this_ [42102-193]
+2017-03-14 15:05:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "PESSOA" not found; SQL statement:
+insert into pessoa (id, nome, sobrenome) values (null, ?, ?) [42102-193]
+2017-03-14 15:05:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "PESSOA" not found; SQL statement:
+insert into pessoa (id, nome, sobrenome) values (null, ?, ?) [42102-193]
+2017-03-14 15:05:55 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "PESSOA" not found; SQL statement:
+select this_.id as id1_0_0_, this_.nome as nome2_0_0_, this_.sobrenome as sobrenom3_0_0_ from pessoa this_ [42102-193]
+2017-03-14 15:05:55 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "PESSOA" not found; SQL statement:
+select this_.id as id1_0_0_, this_.nome as nome2_0_0_, this_.sobrenome as sobrenom3_0_0_ from pessoa this_ [42102-193]
+2017-03-14 15:05:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "PESSOA" not found; SQL statement:
+insert into pessoa (id, nome, sobrenome) values (null, ?, ?) [42102-193]
+2017-03-14 15:05:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "PESSOA" not found; SQL statement:
+insert into pessoa (id, nome, sobrenome) values (null, ?, ?) [42102-193]
+2017-03-14 15:05:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "PESSOA" not found; SQL statement:
+insert into pessoa (id, nome, sobrenome) values (null, ?, ?) [42102-193]
+2017-03-14 15:05:56 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "PESSOA" not found; SQL statement:
+select this_.id as id1_0_0_, this_.nome as nome2_0_0_, this_.sobrenome as sobrenom3_0_0_ from pessoa this_ [42102-193]
+2017-03-14 15:05:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "PESSOA" not found; SQL statement:
+insert into pessoa (id, nome, sobrenome) values (null, ?, ?) [42102-193]
+2017-03-14 15:05:56 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "PESSOA" not found; SQL statement:
+select this_.id as id1_0_0_, this_.nome as nome2_0_0_, this_.sobrenome as sobrenom3_0_0_ from pessoa this_ [42102-193]
+2017-03-14 15:05:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "PESSOA" not found; SQL statement:
+insert into pessoa (id, nome, sobrenome) values (null, ?, ?) [42102-193]
+2017-03-14 15:05:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "PESSOA" not found; SQL statement:
+insert into pessoa (id, nome, sobrenome) values (null, ?, ?) [42102-193]
+2017-03-14 15:05:56 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLException: Table "PESSOA" not found; SQL statement:
+select this_.id as id1_0_0_, this_.nome as nome2_0_0_, this_.sobrenome as sobrenom3_0_0_ from pessoa this_ [42102-193]
+2017-03-14 15:05:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "PESSOA" not found; SQL statement:
+insert into pessoa (id, nome, sobrenome) values (null, ?, ?) [42102-193]
+2017-03-14 15:05:56 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "PESSOA" not found; SQL statement:
+insert into pessoa (id, nome, sobrenome) values (null, ?, ?) [42102-193]

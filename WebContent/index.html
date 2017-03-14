@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html ng-app="pesssoa">
+<head>
+<meta charset="UTF-8">
+<title>Pessoa</title>
+
+<link rel="stylesheet" href="resources/css/ext/bootstrap/bootstrap.min.css">
+<script src="resources/js/ext/ng/angular.min.js"></script>
+
+<script src="resources/js/modules/pessoa.module.js"></script>
+<script src="resources/js/services/pessoa.service.js"></script>
+<script src="resources/js/controllers/pessoa.controller.js"></script>
+
+</head>
+<body>
+
+	<div class="container" ng-controller="PessoaController as pc">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">Pessoa</div>
+				  	<div class="panel-body">
+				    	<form>
+							  <div class="form-group">
+							    <label for="nome">Nome:</label>
+							    <input type="text" class="form-control" id="nome" ng-model="pessoa.nome" placeholder="Nome">
+							  </div>
+							  <div class="form-group">
+							    <label for="sobrenome">Sobrenome</label>
+							    <input type="text" class="form-control" id="sobrenome" ng-model="pessoa.sobrenome" placeholder="Sobrenome">
+							  </div>
+							  <button type="button" class="btn btn-default" ng-click="save(pessoa)" >Salvar</button>
+						</form>
+				  	</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="panel panel-default">
+				  	<div class="panel-heading">Pessoas</div>
+				  	<div class="panel-body">
+				    	<table class="table table-hover" ng-show="pessoas.length>0" >
+				    		<thead>
+				    			<tr>
+				    				<th>ID</th>
+				    				<th>Nome</th>
+				    				<th>Sobrenome</th>
+				    			</tr>
+				    		</thead>
+				    		<tbody>
+				    			<tr ng-repeat="pessoa in pessoas">
+				    				<td>{{ pessoa.id }}</td>
+				    				<td>{{ pessoa.nome }}</td>
+				    				<td>{{ pessoa.sobrenome }}</td>
+				    			</tr>
+				    		</tbody>
+				    	</table>
+				  	</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>
