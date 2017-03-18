@@ -16,6 +16,8 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import net.sf.oval.Validator;
+
 @Configuration
 @EnableTransactionManagement
 @ComponentScan(basePackages = "br.com.senac")
@@ -64,6 +66,13 @@ public class PersistenceConfig {
 	public HibernateTemplate getHibernateTemplate(final SessionFactory sessionFactory) {
 		final HibernateTemplate hibernateTemplate = new HibernateTemplate(sessionFactory);
 		return hibernateTemplate;
+	}
+	
+	@Bean
+	@Autowired
+	public Validator getValidator(){
+		final Validator validator = new Validator();
+		return validator;
 	}
 
 	@Bean

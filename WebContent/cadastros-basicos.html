@@ -23,13 +23,19 @@
 <script type="text/javascript"
 	src="resources/js/ext/ng/messages/messages.min.js"></script>
 
+<style type="text/css">
 
+.font-large {
+font-size: 26px;
+}
 
+</style>
 
 </head>
 <body ng-cloak ng-controller="cadastroController as cadCtrl">
-
-	<div>
+	
+	<div class="row">
+	<div  class="col-xs-12">
 		<md-content> <md-toolbar class="md-tall md-accent"
 			style="background-color: silver;">
 		<h2 class="md-toolbar-tools">
@@ -37,101 +43,48 @@
 		</h2>
 		</md-toolbar> </md-content>
 	</div>
+	</div>
 
-	<div>
-		<md-content> <md-tabs md-dynamic-height md-border-bottom>
-		<md-tab label="Clientes"> <md-content class="md-padding">
 
-		<div ng-cloak>
-			<md-content> <md-tabs md-dynamic-height md-border-bottom>
+	<div class="row">
+		<md-content class="col-xs-12"> <md-tabs md-dynamic-height md-border-bottom md-stretch-tabs="always" >
+		<md-tab label="Clientes" > <md-content>
+
+		<div class="row" >
+			<md-content class="col-xs-12"> <md-tabs md-dynamic-height md-border-bottom>
 			<md-tab label="Cadastrar"><!-- Cadastro Cliente --> 
-			<md-content class="md-padding">
+			<md-content	class="md-padding">
+
+			<div layout="column" class="container">
 				
-				<div layout="column">
+				<md-card> <md-card-title> <md-card-title-text>
+				<span class="md-headline">Cadastro Cliente</span> <span
+					class="md-subhead">Informe as informaçoes do cliente</span> </md-card-title-text> </md-card-title> <md-card-content>
+				
+				<div layout="row" class="row">
+					<div class="col-xs-4"> 
+					<md-input-container> 
+					<label>Nome</label> 
+					<input ng-model=pessoa.nome
+						   ng-required="true"> 
+					</md-input-container>
+				</div>
+					<md-input-container> <label>City</label> <input>
+					</md-input-container>
 
-  <md-card>
-    <md-card-title>
-      <md-card-title-text>
-        <span class="md-headline">Account Preferences</span>
-        <span class="md-subhead">Tell us a little about you.</span>
-      </md-card-title-text>
-    </md-card-title>
-
-    <md-card-content>
-      <div layout="row">
-        <md-input-container>
-          <label>Street Name</label>
-          <input>
-        </md-input-container>
-
-        <md-input-container>
-          <label>City</label>
-          <input>
-        </md-input-container>
-
-        <md-input-container>
-          <label>State</label>
-          <md-select ng-model="ctrl.userState">
-            <md-option><em>None</em></md-option>
-            <md-option ng-repeat="state in ctrl.states" ng-value="state.abbrev" ng-disabled="$index === 1">
-              {{state.abbrev}}
-            </md-option>
-          </md-select>
-        </md-input-container>
-      </div>
-    </md-card-content>
-  </md-card>
-
-  <md-card>
-    <md-card-title>
-      <md-card-title-text>
-        <span class="md-headline">Battle Preferences</span>
-        <span class="md-subhead">Choose wisely if you want to win.</span>
-      </md-card-title-text>
-    </md-card-title>
-
-    <md-card-content>
-      <div layout="row" layout-align="space-between center">
-        <span>What is your favorite weapon?</span>
-        <md-select ng-model="weapon" placeholder="Weapon" class="md-no-underline">
-          <md-option value="axe">Axe</md-option>
-          <md-option value="sword">Sword</md-option>
-          <md-option value="wand">Wand</md-option>
-          <md-option value="pen">Pen?</md-option>
-        </md-select>
-      </div>
-
-      <div layout="row" layout-align="space-between center">
-        <span>What armor do you wear?</span>
-        <md-select ng-model="armor" placeholder="Armor" class="md-no-underline" required md-no-asterisk="false">
-          <md-option value="cloth">Cloth</md-option>
-          <md-option value="leather">Leather</md-option>
-          <md-option value="chain">Chainmail</md-option>
-          <md-option value="plate">Plate</md-option>
-        </md-select>
-      </div>
-
-      <div layout="row" layout-align="space-between center">
-        <span>How do you refresh your magic?</span>
-        <md-select ng-model="drink" placeholder="Drink" class="md-no-underline">
-          <md-option value="water">Water</md-option>
-          <md-option value="juice">Juice</md-option>
-          <md-option value="milk">Milk</md-option>
-          <md-option value="wine">Wine</md-option>
-          <md-option value="mead">Mead</md-option>
-        </md-select>
-      </div>
-    </md-card-content>
-  </md-card>
-
-</div>
+					<md-input-container> <label>State</label> <md-select
+						ng-model="ctrl.userState"> <md-option>
+					<em>None</em></md-option> <md-option ng-repeat="state in ctrl.states"
+						ng-value="state.abbrev" ng-disabled="$index === 1">
+					{{state.abbrev}} </md-option> </md-select> </md-input-container>
+				</div>
+				</md-card-content> </md-card>
+			</div>
 
 
 
-			</md-content> 
-			</md-tab> 
-			<md-tab label="Alterar"> <!--Alterar Cilente  -->
-			<md-content class="md-padding">
+			</md-content> </md-tab> <md-tab label="Alterar"> <!--Alterar Cilente  --> <md-content
+				class="md-padding">
 			<h1 class="md-display-2">Tab Two</h1>
 			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
 				venenatis ante augue. Phasellus volutpat neque ac dui mattis
@@ -174,8 +127,7 @@
 		</div>
 
 
-		</md-content> </md-tab> <md-tab label="Funcionarios"> <md-content
-			class="md-padding">
+		</md-content></md-tab> <md-tab label="Funcionarios"> <md-content class="md-padding">
 		<h1 class="md-display-2">Tab Two</h1>
 		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
 			venenatis ante augue. Phasellus volutpat neque ac dui mattis
@@ -225,6 +177,5 @@
 			scelerisque, finibus commodo lectus.</p>
 		</md-content> </md-tab> </md-tabs> </md-content>
 	</div>
-
 </body>
 </html>

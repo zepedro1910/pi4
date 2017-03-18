@@ -10,16 +10,19 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.senac.domain.Pessoa;
+import net.sf.oval.ConstraintViolation;
+import net.sf.oval.Validator;
 
 @Repository
 public class PessoaRepositoryImpl implements PessoaRepository {
 
 	private final HibernateTemplate hibernateTemplate;
-
+	private final Validator validator;
 	@Inject
-	public PessoaRepositoryImpl(final HibernateTemplate hibernateTemplate) {
+	public PessoaRepositoryImpl(final HibernateTemplate hibernateTemplate, final Validator validator) {
 		super();
 		this.hibernateTemplate = hibernateTemplate;
+		this.validator = validator;
 	}
 
 	public List<Pessoa> allPessoas() {
@@ -28,7 +31,12 @@ public class PessoaRepositoryImpl implements PessoaRepository {
 
 	@Transactional(propagation = Propagation.REQUIRED)
 	public Long savePessoa(final Pessoa pessoa) {
-		final Pessoa mergePessoa = hibernateTemplate.merge(pessoa);
-		return mergePessoa.getId();
+		List<ConstraintViolation> validate = validator.validate(pessoa);
+		System.out.println(validate.toString());
+		if (validate.size() == 0) {
+			final Pessoa mergePessoa = hibernateTemplate.merge(pessoa);
+			return mergePessoa.getId();
+		}
+	 return (long) 0;
 	}
 }

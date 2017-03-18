@@ -7,6 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import net.sf.oval.constraint.NotEmpty;
+import net.sf.oval.constraint.NotNull;
+
 @Entity
 @Table(name = "pessoa")
 public class Pessoa {
@@ -15,7 +18,9 @@ public class Pessoa {
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
+	
+	@NotEmpty
+	@NotNull(message="Nome nãp pode ser nulo")
 	@Column(name = "nome")
 	private String nome;
 
