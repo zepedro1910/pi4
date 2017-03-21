@@ -24,110 +24,127 @@
 	src="resources/js/ext/ng/messages/messages.min.js"></script>
 
 <style type="text/css">
-
 .font-large {
-font-size: 26px;
+	font-size: 26px;
 }
-
 </style>
 
 </head>
 <body ng-cloak ng-controller="cadastroController as cadCtrl">
-	
-	<div class="row">
-	<div  class="col-xs-12">
-		<md-content> <md-toolbar class="md-tall md-accent"
-			style="background-color: silver;">
-		<h2 class="md-toolbar-tools">
-			<span style="text-align: center;">Shop Canecas</span>
-		</h2>
-		</md-toolbar> </md-content>
-	</div>
-	</div>
 
+	<div class="container-fluid">
 
-	<div class="row">
-		<md-content class="col-xs-12"> <md-tabs md-dynamic-height md-border-bottom md-stretch-tabs="always" >
-		<md-tab label="Clientes" > <md-content>
-
-		<div class="row" >
-			<md-content class="col-xs-12"> <md-tabs md-dynamic-height md-border-bottom>
-			<md-tab label="Cadastrar"><!-- Cadastro Cliente --> 
-			<md-content	class="md-padding">
-
-			<div layout="column" class="container">
-				
-				<md-card> <md-card-title> <md-card-title-text>
-				<span class="md-headline">Cadastro Cliente</span> <span
-					class="md-subhead">Informe as informaçoes do cliente</span> </md-card-title-text> </md-card-title> <md-card-content>
-				
-				<div layout="row" class="row">
-					<div class="col-xs-4"> 
-					<md-input-container> 
-					<label>Nome</label> 
-					<input ng-model=pessoa.nome
-						   ng-required="true"> 
-					</md-input-container>
-				</div>
-					<md-input-container> <label>City</label> <input>
-					</md-input-container>
-
-					<md-input-container> <label>State</label> <md-select
-						ng-model="ctrl.userState"> <md-option>
-					<em>None</em></md-option> <md-option ng-repeat="state in ctrl.states"
-						ng-value="state.abbrev" ng-disabled="$index === 1">
-					{{state.abbrev}} </md-option> </md-select> </md-input-container>
-				</div>
-				</md-card-content> </md-card>
+		<div class="row">
+			<div class="col-md-12">
+				<md-content> <md-toolbar class="md-tall md-accent"
+					style="background-color: silver;">
+				<h2 class="md-toolbar-tools">
+					<span style="text-align: center;">Shop Canecas</span>
+				</h2>
+				</md-toolbar> </md-content>
 			</div>
-
-
-
-			</md-content> </md-tab> <md-tab label="Alterar"> <!--Alterar Cilente  --> <md-content
-				class="md-padding">
-			<h1 class="md-display-2">Tab Two</h1>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-				venenatis ante augue. Phasellus volutpat neque ac dui mattis
-				vulputate. Etiam consequat aliquam cursus. In sodales pretium
-				ultrices. Maecenas lectus est, sollicitudin consectetur felis nec,
-				feugiat ultricies mi. Aliquam erat volutpat. Nam placerat, tortor in
-				ultrices porttitor, orci enim rutrum enim, vel tempor sapien arcu a
-				tellus. Vivamus convallis sodales ante varius gravida. Curabitur a
-				purus vel augue ultrices ultricies id a nisl. Nullam malesuada
-				consequat diam, a facilisis tortor volutpat et. Sed urna dolor,
-				aliquet vitae posuere vulputate, euismod ac lorem. Sed felis risus,
-				pulvinar at interdum quis, vehicula sed odio. Phasellus in enim
-				venenatis, iaculis tortor eu, bibendum ante. Donec ac tellus dictum
-				neque volutpat blandit. Praesent efficitur faucibus risus, ac auctor
-				purus porttitor vitae. Phasellus ornare dui nec orci posuere, nec
-				luctus mauris semper.</p>
-			<p>Morbi viverra, ante vel aliquet tincidunt, leo dolor pharetra
-				quam, at semper massa orci nec magna. Donec posuere nec sapien sed
-				laoreet. Etiam cursus nunc in condimentum facilisis. Etiam in tempor
-				tortor. Vivamus faucibus egestas enim, at convallis diam pulvinar
-				vel. Cras ac orci eget nisi maximus cursus. Nunc urna libero,
-				viverra sit amet nisl at, hendrerit tempor turpis. Maecenas
-				facilisis convallis mi vel tempor. Nullam vitae nunc leo. Cras sed
-				nisl consectetur, rhoncus sapien sit amet, tempus sapien.</p>
-			<p>Integer turpis erat, porttitor vitae mi faucibus, laoreet
-				interdum tellus. Curabitur posuere molestie dictum. Morbi eget
-				congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat,
-				at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo
-				volutpat non ac est. Praesent ligula diam, congue eu enim
-				scelerisque, finibus commodo lectus.</p>
-			</md-content> </md-tab> <md-tab label="Consultar"> <md-content class="md-padding">
-			<h1 class="md-display-2">Tab Three</h1>
-			<p>Integer turpis erat, porttitor vitae mi faucibus, laoreet
-				interdum tellus. Curabitur posuere molestie dictum. Morbi eget
-				congue risus, quis rhoncus quam. Suspendisse vitae hendrerit erat,
-				at posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo
-				volutpat non ac est. Praesent ligula diam, congue eu enim
-				scelerisque, finibus commodo lectus.</p>
-			</md-content> </md-tab> </md-tabs> </md-content>
 		</div>
 
 
-		</md-content></md-tab> <md-tab label="Funcionarios"> <md-content class="md-padding">
+		<md-content class="col-md-12"> <md-tabs md-dynamic-height
+			md-border-bottom md-stretch-tabs="always"> <md-tab
+			label="Clientes"> <md-content> <md-content
+			class="col-md-12"> <md-tabs md-dynamic-height
+			md-border-bottom> <!-- Cadastro Cliente --> <md-tab
+			label="Cadastrar"> <md-content class="md-padding">
+
+		<div class="container">
+
+			<md-card> <md-card-title> <md-card-title-text>
+			<span class="md-headline">Cadastro de Cliente</span> <span
+				class="md-subhead">* Campo obrigatorio</span> </md-card-title-text> </md-card-title> <md-card-content>
+
+			<form>
+				<div class="row">
+					<div class="col-md-4">
+						<md-input-container> <label>Nome</label> <input
+							ng-model=pessoa.nome ng-required="true" ng-max> </md-input-container>
+					</div>
+					<div class="col-md-4">
+						<md-input-container> <label>Sobrenome</label>
+						<input ng-model=pessoa.sobrenome ng-required="true"> </md-input-container>
+					</div>
+				</div>
+
+
+				<div class="row">
+					<div class="col-md-4">
+						<md-input-container> <label>Rg</label> <input
+							type="number" ng-model=pessoa.rg ng-required="true"> </md-input-container>
+					</div>
+					<div class="col-md-4">
+						<md-input-container> <label>Cpf</label> <input
+							type="number" ng-required="true"> </md-input-container>
+					</div>
+				</div>
+
+
+				<div class="row">
+					<div class="col-md-1">
+						<label>Sexo:</label>
+					</div>
+					<div class="col-md-4">
+						<md-radio-group ng-model="pessoa.sexo">
+						<md-radio-button
+							value="m" class="md-primary" >Masculino</md-radio-button>
+							 <md-radio-button   
+							value="f"> Feminino </md-radio-button> 
+						</md-radio-group>
+					</div>
+				</div>
+				{{pessoa}}
+			</form>
+			</md-card-content> </md-card>
+		</div>
+
+
+		</md-content> </md-tab> <!--Alterar Cilente  --> <md-tab label="Alterar"> <md-content
+			class="md-padding">
+		<h1 class="md-display-2">Tab Two</h1>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+			venenatis ante augue. Phasellus volutpat neque ac dui mattis
+			vulputate. Etiam consequat aliquam cursus. In sodales pretium
+			ultrices. Maecenas lectus est, sollicitudin consectetur felis nec,
+			feugiat ultricies mi. Aliquam erat volutpat. Nam placerat, tortor in
+			ultrices porttitor, orci enim rutrum enim, vel tempor sapien arcu a
+			tellus. Vivamus convallis sodales ante varius gravida. Curabitur a
+			purus vel augue ultrices ultricies id a nisl. Nullam malesuada
+			consequat diam, a facilisis tortor volutpat et. Sed urna dolor,
+			aliquet vitae posuere vulputate, euismod ac lorem. Sed felis risus,
+			pulvinar at interdum quis, vehicula sed odio. Phasellus in enim
+			venenatis, iaculis tortor eu, bibendum ante. Donec ac tellus dictum
+			neque volutpat blandit. Praesent efficitur faucibus risus, ac auctor
+			purus porttitor vitae. Phasellus ornare dui nec orci posuere, nec
+			luctus mauris semper.</p>
+		<p>Morbi viverra, ante vel aliquet tincidunt, leo dolor pharetra
+			quam, at semper massa orci nec magna. Donec posuere nec sapien sed
+			laoreet. Etiam cursus nunc in condimentum facilisis. Etiam in tempor
+			tortor. Vivamus faucibus egestas enim, at convallis diam pulvinar
+			vel. Cras ac orci eget nisi maximus cursus. Nunc urna libero, viverra
+			sit amet nisl at, hendrerit tempor turpis. Maecenas facilisis
+			convallis mi vel tempor. Nullam vitae nunc leo. Cras sed nisl
+			consectetur, rhoncus sapien sit amet, tempus sapien.</p>
+		<p>Integer turpis erat, porttitor vitae mi faucibus, laoreet
+			interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue
+			risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at
+			posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo
+			volutpat non ac est. Praesent ligula diam, congue eu enim
+			scelerisque, finibus commodo lectus.</p>
+		</md-content> </md-tab> <md-tab label="Consultar"> <md-content class="md-padding">
+		<h1 class="md-display-2">Tab Three</h1>
+		<p>Integer turpis erat, porttitor vitae mi faucibus, laoreet
+			interdum tellus. Curabitur posuere molestie dictum. Morbi eget congue
+			risus, quis rhoncus quam. Suspendisse vitae hendrerit erat, at
+			posuere mi. Cras eu fermentum nunc. Sed id ante eu orci commodo
+			volutpat non ac est. Praesent ligula diam, congue eu enim
+			scelerisque, finibus commodo lectus.</p>
+		</md-content> </md-tab> </md-tabs> </md-content> </md-content> </md-tab> <md-tab label="Funcionarios"> <md-content
+			class="md-padding">
 		<h1 class="md-display-2">Tab Two</h1>
 		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
 			venenatis ante augue. Phasellus volutpat neque ac dui mattis
