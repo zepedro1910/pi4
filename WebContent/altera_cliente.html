@@ -1,10 +1,36 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<div ng-controller="cadastroController" class="container-fluid">
+	<div class="row">
 
-</body>
-</html>
+		<div class="col-md-4">
+			<md-card> <md-card-title>
+			<md-card-title-text> <span class="md-subhead">left
+				panel</span> </md-card-title-text> </md-card-title> <md-card-content>
+			<div class="row">
+				<div class="col-md-12">
+					<table>
+						<tr>
+							<th class="form-inline col-md-1">Id</th>
+							<th class="form-inline col-md-1">Nome</th>
+							<th class="form-inline col-md-1">Sobrenome</th>
+							<th class="form-inline col-md-1">Cpf</th>
+						</tr>
+						<tr ng-repeat="item in pessoas">
+							<td class="form-inline col-md-1">{{item.id}}</td>
+							<td class="form-inline col-md-1">{{item.nome}}</td>
+							<td class="form-inline col-md-1">{{item.sobrenome}}</td>
+							<td class="form-inline col-md-1">{{item.cpf}}</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			</md-card-content></md-card>
+		</div>
+
+		<div class="col-md-8">
+			<md-card style="height: 700px"> <md-card-title>
+			<md-card-title-text> <span class="md-subhead">rigth
+				panel</span> </md-card-title-text> </md-card-title> <md-card-content> </md-card-content></md-card>
+		</div>
+
+	</div>
+</div>
