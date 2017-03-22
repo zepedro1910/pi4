@@ -36,7 +36,7 @@ public class Pessoa {
 
 	private String fixo;
 	private String rg;
-	private String cfp;
+	private String cpf;
 	private String sexo;
 	private String dataNasc;
 	private String email;
@@ -50,8 +50,8 @@ public class Pessoa {
 		return celular;
 	}
 
-	public String getCfp() {
-		return cfp;
+	public String getCpf() {
+		return cpf;
 	}
 
 	public String getDataNasc() {
@@ -98,8 +98,8 @@ public class Pessoa {
 		this.celular = celular;
 	}
 
-	public void setCfp(final String cfp) {
-		this.cfp = cfp;
+	public void setCpf(final String cpf) {
+		this.cpf = cpf;
 	}
 
 	public void setDataNasc(final String dataNasc) {
