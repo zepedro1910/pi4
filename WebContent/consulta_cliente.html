@@ -1,0 +1,30 @@
+<div ng-controller="PessoaController as pessoaCtrl" class="container">
+
+	<md-card> <md-card-title> <md-card-title-text>
+	<span class="md-subhead">Consutar Cliente</span> </md-card-title-text> </md-card-title> <md-card-content>
+
+
+	<div class="row">
+		<div class="col-xs-12">
+			<table ng-show="pessoas.length>0">
+				<tr>
+					<th class="form-inline col-sm-1">#</th>
+					<th class="form-inline col-sm-1">Nome</th>
+					<th class="form-inline col-sm-1">Sobrenome</th>
+					<th class="form-inline col-sm-1">Cpf</th>
+					<th class="form-inline col-sm-1">Rg</th>
+					<th class="form-inline col-sm-1">Data Nas</th>
+				</tr>
+				<tr ng-repeat="item in pessoas">
+					<td class="form-inline col-sm-1">{{pessoa.id}}</td>
+					<td class="form-inline col-sm-1">{{pessoa.nome}}</td>
+					<td class="form-inline col-sm-1">{{pessoa.sobrenome}}</td>
+					<td class="form-inline col-sm-1">{{pessoa.cpf}}</td>
+					<td class="form-inline col-sm-1">{{pessoa.rg}}</td>
+					<td class="form-inline col-sm-1">{{pessoa.dataNasc}}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	</md-card-content> </md-card>
+</div>

@@ -1,65 +1,97 @@
-<!DOCTYPE html>
-<html ng-app="pesssoa">
+<html ng-app="cadastro">
 <head>
 <meta charset="UTF-8">
-<title>Pessoa</title>
+<title>Shop Canecas</title>
 
-<link rel="stylesheet" href="resources/css/ext/bootstrap/bootstrap.min.css">
-<script src="resources/js/ext/ng/angular.min.js"></script>
+<link rel="stylesheet"
+	href="resources/css/ext/bootstrap/bootstrap.min.css">
+<link rel="stylesheet"
+	href="resources/css/ext/ng/material/ng.material.min.css">
 
-<script src="resources/js/modules/pessoa.module.js"></script>
-<script src="resources/js/services/pessoa.service.js"></script>
-<script src="resources/js/controllers/pessoa.controller.js"></script>
+<link rel="import" href="cadastro_pessoa.html">
+
+
+
+
+<script type="text/javascript" src="resources/js/ext/ng/angular.min.js"></script>
+<script type="text/javascript"
+	src="resources/js/ext/ng/material/ng.material.min.js"></script>
+<script type="text/javascript"
+	src="resources/js/modules/cadastros-basicos.module.js"></script>
+<script type="text/javascript"
+	src="resources/js/controllers/cadastros-basicos.controller.js"></script>
+<script type="text/javascript"
+	src="resources/js/controllers/pessoa.controller.js"></script>
+<script type="text/javascript"
+	src="resources/js/services/pessoa.service.js"></script>
+<script type="text/javascript"
+	src="resources/js/ext/ng/animate/animate.min.js"></script>
+<script type="text/javascript"
+	src="resources/js/ext/ng/aria/aria.min.js"></script>
+<script type="text/javascript"
+	src="resources/js/ext/ng/messages/messages.min.js"></script>
+
+<style type="text/css">
+.font-large {
+	font-size: 26px;
+}
+</style>
 
 </head>
-<body>
+<body ng-cloak ng-controller="cadastroController as cadCtrl">
 
-	<div class="container" ng-controller="PessoaController as pc">
+	<div class="container-fluid">
+
 		<div class="row">
-			<div class="col-md-6">
-				<div class="panel panel-default">
-					<div class="panel-heading">Pessoa</div>
-				  	<div class="panel-body">
-				    	<form>
-							  <div class="form-group">
-							    <label for="nome">Nome:</label>
-							    <input type="text" class="form-control" id="nome" ng-model="pessoa.nome" placeholder="Nome">
-							    {{pessoa}}
-							  </div>
-							  <div class="form-group">
-							    <label for="sobrenome">Sobrenome</label>
-							    <input type="text" class="form-control" id="sobrenome" ng-model="pessoa.sobrenome" placeholder="Sobrenome">
-							  </div>
-							  <button type="button" class="btn btn-default" ng-click="save(pessoa)" >Salvar</button>
-						</form>
-				  	</div>
-				</div>
-			</div>
-			<div class="col-md-6">
-				<div class="panel panel-default">
-				  	<div class="panel-heading">Pessoas</div>
-				  	<div class="panel-body">
-				    	<table class="table table-hover" ng-show="pessoas.length>0" >
-				    		<thead>
-				    			<tr>
-				    				<th>ID</th>
-				    				<th>Nome</th>
-				    				<th>Sobrenome</th>
-				    			</tr>
-				    		</thead>
-				    		<tbody>
-				    			<tr ng-repeat="pessoa in pessoas">
-				    				<td>{{ pessoa.id }}</td>
-				    				<td>{{ pessoa.nome }}</td>
-				    				<td>{{ pessoa.sobrenome }}</td>
-				    			</tr>
-				    		</tbody>
-				    	</table>
-				  	</div>
-				</div>
+			<div class="col-md-12">
+				<md-content> <md-toolbar class="md-tall md-accent"
+					style="background-color: silver;">
+				<h2 class="md-toolbar-tools">
+					<span style="text-align: center;">Shop Canecas</span>
+				</h2>
+				</md-toolbar> </md-content>
 			</div>
 		</div>
-	</div>
 
+
+		<md-content class="col-md-12"> <md-tabs md-dynamic-height
+			md-border-bottom md-stretch-tabs="always"> <md-tab
+			label="Clientes"> <md-content> <md-content
+			class="col-md-12"> <md-tabs md-dynamic-height
+			md-border-bottom> 
+		
+		<!-- Cadastro Cliente --> <md-tab
+		label="Cadastrar"> <md-content class="md-padding">
+		<ng-include src="'cadastro_cliente.html'"></ng-include> </md-content> </md-tab> 
+		
+		<!--Alterar Cilente  -->
+		<md-tab label="Alterar"> <md-content class="md-padding">
+		<ng-include src="'altera_cliente.html'"></ng-include>
+		</md-content> </md-tab> 
+		
+		<!-- Consulta de Cilentes -->
+		<md-tab label="Consultar"> <md-content class="md-padding">
+		<ng-include src="'consulta_cliente.html'">
+		
+		</md-content> </md-tab> 
+		
+		</md-tabs> </md-content> </md-content> </md-tab> <md-tab label="Funcionarios"> <md-content
+			class="md-padding">
+		<h1 class="md-display-2">Tab Two</h1>
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
+			venenatis ante augue. Phasellus volutpat neque ac dui mattis volutpat
+			non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus
+			commodo lectus.</p>
+		</md-content> </md-tab> <md-tab label="Fornecedores"> <md-content
+			class="md-padding">
+		<h1 class="md-display-2">Tab Three</h1>
+		<p>Integer turpis erat, porttitor vitae mi faucibus, laoreet
+			scelerisque, finibus commodo lectus.</p>
+		</md-content> </md-tab> <md-tab label="Produtos"> <md-content class="md-padding">
+		<h1 class="md-display-2">Tab Three</h1>
+		<p>Integer turpis erat, porttitor vitae mi faucibus, laoreet
+			scelerisque, finibus commodo lectus.</p>
+		</md-content> </md-tab> </md-tabs> </md-content>
+	</div>
 </body>
 </html>

@@ -8,7 +8,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 
 import net.sf.oval.constraint.NotEmpty;
 import net.sf.oval.constraint.NotNull;
@@ -17,45 +16,24 @@ import net.sf.oval.constraint.NotNull;
 @Table(name = "pessoa")
 public class Pessoa {
 
-	public Pessoa() {
-		super();
-	}
-
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@NotEmpty
-	@NotNull(message = "Nome não pode ser nulo")
+	@NotNull(message = "Nome nï¿½o pode ser nulo")
 	@Column(name = "nome")
 	private String nome;
 
 	@Column(name = "sobrenome")
 	private String sobrenome;
-	
-	@OneToOne(cascade= CascadeType.ALL)
+
+	@OneToOne(cascade = CascadeType.ALL)
 	private Endereco endereco;
 
-	public Endereco getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
-	}
-
-	public Long getIdEndereco() {
-		return idEndereco;
-	}
-
-	public void setIdEndereco(Long idEndereco) {
-		this.idEndereco = idEndereco;
-	}
-
-	private Long idEndereco;
-
 	private String celular;
+
 	private String fixo;
 	private String rg;
 	private String cfp;
@@ -64,68 +42,32 @@ public class Pessoa {
 	private String email;
 	private String senha;
 
+	public Pessoa() {
+		super();
+	}
+
 	public String getCelular() {
 		return celular;
-	}
-
-	public void setCelular(String celular) {
-		this.celular = celular;
-	}
-
-	public String getFixo() {
-		return fixo;
-	}
-
-	public void setFixo(String fixo) {
-		this.fixo = fixo;
-	}
-
-	public String getRg() {
-		return rg;
-	}
-
-	public void setRg(String rg) {
-		this.rg = rg;
 	}
 
 	public String getCfp() {
 		return cfp;
 	}
 
-	public void setCfp(String cfp) {
-		this.cfp = cfp;
-	}
-
-	public String getSexo() {
-		return sexo;
-	}
-
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
-	}
-
 	public String getDataNasc() {
 		return dataNasc;
-	}
-
-	public void setDataNasc(String dataNasc) {
-		this.dataNasc = dataNasc;
 	}
 
 	public String getEmail() {
 		return email;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public Endereco getEndereco() {
+		return endereco;
 	}
 
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
+	public String getFixo() {
+		return fixo;
 	}
 
 	public Long getId() {
@@ -136,8 +78,44 @@ public class Pessoa {
 		return nome;
 	}
 
+	public String getRg() {
+		return rg;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public String getSexo() {
+		return sexo;
+	}
+
 	public String getSobrenome() {
 		return sobrenome;
+	}
+
+	public void setCelular(final String celular) {
+		this.celular = celular;
+	}
+
+	public void setCfp(final String cfp) {
+		this.cfp = cfp;
+	}
+
+	public void setDataNasc(final String dataNasc) {
+		this.dataNasc = dataNasc;
+	}
+
+	public void setEmail(final String email) {
+		this.email = email;
+	}
+
+	public void setEndereco(final Endereco endereco) {
+		this.endereco = endereco;
+	}
+
+	public void setFixo(final String fixo) {
+		this.fixo = fixo;
 	}
 
 	public void setId(final Long id) {
@@ -146,6 +124,18 @@ public class Pessoa {
 
 	public void setNome(final String nome) {
 		this.nome = nome;
+	}
+
+	public void setRg(final String rg) {
+		this.rg = rg;
+	}
+
+	public void setSenha(final String senha) {
+		this.senha = senha;
+	}
+
+	public void setSexo(final String sexo) {
+		this.sexo = sexo;
 	}
 
 	public void setSobrenome(final String sobrenome) {
