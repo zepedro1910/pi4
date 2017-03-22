@@ -8,14 +8,22 @@
 <link rel="stylesheet"
 	href="resources/css/ext/ng/material/ng.material.min.css">
 
+<link rel="import" href="cadastro_pessoa.html">
+
+
+
+
 <script type="text/javascript" src="resources/js/ext/ng/angular.min.js"></script>
 <script type="text/javascript"
 	src="resources/js/ext/ng/material/ng.material.min.js"></script>
-
 <script type="text/javascript"
 	src="resources/js/modules/cadastros-basicos.module.js"></script>
 <script type="text/javascript"
 	src="resources/js/controllers/cadastros-basicos.controller.js"></script>
+<script type="text/javascript"
+	src="resources/js/controllers/pessoa.controller.js"></script>
+<script type="text/javascript"
+	src="resources/js/services/pessoa.service.js"></script>
 <script type="text/javascript"
 	src="resources/js/ext/ng/animate/animate.min.js"></script>
 <script type="text/javascript"
@@ -53,58 +61,8 @@
 			md-border-bottom> <!-- Cadastro Cliente --> <md-tab
 			label="Cadastrar"> <md-content class="md-padding">
 
-		<div class="container">
-
-			<md-card> <md-card-title> <md-card-title-text>
-			<span class="md-headline">Cadastro de Cliente</span> <span
-				class="md-subhead">* Campo obrigatorio</span> </md-card-title-text> </md-card-title> <md-card-content>
-
-			<form>
-				<div class="row">
-					<div class="col-md-4">
-						<md-input-container> <label>Nome</label> <input
-							ng-model=pessoa.nome ng-required="true" ng-max> </md-input-container>
-					</div>
-					<div class="col-md-4">
-						<md-input-container> <label>Sobrenome</label>
-						<input ng-model=pessoa.sobrenome ng-required="true"> </md-input-container>
-					</div>
-				</div>
-
-
-				<div class="row">
-					<div class="col-md-4">
-						<md-input-container> <label>Rg</label> <input
-							type="number" ng-model=pessoa.rg ng-required="true"> </md-input-container>
-					</div>
-					<div class="col-md-4">
-						<md-input-container> <label>Cpf</label> <input
-							type="number" ng-required="true"> </md-input-container>
-					</div>
-				</div>
-
-
-				<div class="row">
-					<div class="col-md-1">
-						<label>Sexo:</label>
-					</div>
-					<div class="col-md-4">
-						<md-radio-group ng-model="pessoa.sexo">
-						<md-radio-button
-							value="m" class="md-primary" >Masculino</md-radio-button>
-							 <md-radio-button   
-							value="f"> Feminino </md-radio-button> 
-						</md-radio-group>
-					</div>
-				</div>
-				{{pessoa}}
-			</form>
-			</md-card-content> </md-card>
-		</div>
-
-
-		</md-content> </md-tab> <!--Alterar Cilente  --> <md-tab label="Alterar"> <md-content
-			class="md-padding">
+		<ng-include src="'cadastro_pessoa.html'"></ng-include> </md-content> </md-tab> <!--Alterar Cilente  -->
+		<md-tab label="Alterar"> <md-content class="md-padding">
 		<h1 class="md-display-2">Tab Two</h1>
 		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
 			venenatis ante augue. Phasellus volutpat neque ac dui mattis

@@ -1,4 +1,4 @@
-pessoaModule.factory('PessoaService',
+cadastroModule.factory('PessoaService',
 		['$q', '$http', function($q, $http) {
 			return {
 				all : function() {

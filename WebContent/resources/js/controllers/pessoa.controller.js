@@ -1,5 +1,5 @@
 
-pessoaModule.controller('PessoaController',[ '$scope', 'PessoaService', function($scope, service){
+cadastroModule.controller('PessoaController',[ '$scope','$http','PessoaService', function($scope, $http, service){
 	
 	service.all().then(function(res) {
 		$scope.pessoas = res.data;

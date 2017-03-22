@@ -1,5 +1,4 @@
-cadastroModule.controller('cadastroController',[ '$scope', function($scope){
+cadastroModule.controller('cadastroController',['$scope','$http', function($scope, $http){
 	
-
 	
 }]);
