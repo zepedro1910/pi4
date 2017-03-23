@@ -2,34 +2,210 @@
 	<div class="row">
 
 		<div class="col-md-4">
-			<md-card> <md-card-title>
-			<md-card-title-text> <span class="md-subhead">left
-				panel</span> </md-card-title-text> </md-card-title> <md-card-content>
+			<md-card> <md-card-content> <md-card>
+			<md-card-content>
 			<div class="row">
 				<div class="col-md-12">
-					<table>
-						<tr>
-							<th class="form-inline col-md-1">Id</th>
-							<th class="form-inline col-md-1">Nome</th>
-							<th class="form-inline col-md-1">Sobrenome</th>
-							<th class="form-inline col-md-1">Cpf</th>
-						</tr>
-						<tr ng-repeat="item in pessoas">
-							<td class="form-inline col-md-1">{{item.id}}</td>
-							<td class="form-inline col-md-1">{{item.nome}}</td>
-							<td class="form-inline col-md-1">{{item.sobrenome}}</td>
-							<td class="form-inline col-md-1">{{item.cpf}}</td>
-						</tr>
-					</table>
+
+					<div class="row">
+						<div class="col-md-4">
+							<md-input-container> <label>Nome </label> <input
+								ng-model=pessoa.fixo> </md-input-container>
+						</div>
+
+
+						<div class="col-md-4">
+							<md-input-container> <label>Cpf </label> <input
+								ng-model=pessoa.fixo> </md-input-container>
+						</div>
+
+						<div class="col-md-4">
+							<md-button class="md-primary" ng-click="novoCliente()">Novo</md-button>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-4">
+							<md-input-container> <label>Cpf </label> <input
+								ng-model=pessoa.fixo> </md-input-container>
+						</div>
+
+						<div class="col-md-4">
+							<md-input-container> <label>Rg </label> <input
+								ng-model=pessoa.fixo> </md-input-container>
+						</div>
+
+						<div class="row">
+							<div class="col-md-4">
+								<md-button class="md-raised md-primary" ng-click="save(pessoa)">Buscar</md-button>
+							</div>
+						</div>
+					</div>
+
 				</div>
+			</div>
+			</md-card-content></md-card>
+
+			<div class="row">
+				<md-card> <md-card-content>
+				<div class="col-md-12">
+
+
+					<table class="table table-bordered table-striped table-hover">
+						<thead>
+							<tr>
+								<th>Id</th>
+								<th>Nome</th>
+								<th>Cpf</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="item in pessoas">
+								<td>{{item.id}}</td>
+								<td>{{item.nome}}</td>
+								<td>{{item.cpf}}</td>
+							</tr>
+						</tbody>
+					</table>
+
+				</div>
+				</md-card-content> </md-card>
 			</div>
 			</md-card-content></md-card>
 		</div>
 
 		<div class="col-md-8">
-			<md-card style="height: 700px"> <md-card-title>
-			<md-card-title-text> <span class="md-subhead">rigth
-				panel</span> </md-card-title-text> </md-card-title> <md-card-content> </md-card-content></md-card>
+			<md-card> <md-card-content>
+			<div class="row" ng-if="isNovo">
+				<div class="col-md-12">
+					<form>
+						<fieldset>
+							<legend>Dados Pessoais</legend>
+							<div class="row">
+								<div class="col-md-3">
+									<md-input-container> <label>Nome</label> <input
+										ng-model=pessoa.nome ng-required="true"> </md-input-container>
+								</div>
+								<div class="col-md-3">
+									<md-input-container> <label>Sobrenome</label>
+									<input ng-model=pessoa.sobrenome ng-required="true"> </md-input-container>
+								</div>
+								<div class="col-md-3">
+									<md-input-container> <label>Telefone
+										Fixo</label> <input ng-model=pessoa.fixo> </md-input-container>
+								</div>
+								<div class="col-md-3">
+									<md-input-container> <label>Telefone
+										Celular</label> <input ng-model="pessoa.celular"> </md-input-container>
+								</div>
+
+							</div>
+
+
+							<div class="row">
+								<div class="col-md-3">
+									<md-input-container> <label>Rg</label> <input
+										ng-model=pessoa.rg ng-required="true"> </md-input-container>
+								</div>
+								<div class="col-md-3">
+									<md-input-container> <label>Cpf</label> <input
+										ng-model="pessoa.cpf" ng-required="true"> </md-input-container>
+								</div>
+
+								<div class="col-md-3">
+									<md-input-container> <label>Sexo</label> <md-select
+										name="type" ng-model="pessoa.sexo" ng-required="true">
+									<md-option value="m">Masculino</md-option> <md-option value="f">Feminino</md-option>
+									</md-select> </md-input-container>
+								</div>
+
+								<div class="col-md-3" flex-gt-xs style="margin-top: 15px;">
+									<md-datepicker ng-model="pessoa.dataNasc"
+										md-current-view="year" md-placeholder="Data Nasc"></md-datepicker>
+								</div>
+							</div>
+
+						</fieldset>
+						<br />
+
+						<fieldset>
+							<legend>Dados de Entrega</legend>
+							<div class="row">
+								<div class="col-md-3">
+									<md-input-container> <label>Cep</label> <input
+										ng-model=pessoa.endereco.cep ng-required="true"> </md-input-container>
+								</div>
+								<div class="col-md-3">
+									<md-input-container> <label>Logradouro</label>
+									<input ng-model=pessoa.endereco.logradouro ng-required="true">
+									</md-input-container>
+								</div>
+								<div class="col-md-3">
+									<md-input-container> <label>Numero
+									</label> <input ng-model=pessoa.endereco.numero> </md-input-container>
+								</div>
+								<div class="col-md-3">
+									<md-input-container> <label>
+										Complemento</label> <input ng-model="pessoa.endereco.complemento">
+									</md-input-container>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-md-3">
+									<md-input-container> <label>Cidade</label>
+									<input ng-model=pessoa.endereco.cidade ng-required="true">
+									</md-input-container>
+								</div>
+								<div class="col-md-3">
+									<md-input-container> <label>Bairro</label>
+									<input ng-model=pessoa.endereco.bairro> </md-input-container>
+								</div>
+
+								<div class="col-md-3">
+									<md-input-container> <label>Estado</label>
+									<md-select name="type" ng-model="pessoa.endereco.estado"
+										ng-required="true"> <md-option value="m">Masculino</md-option>
+									<md-option value="f">Feminino</md-option> </md-select> </md-input-container>
+								</div>
+
+							</div>
+						</fieldset>
+
+						<br />
+						<fieldset>
+							<legend>Dados de Acesso ao Site</legend>
+							<div class="row">
+								<div class="col-md-4">
+									<md-input-container> <label>E-mail</label>
+									<input ng-model=pessoa.email ng-required="true"> </md-input-container>
+								</div>
+
+								<div class="col-md-4">
+									<md-input-container> <label>Senha</label>
+									<input ng-model=pessoa.primeiraSenha ng-required="true">
+									</md-input-container>
+								</div>
+
+								<div class="col-md-4">
+									<md-input-container> <label>Confirmar
+										Senha</label> <input ng-model=pessoa.senha ng-required="true">
+									</md-input-container>
+								</div>
+							</div>
+						</fieldset>
+
+						<div class="row">
+							<div class="col-md-12" align="right">
+								<md-button class="md-raised md-primary" ng-click="save(pessoa)">Salvar</md-button>
+							</div>
+						</div>
+						{{pessoa}}
+					</form>
+				</div>
+			</div>
+
+			</md-card-content></md-card>
 		</div>
 
 	</div>

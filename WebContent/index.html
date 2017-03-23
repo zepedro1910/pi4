@@ -50,25 +50,10 @@
 		<md-content class="col-md-12"> <md-tabs md-dynamic-height
 			md-border-bottom md-stretch-tabs="always"> <md-tab
 			label="Clientes"> <md-content> <md-content
-			class="col-md-12"> <md-tabs md-dynamic-height
-			md-border-bottom> 
-		
-		<!-- Cadastro Cliente --> <md-tab
-		label="Cadastrar"> <md-content class="md-padding">
-		<ng-include src="'cadastro_cliente.html'"></ng-include> </md-content> </md-tab> 
-		
-		<!--Alterar Cilente  -->
-		<md-tab label="Alterar" md-on-select="selectAll()"> <md-content class="md-padding">
-		<ng-include src="'altera_cliente.html'"></ng-include>
-		</md-content> </md-tab> 
-		
-		<!-- Consulta de Cilentes -->
-		<md-tab label="Consultar" md-on-select="selectAll()"> <md-content class="md-padding">
-		<ng-include src="'consulta_cliente.html'">
-		
-		</md-content> </md-tab> 
-		
-		</md-tabs> </md-content> </md-content> </md-tab> <md-tab label="Funcionarios"> <md-content
+			class="col-md-12"> 
+				<ng-include src="'altera_cliente.html'"></ng-include>
+			
+			 </md-content> </md-content> </md-tab> <md-tab label="Funcionarios"> <md-content
 			class="md-padding">
 		<h1 class="md-display-2">Tab Two</h1>
 		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
