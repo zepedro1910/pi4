@@ -62,51 +62,13 @@
 </head>
 
 <body ng-controller="appController">
-    <div class="header-top">
-        <div class="wrap">
-            <div class="logo">
-                <a href="index.html"><img src="resources/images/logo.png" alt="" /></a>
-            </div>
-            <div class="cssmenu">
-                <ul>
-                    <li><a href="login.html">Login</a></li>
-                    <li class="active"><a href="">Cadastre-se</a></li>
-                    <li><a href="shop.html">Loja</a></li>
-                    <li><a href="checkout.html">Carrinho de Compras</a></li>
-                </ul>
-            </div>
-            <div class="clear"></div>
-        </div>
-    </div>
-    <div class="header-bottom">
-        <div class="wrap">
-            <!-- start header menu -->
-            <ul class="megamenu skyblue">
-                <li>
-                    <a class="color1" href="#">Home</a>
-                </li>
-                <li class="grid">
-                    <a class="color2" href="#">Esportes</a>
-                </li>
-                <li class="active grid">
-                    <a class="color4" href="#">Fotos</a>
-                </li>
-                <li>
-                    <a class="color5" href="#">Desenhos</a>
-                </li>
-                <li>
-                    <a class="color6" href="#">Filmes e Séries</a>
-                </li>
-                <li>
-                    <a class="color7" href="#">Personalizadas</a>
-                </li>
-                <li>
-                    <a class="color8" href="#">Diversos</a>
-                </li>
-            </ul>
-            <div class="clear"></div>
-        </div>
-    </div>
+
+    <!-- MENU SUPERIOR -->
+    <ng-include src="'PartialView/header.html'"></ng-include>
+
+    <!-- SUB-MENU SUPERIOR -->
+    <ng-include src="'PartialView/headerBottom.html'"></ng-include>
+
     <div class="index-banner">
         <div class="wmuSlider example1" style="height: 560px;">
             <div class="wmuSliderWrapper">
@@ -303,45 +265,11 @@
             </div>
         </div>
     </div>
-    <div class="footer">
-        <div class="footer-top">
-            <div class="wrap">
-                <div class="col_1_of_footer-top span_1_of_footer-top">
-                    <ul class="f_list">
-                        <li><img src="resources/images/f_icon.png" alt="" /><span class="delivery">Frete grátis acima de R$ 250,00</span></li>
-                    </ul>
-                </div>
-                <div class="col_1_of_footer-top span_1_of_footer-top">
-                    <ul class="f_list">
-                        <li><img src="resources/images/f_icon1.png" alt="" /><span class="delivery">SAC:<span class="orange"> (11) 5555-0000</span></span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col_1_of_footer-top span_1_of_footer-top">
-                    <ul class="f_list">
-                        <li><img src="resources/images/f_icon2.png" alt="" /><span class="delivery">Entregas rápidas e devoluções gratuitas</span></li>
-                    </ul>
-                </div>
-                <div class="clear"></div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <div class="wrap wrapcentralize">
-                <div class="section group">
-                </div>
-                <div class="clear"></div>
-            </div>
-        </div>
-    </div>
+    <ng-include src="'PartialView/footer.html'"></ng-include>
     <script type="text/javascript">
             $(document).ready(function () {
 
                 //lê o menu superior e carrega o mapa do site no rodapé da página
-
-                $('.megamenu.skyblue li a').each(function (index, item) {
-                    var itemValue = $(item).text();
-                    $('div.section.group').append("<div class='col_1_of_5 span_1_of_5'><h3><a href='#'><div>" + itemValue + "</div></a></h3></div>");
-                });
 
                 var defaults = {
                     containerID: 'toTop', // fading element id
@@ -350,8 +278,7 @@
                     easingType: 'linear'
                 };
 
-
-                //$().UItoTop({ easingType: 'easeOutQuart' });
+                $().UItoTop({ easingType: 'easeOutQuart' });
 
             });
     </script>
