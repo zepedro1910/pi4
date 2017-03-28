@@ -1,13 +1,13 @@
 <html ng-app="cadastro">
+
 <head>
-<meta charset="UTF-8">
-<title>Shop Canecas</title>
+	<meta charset="UTF-8">
+	<title>Shop Canecas</title>
 
-<link rel="stylesheet"
-	href="resources/css/ext/bootstrap/bootstrap.min.css">
-<link rel="stylesheet"
-	href="resources/css/ext/ng/material/ng.material.min.css">
+	<link rel="stylesheet" href="resources/css/ext/bootstrap/bootstrap.min.css">
+	<link rel="stylesheet" href="resources/css/ext/ng/material/ng.material.min.css">
 
+<<<<<<< HEAD
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -27,53 +27,74 @@
 	src="resources/js/ext/ng/aria/aria.min.js"></script>
 <script type="text/javascript"
 	src="resources/js/ext/ng/messages/messages.min.js"></script>
+=======
+	<script type="text/javascript" src="resources/js/ext/jQuery/jquery.min.css"></script>
+	<script type="text/javascript" src="resources/js/ext/ng/angular.min.js"></script>
+	<script type="text/javascript" src="resources/js/ext/ng/material/ng.material.min.js"></script>
+	<script type="text/javascript" src="resources/js/modules/cadastros-basicos.module.js"></script>
+	<script type="text/javascript" src="resources/js/controllers/cadastros-basicos.controller.js"></script>
+	<script type="text/javascript" src="resources/js/services/pessoa.service.js"></script>
+	<script type="text/javascript" src="resources/js/ext/ng/animate/animate.min.js"></script>
+	<script type="text/javascript" src="resources/js/ext/ng/aria/aria.min.js"></script>
+	<script type="text/javascript" src="resources/js/ext/ng/messages/messages.min.js"></script>
+>>>>>>> d332b07e5a5373925652f5a62a7393fff45bb3c6
 
-<style type="text/css">
-.font-large {
-	font-size: 26px;
-}
-</style>
+	<style type="text/css">
+		.font-large {
+			font-size: 26px;
+		}
+	</style>
 
 </head>
+
 <body ng-cloak ng-controller="cadastroController as cadCtrl">
 
 	<div class="container-fluid">
 
 		<div class="row">
 			<div class="col-md-12">
-				<md-content> <md-toolbar class="md-tall md-accent"
-					style="background-color: silver;">
-				<h2 class="md-toolbar-tools">
-					<span style="text-align: center;">Shop Canecas</span>
-				</h2>
-				</md-toolbar> </md-content>
+				<md-content>
+					<md-toolbar class="md-tall md-accent" style="background-color: silver;">
+						<h2 class="md-toolbar-tools">
+							<span style="text-align: center;">Shop Canecas</span>
+						</h2>
+					</md-toolbar>
+				</md-content>
 			</div>
 		</div>
 
 
-		<md-content class="col-md-12"> <md-tabs md-dynamic-height
-			md-border-bottom md-stretch-tabs="always"> <md-tab
-			label="Clientes"> <md-content> <md-content
-			class="col-md-12"> 
-				<ng-include src="'altera_cliente.html'"></ng-include>
-			
-			 </md-content> </md-content> </md-tab> <md-tab label="Funcionarios"> <md-content
-			class="md-padding">
-		<h1 class="md-display-2">Tab Two</h1>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-			venenatis ante augue. Phasellus volutpat neque ac dui mattis volutpat
-			non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus
-			commodo lectus.</p>
-		</md-content> </md-tab> <md-tab label="Fornecedores"> <md-content
-			class="md-padding">
-		<h1 class="md-display-2">Tab Three</h1>
-		<p>Integer turpis erat, porttitor vitae mi faucibus, laoreet
-			scelerisque, finibus commodo lectus.</p>
-		</md-content> </md-tab> <md-tab label="Produtos"> <md-content class="md-padding">
-		<h1 class="md-display-2">Tab Three</h1>
-		<p>Integer turpis erat, porttitor vitae mi faucibus, laoreet
-			scelerisque, finibus commodo lectus.</p>
-		</md-content> </md-tab> </md-tabs> </md-content>
+		<md-content class="col-md-12">
+			<md-tabs md-dynamic-height md-border-bottom md-stretch-tabs="always">
+				<md-tab label="Clientes">
+					<md-content>
+						<md-content class="col-md-12">
+							<ng-include src="'PartialView/altera_cliente.html'"></ng-include>
+						</md-content>
+					</md-content>
+				</md-tab>
+				<md-tab label="Funcionarios">
+					<md-content class="md-padding">
+						<h1 class="md-display-2">Tab Two</h1>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui
+							mattis volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+					</md-content>
+				</md-tab>
+				<md-tab label="Fornecedores">
+					<md-content class="md-padding">
+						<h1 class="md-display-2">Tab Three</h1>
+						<p>Integer turpis erat, porttitor vitae mi faucibus, laoreet scelerisque, finibus commodo lectus.</p>
+					</md-content>
+				</md-tab>
+				<md-tab label="Produtos">
+					<md-content class="md-padding">
+						<h1 class="md-display-2">Tab Three</h1>
+						<p>Integer turpis erat, porttitor vitae mi faucibus, laoreet scelerisque, finibus commodo lectus.</p>
+					</md-content>
+				</md-tab>
+			</md-tabs>
+		</md-content>
 	</div>
 </body>
+
 </html>

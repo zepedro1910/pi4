@@ -1,0 +1,288 @@
+<!DOCTYPE HTML>
+<html ng-app="app">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="resources/css/ext/bootstrap/style.css" rel="stylesheet" />
+    <script src="resources/js/ext/ng/angular.min.js"></script>
+    <script src="resources/js/ext/ng/myAngularSchema.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="resources/js/ext/jQuery/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".dropdown img.flag").addClass("flagvisibility");
+
+            $(".dropdown dt a").click(function () {
+                $(".dropdown dd ul").toggle();
+            });
+
+            $(".dropdown dd ul li a").click(function () {
+                var text = $(this).html();
+                $(".dropdown dt a span").html(text);
+                $(".dropdown dd ul").hide();
+                $("#result").html("Selected value is: " + getSelectedValue("sample"));
+            });
+
+            function getSelectedValue(id) {
+                return $("#" + id).find("dt a span.value").html();
+            }
+
+            $(document).bind('click', function (e) {
+                var $clicked = $(e.target);
+                if (!$clicked.parents().hasClass("dropdown"))
+                    $(".dropdown dd ul").hide();
+            });
+
+
+            $("#flagSwitcher").click(function () {
+                $(".dropdown img.flag").toggleClass("flagvisibility");
+            });
+        });
+    </script>
+    <!-- start menu -->
+    <script src="resources/js/ext/bootstrap/megamenu.js"></script>
+    <link rel="stylesheet" href="resources/css/ext/bootstrap/megamenu.css">
+    <!--<script>$(document).ready(function(){$(".megamenu").megamenu();});</script>-->
+    <!-- end menu -->
+    <!-- top scrolling -->
+
+    <script src="resources/js/ext/bootstrap/easing.js"></script>
+    <script src="resources/js/ext/bootstrap/move-top.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+                $('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1200);
+            });
+        });
+    </script>
+</head>
+
+<body ng-controller="appController">
+
+    <!-- MENU SUPERIOR -->
+    <ng-include src="'PartialView/header.html'"></ng-include>
+
+    <!-- SUB-MENU SUPERIOR -->
+    <ng-include src="'PartialView/headerBottom.html'"></ng-include>
+
+    <div class="index-banner">
+        <div class="wmuSlider example1" style="height: 560px;">
+            <div class="wmuSliderWrapper">
+                <article style="position: relative; width: 100%; opacity: 1;">
+                    <div class="banner-wrap">
+                        <div class="slider-left">
+                            <img src="resources/images/banner1.jpg" alt="" />
+                        </div>
+                        <div class="slider-right">
+                            <h1>Classic</h1>
+                            <h2>White</h2>
+                            <p>Lorem ipsum dolor sit amet</p>
+                            <div class="btn"><a href="shop.html">Shop Now</a></div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </article>
+                <article style="position: absolute; width: 100%; opacity: 0;">
+                    <div class="banner-wrap">
+                        <div class="slider-left">
+                            <img src="resources/images/banner2.jpg" alt="" />
+                        </div>
+                        <div class="slider-right">
+                            <h1>Classic</h1>
+                            <h2>White</h2>
+                            <p>Lorem ipsum dolor sit amet</p>
+                            <div class="btn"><a href="shop.html">Shop Now</a></div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </article>
+                <article style="position: absolute; width: 100%; opacity: 0;">
+                    <div class="banner-wrap">
+                        <div class="slider-left">
+                            <img src="resources/images/banner1.jpg" alt="" />
+                        </div>
+                        <div class="slider-right">
+                            <h1>Classic</h1>
+                            <h2>White</h2>
+                            <p>Lorem ipsum dolor sit amet</p>
+                            <div class="btn"><a href="shop.html">Shop Now</a></div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </article>
+                <article style="position: absolute; width: 100%; opacity: 0;">
+                    <div class="banner-wrap">
+                        <div class="slider-left">
+                            <img src="resources/images/banner2.jpg" alt="" />
+                        </div>
+                        <div class="slider-right">
+                            <h1>Classic</h1>
+                            <h2>White</h2>
+                            <p>Lorem ipsum dolor sit amet</p>
+                            <div class="btn"><a href="shop.html">Shop Now</a></div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </article>
+                <article style="position: absolute; width: 100%; opacity: 0;">
+                    <div class="banner-wrap">
+                        <div class="slider-left">
+                            <img src="resources/images/banner1.jpg" alt="" />
+                        </div>
+                        <div class="slider-right">
+                            <h1>Classic</h1>
+                            <h2>White</h2>
+                            <p>Lorem ipsum dolor sit amet</p>
+                            <div class="btn"><a href="shop.html">Shop Now</a></div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </article>
+            </div>
+            <a class="wmuSliderPrev">Previous</a><a class="wmuSliderNext">Next</a>
+            <ul class="wmuSliderPagination">
+                <li><a href="#" class="">0</a></li>
+                <li><a href="#" class="">1</a></li>
+                <li><a href="#" class="wmuActive">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+            </ul>
+            <a class="wmuSliderPrev">Previous</a><a class="wmuSliderNext">Next</a>
+            <ul class="wmuSliderPagination">
+                <li><a href="#" class="wmuActive">0</a></li>
+                <li><a href="#" class="">1</a></li>
+                <li><a href="#" class="">2</a></li>
+                <li><a href="#" class="">3</a></li>
+                <li><a href="#" class="">4</a></li>
+            </ul>
+        </div>
+        <script src="resources/js/ext/bootstrap/jquery.wmuSlider.js"></script>
+        <script src="resources/js/ext/bootstrap/modernizr-2.6.2.js"></script>
+        <script>
+            $('.example1').wmuSlider();
+        </script>
+    </div>
+    <div class="main">
+        <div class="wrap">
+            <div class="content-top">
+                <div class="lsidebar span_1_of_c1">
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing</p>
+                </div>
+                <div class="cont span_2_of_c1">
+                    <div class="social">
+                        <ul>
+                            <li class="facebook"><a href="#"><span> </span></a>
+                                <div class="radius"> <img src="resources/images/radius.png">
+                                    <a href="#"> </a>
+                                </div>
+                                <div class="border hide">
+                                    <p class="num">1.51K</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="social">
+                        <ul>
+                            <li class="twitter"><a href="#"><span> </span></a>
+                                <div class="radius"> <img src="resources/images/radius.png"></div>
+                                <div class="border hide">
+                                    <p class="num">1.51K</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="social">
+                        <ul>
+                            <li class="google"><a href="#"><span> </span></a>
+                                <div class="radius"> <img src="resources/images/radius.png"></div>
+                                <div class="border hide">
+                                    <p class="num">1.51K</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="social">
+                        <ul>
+                            <li class="dot"><a href="#"><span> </span></a>
+                                <div class="radius"> <img src="resources/images/radius.png"></div>
+                                <div class="border hide">
+                                    <p class="num">1.51K</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="clear"> </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="content-bottom">
+                <div class="box1">
+                    <div class="col_1_of_3 span_1_of_3" ng-repeat="produto in produtos1" style="margin-left:10px">
+                        <a href="single.html">
+                            <div class="view view-fifth">
+                                <div class="top_box">
+                                    <h3 class="m_1">{{produto.titulo}}</h3>
+                                    <p class="m_2">{{produto.subtitulo}}</p>
+                                    <div class="grid_img">
+                                        <div class="css3"><img ng-src="{{produto.img}}" alt="" /></div>
+                                        <div class="mask">
+                                            <div class="info">Visualizar</div>
+                                        </div>
+                                    </div>
+                                    <div class="price">{{produto.preco}}</div>
+                                </div>
+                            </div>
+                            <ul class="list">
+                                <li>
+                                    <img src="resources/images/plus.png" alt="" />
+                                    <ul class="icon1 sub-icon1 profile_img">
+                                        <li>
+                                            <a class="active-icon c1" href="#">Add Carrinho </a>
+                                            <ul class="sub-icon1 list">
+                                                <li>
+                                                    <h2>Adicionar ao carrinho?</h2>
+                                                </li><br />
+                                                <li>
+                                                    <h3>{{produto.titulo}} ({{produto.subtitulo}})</h3>
+                                                </li>
+                                                <li>
+                                                    <p>{{produto.preco}}</p>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <div class="clear"></div>
+                        </a>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ng-include src="'PartialView/footer.html'"></ng-include>
+    <script type="text/javascript">
+            $(document).ready(function () {
+
+                //lê o menu superior e carrega o mapa do site no rodapé da página
+
+                var defaults = {
+                    containerID: 'toTop', // fading element id
+                    containerHoverID: 'toTopHover', // fading element hover id
+                    scrollSpeed: 1200,
+                    easingType: 'linear'
+                };
+
+                $().UItoTop({ easingType: 'easeOutQuart' });
+
+            });
+    </script>
+    <a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>
+</body>
+
+</html>
