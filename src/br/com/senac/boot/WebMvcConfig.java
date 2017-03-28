@@ -15,6 +15,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 	@Override
 	public void addResourceHandlers(final ResourceHandlerRegistry registry) {
 		registry.addResourceHandler("*.html").addResourceLocations("/");
+		registry.addResourceHandler("/PartialView/**").addResourceLocations("PartialView/");
 		registry.addResourceHandler("/templates/**").addResourceLocations("resources/templates/");
 		registry.addResourceHandler("/resources/**").addResourceLocations("/resources/").resourceChain(false).addResolver(new PathResourceResolver());
 	}
