@@ -1557,7 +1557,7 @@ p#login-form-remember {
     padding: 3% 0;
 }
 
-    .register_account form input[type="text"], .register_account form select {
+    .register_account form input[type="text"], .register_account form select, .register_account form input[type="password"] {
         font-size: 0.8125em;
         color: #999;
         padding: 8px;
@@ -1568,7 +1568,7 @@ p#login-form-remember {
         border: 1px solid #f0f0f0;
     }
 
-        .register_account form input[type="text"]:hover, .register_account form select:hover {
+        .register_account form input[type="text"]:hover, .register_account form select:hover, .register_account form input[type="password"]:hover {
             border: 1px solid #DBDADA;
         }
 
@@ -1714,7 +1714,7 @@ ul.dc_pagination li {
 }
 
 .list2 {
-    float: left;
+    float: right;
     background: #08080B;
     width: 53.5%;
     padding: 0.2% 0;
