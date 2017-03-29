@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link href="resources/css/ext/bootstrap/style.css" rel="stylesheet" />
     <script src="resources/js/ext/ng/angular.min.js"></script>
-    <script src="resources/js/ext/ng/myAngularSchema.js"></script>
+    <script src="resources/js/ext/ng/appAngular.js"></script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script src="resources/js/ext/jQuery/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
@@ -75,7 +75,7 @@
                 <article style="position: relative; width: 100%; opacity: 1;">
                     <div class="banner-wrap">
                         <div class="slider-left">
-                            <img src="resources/images/banner1.jpg" alt="" />
+                            <img src="" alt="" />
                         </div>
                         <div class="slider-right">
                             <h1>Classic</h1>
@@ -89,7 +89,8 @@
                 <article style="position: absolute; width: 100%; opacity: 0;">
                     <div class="banner-wrap">
                         <div class="slider-left">
-                            <img src="resources/images/banner2.jpg" alt="" />
+                            <!--<img src="resources/images/banner2.jpg" alt="" />-->
+                            <img src="" alt="" />
                         </div>
                         <div class="slider-right">
                             <h1>Classic</h1>
@@ -103,7 +104,8 @@
                 <article style="position: absolute; width: 100%; opacity: 0;">
                     <div class="banner-wrap">
                         <div class="slider-left">
-                            <img src="resources/images/banner1.jpg" alt="" />
+                            <!--<img src="resources/images/banner1.jpg" alt="" />-->
+                            <img src="" alt="" />
                         </div>
                         <div class="slider-right">
                             <h1>Classic</h1>
@@ -117,7 +119,8 @@
                 <article style="position: absolute; width: 100%; opacity: 0;">
                     <div class="banner-wrap">
                         <div class="slider-left">
-                            <img src="resources/images/banner2.jpg" alt="" />
+                            <!--<img src="resources/images/banner2.jpg" alt="" />-->
+                            <img src="" alt="" />
                         </div>
                         <div class="slider-right">
                             <h1>Classic</h1>
@@ -131,7 +134,8 @@
                 <article style="position: absolute; width: 100%; opacity: 0;">
                     <div class="banner-wrap">
                         <div class="slider-left">
-                            <img src="resources/images/banner1.jpg" alt="" />
+                            <!--<img src="resources/images/banner1.jpg" alt="" />-->
+                            <img src="" alt="" />
                         </div>
                         <div class="slider-right">
                             <h1>Classic</h1>
@@ -169,60 +173,12 @@
     <div class="main">
         <div class="wrap">
             <div class="content-top">
-                <div class="lsidebar span_1_of_c1">
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing</p>
-                </div>
-                <div class="cont span_2_of_c1">
-                    <div class="social">
-                        <ul>
-                            <li class="facebook"><a href="#"><span> </span></a>
-                                <div class="radius"> <img src="resources/images/radius.png">
-                                    <a href="#"> </a>
-                                </div>
-                                <div class="border hide">
-                                    <p class="num">1.51K</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="social">
-                        <ul>
-                            <li class="twitter"><a href="#"><span> </span></a>
-                                <div class="radius"> <img src="resources/images/radius.png"></div>
-                                <div class="border hide">
-                                    <p class="num">1.51K</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="social">
-                        <ul>
-                            <li class="google"><a href="#"><span> </span></a>
-                                <div class="radius"> <img src="resources/images/radius.png"></div>
-                                <div class="border hide">
-                                    <p class="num">1.51K</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="social">
-                        <ul>
-                            <li class="dot"><a href="#"><span> </span></a>
-                                <div class="radius"> <img src="resources/images/radius.png"></div>
-                                <div class="border hide">
-                                    <p class="num">1.51K</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="clear"> </div>
-                </div>
                 <div class="clear"></div>
             </div>
             <div class="content-bottom">
                 <div class="box1">
                     <div class="col_1_of_3 span_1_of_3" ng-repeat="produto in produtos1" style="margin-left:10px">
-                        <a href="single.html">
+                        <a href="visualizarProduto.html">
                             <div class="view view-fifth">
                                 <div class="top_box">
                                     <h3 class="m_1">{{produto.titulo}}</h3>
