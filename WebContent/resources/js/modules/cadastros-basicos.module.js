@@ -1,1 +1,1 @@
-var cadastroModule = angular.module('cadastro', ['ngMaterial']);//
+var cadastroModule = angular.module('cadastro', ['ngMaterial', 'ui.bootstrap']);//

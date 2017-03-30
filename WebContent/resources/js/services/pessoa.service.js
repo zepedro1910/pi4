@@ -20,6 +20,13 @@ cadastroModule.factory('PessoaService', [
 		            url : 'pessoa/findUser',
 		            data : findBy
 		         });
+	         },
+	         countUser : function(findBy){
+	         	return $http({
+	         		method : 'POST',
+	         		url : 'pessoa/countUser',
+	         		data : findBy
+	         	});
 	         }
 	      };
       }

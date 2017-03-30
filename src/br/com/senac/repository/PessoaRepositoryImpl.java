@@ -63,7 +63,7 @@ public class PessoaRepositoryImpl implements PessoaRepository {
 		ProjectionList list = Projections.projectionList();
 		list.add(Projections.count("id"));
 		criteria.setProjection(list);
-		return (Integer) hibernateTemplate.findByCriteria(criteria).get(0);
+		return ((Long)hibernateTemplate.findByCriteria(criteria).get(0)).intValue();
 	}
 
 	private DetachedCriteria extracted(String name, String cpf) {

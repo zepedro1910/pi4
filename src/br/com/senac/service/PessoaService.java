@@ -12,4 +12,6 @@ public interface PessoaService {
 	public void save(final Pessoa pessoa);
 
 	public List<Pessoa> findUser(Map<String, Object> map);
+
+	Integer countUser(Map<String, Object> map);
 }

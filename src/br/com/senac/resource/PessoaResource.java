@@ -39,4 +39,9 @@ public class PessoaResource {
 	public List<Pessoa> findBy (@RequestBody final Map<String, Object> map){
 		return pessoaService.findUser(map);
 	}
+	
+	@RequestMapping(value = "/countUser", method = RequestMethod.POST)
+	public Integer countUser(@RequestBody final Map<String, Object> map){
+		return pessoaService.countUser(map);
+	}
 }

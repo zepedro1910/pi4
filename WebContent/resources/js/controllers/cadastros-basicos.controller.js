@@ -1,18 +1,48 @@
 cadastroModule.controller('cadastroController', [
       '$scope', '$http', 'PessoaService', function($scope, $http, service) {
 
-	      $scope.findBy = {itemsPerPage : 8, fistItem : 0};
-	      
-	      $scope.userList;
 	      $scope.isNovo = false;
 
-	      // Funcao para popular o grid quanda carregar a pagina
-	      service.findUser($scope.findBy).then(function(res) {
-		      $scope.userList = res.data;
-		      $scope.totalUsers = $scope.userList.length;
+	      $scope.currentPage = 1;
+	      $scope.maxSize = 5;
+	      $scope.itemsPerPage = 8;
+
+	      function getPagination(currentPage) {
+		      var pagination = {
+		         maxResult : $scope.itemsPerPage,
+		         fistItem : ($scope.itemsPerPage * (currentPage - 1))
+		      };
+		      return pagination;
+	      }
+	      ;
+	      // Conta o numero total de usuarios para paginacao
+	      service.countUser({name : null}).then(function(res) {
+		      $scope.totalItems = res.data;
 	      }, function(err) {
 		      console.log(err);
 	      });
+
+	      // Funcao para popular o grid quando carregar a pagina
+	      service.findUser(getPagination($scope.currentPage)).then(function(res) {
+		      $scope.userList = res.data;
+	      }, function(err) {
+		      console.log(err);
+	      });
+
+	      // Faz a requisão para o banco trazer os usuarios e popula o grid
+	      // conforme a paginação
+	      $scope.changePage = function(currentPage, findBy) {
+		      
+	      	findBy = findBy ? findBy : {};
+	      	findBy.maxResult = getPagination(currentPage).maxResult;
+	      	findBy.fistItem = getPagination(currentPage).fistItem;
+	      	
+	      	service.findUser(findBy).then(function(res) {
+			      $scope.userList = res.data;
+		      }, function(err) {
+			      console.log(err);
+		      });
+	      };
 
 	      // Funcao para salvar usuario
 	      $scope.save = function(pessoa) {
@@ -23,13 +53,25 @@ cadastroModule.controller('cadastroController', [
 
 	      // Funcao para buscar usuario e atualizar o grid
 	      $scope.search = function(findBy) {
-		      service.findUser(findBy).then(function(res) {
-			      $scope.userList = res.data;
+	      	
+	      	service.countUser(findBy).then(function(res) {
+			      $scope.totalItems = res.data;
 		      }, function(err) {
 			      console.log(err);
 		      });
-
-		      delete $scope.findBy;
+	      	
+	      	delete $scope.currentPage;
+	      	$scope.currentPage = 1;
+	      	findBy.maxResult = $scope.itemsPerPage;
+	      	findBy.fistItem = ($scope.itemsPerPage * ($scope.currentPage - 1));
+	      	
+		      service.findUser(findBy).then(function(res) {
+		      	$scope.userList = res.data;
+		      }, function(err) {
+			      console.log(err);
+		      });
+		      
+		      
 	      };
 
 	      // Funcao para editar usuario

@@ -28,15 +28,29 @@ public class PessoaServiceImpl implements PessoaService {
 
 	@Override
 	public void save(final Pessoa pessoa) {
-
 		pessoaRepository.savePessoa(pessoa);
+	}
+	
+	@Override
+	public Integer countUser(Map<String, Object> map){
+		
+		String name = null;
+		String cpf = null;
+
+		if (map.containsKey("name")) {
+			name = (String) map.get("name");
+		}
+		if (map.containsKey("cpf")) {
+			cpf = (String) map.get("cpf");
+		}
+		return pessoaRepository.countUser(name, cpf);
 	}
 
 	@Override
 	public List<Pessoa> findUser(Map<String, Object> map) {
 
 		int fistItem = (int) map.get("fistItem");
-		int lastItem = (int) map.get("itemsPerPage");
+		int lastItem = (int) map.get("maxResult");
 
 		String name = null;
 		String cpf = null;
