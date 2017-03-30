@@ -22,7 +22,7 @@ public class Pessoa {
 	private Long id;
 
 	@NotEmpty
-	@NotNull(message = "Nome n�o pode ser nulo")
+	@NotNull(message = "Nome nao pode ser nulo")
 	@Column(name = "nome")
 	private String nome;
 

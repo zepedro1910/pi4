@@ -1,6 +1,7 @@
 package br.com.senac.resource;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -33,5 +34,9 @@ public class PessoaResource {
 	public void save(@RequestBody final Pessoa pessoa) {
 		pessoaService.save(pessoa);
 	}
-
+	
+	@RequestMapping(value = "/findUser", method = RequestMethod.POST)
+	public List<Pessoa> findBy (@RequestBody final Map<String, Object> map){
+		return pessoaService.findUser(map);
+	}
 }

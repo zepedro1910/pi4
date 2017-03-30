@@ -1,6 +1,7 @@
 package br.com.senac.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -27,8 +28,26 @@ public class PessoaServiceImpl implements PessoaService {
 
 	@Override
 	public void save(final Pessoa pessoa) {
-		
+
 		pessoaRepository.savePessoa(pessoa);
+	}
+
+	@Override
+	public List<Pessoa> findUser(Map<String, Object> map) {
+
+		int fistItem = (int) map.get("fistItem");
+		int lastItem = (int) map.get("itemsPerPage");
+
+		String name = null;
+		String cpf = null;
+
+		if (map.containsKey("name")) {
+			name = (String) map.get("name");
+		}
+		if (map.containsKey("cpf")) {
+			cpf = (String) map.get("cpf");
+		}
+		return pessoaRepository.findUser(fistItem, lastItem, name, cpf);
 	}
 
 }

@@ -1,0 +1,79 @@
+	<div class="col-md-4" style="max-height: 773px">
+			<md-card> <md-card-content> <md-card>
+			<md-card-content>
+			<div class="row">
+				<div class="col-md-12">
+
+					<div class="row">
+						<div class="col-md-4">
+							<md-input-container> <label>Nome </label> <input
+								ng-model=findBy.name> </md-input-container>
+						</div>
+
+						<div class="col-md-4">
+							<md-input-container> <label>Cpf </label> <input
+								ng-model=findBy.cpf> </md-input-container>
+						</div>
+
+						<div class="col-md-4" align="right">
+							<md-button style="margin-top: 10px"
+								class="btn md-raised md-primary" ng-click="search(findBy)">Buscar</md-button>
+						</div>
+					</div>
+				</div>
+			</div>
+			</md-card-content></md-card>
+
+			<div class="row">
+				<md-card> <md-card-content>
+				<div class="col-md-12">
+
+					<div class="col-md-6" style="margin-bottom: 10px">
+						<button ng-click="" type="button" class="btn btn-default">
+							<span title="Exportar PDF" class="glyphicon glyphicon-export"
+								aria-hidden="true"></span>
+						</button>
+					</div>
+					<div class="col-md-6" align="right" style="margin-bottom: 10px">
+						<button ng-click="novoCliente()" type="button"
+							class="btn btn-default">
+							<span title="Novo" class="glyphicon glyphicon-user"
+								aria-hidden="true"></span>
+						</button>
+					</div>
+					<table class="col-md-12 table table-bordered table-hover">
+						<thead>
+							<tr>
+								<th class="col-md-7">Nome</th>
+								<th class="col-md-4">Cpf</th>
+								<th class="col-md-1"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="item in userList">
+								<td>{{item.nome}}</td>
+								<td>{{item.cpf}}</td>
+								<td align="center"><button ng-click="editUser(item)" type="button"
+										class="btn btn-default">
+										<span title="Editar" class="glyphicon glyphicon-list-alt"
+											aria-hidden="true"></span>
+									</button></td>
+							</tr>
+						</tbody>
+					</table>
+
+					<div align="center"">
+						<ul class="pagination">
+							<li><a href="#"><<</a></li>
+							<li><a href="#"><</a></li>
+							<li><a href="#">1</a></li>
+							<li><a href="#">></a></li>
+							<li><a href="#">>></a></li>
+
+						</ul>
+					</div>
+				</div>
+				</md-card-content> </md-card>
+			</div>
+			</md-card-content></md-card>
+		</div>
