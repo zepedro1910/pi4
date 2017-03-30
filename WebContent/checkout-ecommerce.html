@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html ng-app="app">
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link href="resources/css/ext/bootstrap/style.css" rel="stylesheet" />
+	<link href="resources/css/ext/bootstrap/bootstrap.css" rel="stylesheet" />
+	<script src="resources/js/ext/ng/angular.min.js"></script>
+	<script src="resources/js/ext/ng/appAngular.js"></script>
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+	<script src="resources/js/ext/jQuery/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$(".dropdown img.flag").addClass("flagvisibility");
+
+			$(".dropdown dt a").click(function () {
+				$(".dropdown dd ul").toggle();
+			});
+
+			$(".dropdown dd ul li a").click(function () {
+				var text = $(this).html();
+				$(".dropdown dt a span").html(text);
+				$(".dropdown dd ul").hide();
+				$("#result").html("Selected value is: " + getSelectedValue("sample"));
+			});
+
+			function getSelectedValue(id) {
+				return $("#" + id).find("dt a span.value").html();
+			}
+
+			$(document).bind('click', function (e) {
+				var $clicked = $(e.target);
+				if (!$clicked.parents().hasClass("dropdown"))
+					$(".dropdown dd ul").hide();
+			});
+
+
+			$("#flagSwitcher").click(function () {
+				$(".dropdown img.flag").toggleClass("flagvisibility");
+			});
+		});
+	</script>
+	<!-- start menu -->
+	<script src="resources/js/ext/bootstrap/megamenu.js"></script>
+	<link rel="stylesheet" href="resources/css/ext/bootstrap/megamenu.css">
+	<script>
+		$(document).ready(function () { $(".megamenu").megamenu(); });
+	</script>
+	<!-- end menu -->
+	<!-- top scrolling -->
+	<script src="resources/js/ext/bootstrap/easing.js"></script>
+	<script src="resources/js/ext/bootstrap/move-top.js"></script>
+	<script type="text/javascript">
+		jQuery(document).ready(function ($) {
+			$(".scroll").click(function (event) {
+				event.preventDefault();
+				$('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1200);
+			});
+		});
+	</script>
+</head>
+
+<body ng-controller="checkOutController">
+
+	<!-- MENU SUPERIOR -->
+	<ng-include src="'PartialView/header.html'"></ng-include>
+
+	<!-- SUB-MENU SUPERIOR -->
+	<ng-include src="'PartialView/headerBottom.html'"></ng-include>
+
+	<div class="login">
+		<div ng-show="!messageEmptyCart">
+			<div class="wrap">
+				<h4 class="title">Carrinho de compras vazio</h4>
+				<p class="cart">Você não possui itens em seu carrinho de compras.<br>Clique <a href="index-ecommerce.html">aqui</a> para continuar comprando</p>
+			</div>
+		</div>
+		<div class="wrap">
+			<h4 class="title">Carrinho de compras</h4>
+			<table class="table table-condensed">
+				<thead>
+					<tr>
+						<th></th>
+						<th><strong>Quantidade</strong></th>
+						<th><strong>Produto</strong></th>
+						<th><strong>Preço</strong></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><a href="#"><span class="glyphicon glyphicon-remove" style="color: red"></span></a></td>
+						<td style="padding-left: 3%;">{{produto.Quantidade}}</td>
+						<td>{{produto.Nome}}</td>
+						<td>{{produto.Preco}}</td>
+					</tr>
+				</tbody>
+			</table>
+			<!--<ul style="list-style: none; font-size: small; margin-left: 3%;">
+				<li><a href="#"><span class="glyphicon glyphicon-remove" style="color: red">
+					</span></a><input type="number" value="{{produto.Quantidade}}"ng-model="produto.Quantidade" style="max-width: 55px;"> 
+					<label>{{produto.Nome}}</label>
+					<label>{{produto.Preco}}</label></li>
+				<li>Salve seus dados e facilite compras futuras</li>
+			</ul>-->
+		</div>
+	</div>
+
+	<!-- RODAPÉ -->
+	<ng-include src="'PartialView/footer.html'"></ng-include>
+
+<script type="text/javascript">
+	$(document).ready(function () {
+
+		var defaults = {
+			containerID: 'toTop', // fading element id
+			containerHoverID: 'toTopHover', // fading element hover id
+			scrollSpeed: 1200,
+			easingType: 'linear'
+		};
+
+
+		$().UItoTop({ easingType: 'easeOutQuart' });
+
+	});
+</script>
+	<a href="#" id="toTop" style="display: block;"><span id="toTopHover" style="opacity: 1;"></span></a>
+</body>
+
+</html>

@@ -82,32 +82,28 @@
 			<div class="cont span_2_of_3">
 
 				<!-- PAGINAÇÃO -->
-				<div style="float: right; margin-right: 0.5%;">
+				<div id="listaProdutos">
 					<ul class="pagination">
-						<li><a href="#"><</a></li>
-						<li><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">5</a></li>
-						<li><a href="#">></a></li>
+						<li><span href="#" ng-click="prevPage()" ng-init="prevPage()"><</span></li>
+						<li><span>Página {{currentpage + 1}} de {{numberOfPages + 1}}</span>
+						<li><span href="#" ng-click="fwdPage()">></span></li>
 					</ul>
 				</div>
 				<div class="clear"></div>
-				<div class="box1">
+				<div class="box1" ng-repeat="produto in produtosSecao | startFrom:currentpage*pageSize | limitTo:pageSize">
 					<div class="col_1_of_single1 span_1_of_single1">
 						<a href="single.html">
 							<div class="view1 view-fifth1">
 								<div class="top_box">
-									<h3 class="m_1">Lorem ipsum dolor sit amet</h3>
-									<p class="m_2">Lorem ipsum</p>
+									<h3 class="m_1">{{produto.titulo}}</h3>
+									<p class="m_2">{{produto.subtitulo}}</p>
 									<div class="grid_img">
-										<div class="css3"><img src="images/pic11.jpg" alt="" /></div>
+										<div class="css3"><img src="{{produto.img}}" alt="" /></div>
 										<div class="mask1">
 											<div class="info">Quick View</div>
 										</div>
 									</div>
-									<div class="price">£480</div>
+									<div class="price">{{produto.preco}}</div>
 								</div>
 							</div>
 							<ul class="list2">
@@ -134,8 +130,8 @@
 							<div class="clear"></div>
 						</a>
 					</div>
-					<div class="clear"></div>
 				</div>
+				<div class="clear"></div>
 			</div>
 			<div class="clear"></div>
 		</div>
