@@ -62,15 +62,18 @@
 					</tr>
 				</tbody>
 			</table>
+			<label Style="margin-top: -15px">{{((currentPage * 8) - 8)+1
+				> totalItems ? totalItems : ((currentPage * 8) - 8)+1}} -
+				{{currentPage * 8 > totalItems ? totalItems : currentPage * 8}}
+				({{totalItems}})</label>
 
 			<div align="center"">
-				<ul 
-					next-text=">" last-text=">>" previous-text="<" first-text="<<"
-					uib-pagination total-items="totalItems" max-size="maxSize" items-per-page="itemsPerPage"
-					ng-model="currentPage"  ng-change="changePage(currentPage, findBy)" class="pagination-sm"
+				<ul next-text=">" last-text=">>" previous-text="<" first-text="<<"
+					uib-pagination total-items="totalItems" max-size="maxSize"
+					items-per-page="itemsPerPage" ng-model="currentPage"
+					ng-change="changePage(currentPage, findBy)" class="pagination-sm"
 					boundary-links="true"></ul>
 			</div>
-			{{currentPage}}
 		</div>
 		</md-card-content> </md-card>
 	</div>
