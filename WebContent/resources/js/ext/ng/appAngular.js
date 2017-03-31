@@ -50,6 +50,11 @@ app.controller('produtoController', ['$scope', '$filter', '$http', function ($sc
 app.controller('loginController', ['$scope', '$filter', '$http', function ($scope, $filter, $http) {
 }]);
 
+app.controller('autenticacaoController', ['$scope', '$filter', '$http', function ($scope, $filter, $http) {
+  $scope.usuario = {Nome:'Edward Carvalho',Id:'123'};
+  $scope.usuarioAutenticado = true ;
+}]);
+
 //controller ==> register-ecommerce.html
 app.controller('newAccountController',['$scope', '$filter', '$http', function ($scope, $filter, $http){
 

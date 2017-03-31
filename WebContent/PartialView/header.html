@@ -1,15 +1,18 @@
-<div class="header-top">
-    <div class="wrap">
-        <div class="logo">
-            <a href="index-ecommerce.html"><img src="" alt="" /></a>
+<div ng-app="app"> 
+    <div class="header-top" ng-controller="autenticacaoController">
+        <div class="wrap">
+            <div class="logo">
+                <a href="index-ecommerce.html"><img src="" alt="" /></a>
+            </div>
+            <div class="cssmenu">
+                <ul>
+                    <li ng-show="!usuarioAutenticado"><a href="login-ecommerce.html">Login</a></li>
+                    <li ng-show="usuarioAutenticado"><a href="login-ecommerce.html">{{usuario.Nome}} <span class="glyphicon glyphicon-off"></span></a></li>
+                    <li><a href="index-ecommerce.html">Loja</a></li>
+                    <li><a href="checkout-ecommerce.html"><span style="font-size: xx-large;"class="glyphicon glyphicon-shopping-cart"></span></a></li>
+                </ul>
+            </div>
+            <div class="clear"></div>
         </div>
-        <div class="cssmenu">
-            <ul>
-                <li><a href="login-ecommerce.html">Login</a></li>
-                <li><a href="shop.html">Loja</a></li>
-                <li><a href="checkout.html">Carrinho de Compras</a></li>
-            </ul>
-        </div>
-        <div class="clear"></div>
     </div>
 </div>
