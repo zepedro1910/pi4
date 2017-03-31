@@ -71,10 +71,10 @@
 
 	<div class="register_account">
 		<div class="wrap">
-			<h4 class="title">Criar Conta</h4>
-			<form name="enjoy">
-				<div class="col_1_of_2 span_1_of_2">
-					<div><input type="text" ng-model="usuario.Nome" placeholder="Nome" required></div>
+			<h4 class="title">Finalização da Compra</h4>
+			<form name="payment">
+				<!--<div class="col_1_of_2 span_1_of_2" >
+					<div><input type="text" ng-model="usuario.Nome" placeholder="Nome" required ></div>
 					<div><input type="text" ng-model="usuario.Sobrenome" placeholder="Sobrenome" required></div>
 					<div><input type="text" ng-model="usuario.Email" placeholder="Email" required></div>
 					<div><input type="password" ng-model="usuario.Senha" placeholder="Senha" required></div>
@@ -83,18 +83,38 @@
 					<div class="btn-group btn-group-sm" role="group" aria-label="..."  style="padding: 1.5% 2% 0% 0%; float: left;">
 						<a href="register-ecommerce.html" class="btn btn-success" style="min-width: 148px;">Cadastrar</a>
 					</div>
-				<p class="terms">Ao clicar em 'Cadastrar' você concorda com os <a href="#">Termos &amp; Condições do site</a>.</p>
+				</div>-->
+				<div class="col_1_of_2 span_1_of_2">
+					<h1 class="title">Endereço de Entrega</h1>
+					<div><input type="text" ng-model="usuario.Endereco" ng-init="usuario.Endereco" placeholder="Endereço" required ng-disabled="!isEditMode"></div>
+					<div>
+				<select id="country" ng-model="usuario.Pais" name="País" class="frm-field required" required ng-disabled="!isEditMode">
+		            <option value="">Selecione um País</option>         
+		            <option ng-repeat="pais in paises" value="{{pais.sigla}}" ng-selected="usuario.Pais == pais.sigla ? pais.nome_pais : ''">{{pais.nome_pais}}</option ng-disabled="!isEditMode">
+		         </select></div>
+					<div><input type="text" ng-model="usuario.Cidade" ng-init="usuario.Cidade" placeholder="Cidade" required ng-disabled="!isEditMode"></div>
+					<input type="text" ng-model="usuario.Cep" ng-init="usuario.Cep" lass="code" placeholder="Cep" required ng-disabled="!isEditMode">
+					<input type="text" ng-model="usuario.Telefone" ng-init="usuario.Telefone" placeholder="Telefone" required ng-disabled="!isEditMode">
+					<div class="btn-group btn-group-sm" role="group" aria-label="..."  style="padding: 1.5% 5% 0% 0%; float: right;">
+						<a href class="btn btn-primary" style="min-width: 148px;" ng-show="!isEditMode" ng-click="isEditMode=!isEditMode">Alterar Endereço</a>
+						<a href class="btn btn-success" style="min-width: 148px;" ng-show="isEditMode" ng-click="payment.$valid ? isEditMode=!isEditMode : ''">Concluir</a>
+					</div>
 				</div>
 				<div class="col_1_of_2 span_1_of_2">
-					<div><input type="text" ng-model="usuario.Endereco" placeholder="Endereço" required></div>
+					<h1 class="title">Forma de Pagamento</h1>
+					<div><input type="text" ng-model="usuario.Endereco" placeholder="Endereço" required ng-disabled="!isEditMode"></div>
 					<div>
-				<select id="country" ng-model="usuario.Pais" name="País" class="frm-field required" required>
+				<select id="country" ng-model="usuario.Pais" name="País" class="frm-field required" required ng-disabled="!isEditMode">
 		            <option value="">Selecione um País</option>         
-		            <option ng-repeat="pais in paises" value="{{pais.sigla}}">{{pais.nome_pais}}</option>
+		            <option ng-repeat="pais in paises" value="{{pais.sigla}}" ng-selected="usuario.Pais == pais.sigla ? pais.nome_pais : ''">{{pais.nome_pais}}</option ng-disabled="!isEditMode">
 		         </select></div>
-					<div><input type="text" ng-model="usuario.Cidade" placeholder="Cidade" required></div>
-					<input type="text" ng-model="usuario.Cep" class="code" placeholder="Cep" required>
-					<input type="text" ng-model="usuario.Telefone" placeholder="Telefone" required>
+					<div><input type="text" ng-model="usuario.Cidade" ng-init="usuario.Cidade" placeholder="Cidade" required ng-disabled="!isEditMode"></div>
+					<input type="text" ng-model="usuario.Cep" ng-init="usuario.Cep" lass="code" placeholder="Cep" required ng-disabled="!isEditMode">
+					<input type="text" ng-model="usuario.Telefone" ng-init="usuario.Telefone" placeholder="Telefone" required ng-disabled="!isEditMode">
+					<div class="btn-group btn-group-sm" role="group" aria-label="..."  style="padding: 1.5% 5% 0% 0%; float: right;">
+						<a href class="btn btn-primary" style="min-width: 148px;" ng-show="!isEditMode" ng-click="isEditMode=!isEditMode">Alterar Endereço</a>
+						<a href class="btn btn-success" style="min-width: 148px;" ng-show="isEditMode" ng-click="payment.$valid ? isEditMode=!isEditMode : ''">Concluir</a>
+					</div>
 				</div>
 				<div class="clear"></div>
 			</form>

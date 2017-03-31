@@ -50,13 +50,23 @@ app.controller('produtoController', ['$scope', '$filter', '$http', function ($sc
 app.controller('loginController', ['$scope', '$filter', '$http', function ($scope, $filter, $http) {
 }]);
 
+// app.controller('paymentController', ['$scope', '$filter', '$http', function ($scope, $filter, $http) {
+//   $scope.isEditMode = false;
+//   $scope.usuario = {Endereco:'Rua 13 de Maio, 123',
+//                     Pais: 'BR', 
+//                     Cidade: 'São Paulo',
+//                     Cep: '04674-080',
+//                     Telefone: '(11) 95610-0878'};
+// }]);
+
+
 app.controller('autenticacaoController', ['$scope', '$filter', '$http', function ($scope, $filter, $http) {
   $scope.usuario = {Nome:'Edward Carvalho',Id:'123'};
   $scope.usuarioAutenticado = true ;
 }]);
 
 //controller ==> register-ecommerce.html
-app.controller('newAccountController',['$scope', '$filter', '$http', function ($scope, $filter, $http){
+app.controller('accountController',['$scope', '$filter', '$http', function ($scope, $filter, $http){
 
   $scope.paises = [
       { 
@@ -1341,6 +1351,7 @@ app.controller('newAccountController',['$scope', '$filter', '$http', function ($
       "sigla" : "ZW"
     }
   ];
+  
   $scope.errorMessage = false;
   $scope.verifyPassword = function (data1, data2){
       if(data1 != data2){
@@ -1352,6 +1363,13 @@ app.controller('newAccountController',['$scope', '$filter', '$http', function ($
       }
   }
 
+//payment mode
+  $scope.isEditMode = false;
+  $scope.usuario = {Endereco:'Rua 13 de Maio, 123',
+                    Pais: 'BR', 
+                    Cidade: 'São Paulo',
+                    Cep: '04674-080',
+                    Telefone: '(11) 95610-0878'};
 }]);
 
   //controller ==> shop-ecommerce.html
