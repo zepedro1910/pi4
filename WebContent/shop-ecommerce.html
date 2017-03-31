@@ -100,10 +100,10 @@
 									<div class="grid_img">
 										<div class="css3"><img src="{{produto.img}}" alt="" /></div>
 										<div class="mask1">
-											<div class="info">Quick View</div>
+											<div class="info">Visualizar</div>
 										</div>
 									</div>
-									<div class="price">{{produto.preco}}</div>
+									<div class="price">{{produto.preco | currency:"R$ "}}</div>
 								</div>
 							</div>
 							<ul class="list2">
@@ -120,7 +120,7 @@
 													<h3>{{produto.titulo}} ({{produto.subtitulo}})</h3>
 												</li>
 												<li>
-													<p>{{produto.preco}}</p>
+													<p>{{produto.preco | currency:"R$ "}}</p>
 												</li>
 											</ul>
 										</li>
@@ -136,6 +136,8 @@
 			<div class="clear"></div>
 		</div>
 	</div>
+	
+	<!-- RODAPÉ -->
 	<ng-include src="'PartialView/footer.html'"></ng-include>
 	<script type="text/javascript">
 		$(document).ready(function () {

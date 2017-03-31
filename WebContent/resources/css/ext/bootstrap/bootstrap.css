@@ -2261,9 +2261,9 @@ th {
   text-align: left;
 }
 .table {
-  width: 100%;
+  width: 85%;
   max-width: 100%;
-  margin-bottom: 20px;
+  margin: 2%;
 }
 .table > thead > tr > th,
 .table > tbody > tr > th,

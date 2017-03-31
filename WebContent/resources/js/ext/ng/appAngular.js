@@ -1514,12 +1514,32 @@ app.filter('startFrom', function() {
 
 app.controller('checkOutController', ['$scope', '$filter', '$http', function ($scope, $filter, $http){
   
-  $scope.carrinhoCompras = [{a:'a'}];
+  $scope.carrinhoCompras = [{
+    Quantidade : 1,
+    Nome: 'Caneca São Paulo FC',
+    Preco : 35
+  },{
+    Quantidade : 2,
+    Nome: 'Caneca Seleção Brasileira',
+    Preco : 15
+  }];
   $scope.messageEmptyCart = $scope.carrinhoCompras.length > 0;
-  $scope.produto = {
-    Quantidade : '1',
-    Nome: 'Caneca SPFCaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-    Preco : 'R$ 35,00'
-  };
 
+  $scope.totalCarrinho = function (){
+    var array = $scope.carrinhoCompras;
+    var total = 0;
+    array.forEach(function(produto) {
+      total += (produto.Quantidade * produto.Preco);
+    });
+    return total;
+  }
+
+  $scope.removerProdutoCarrinho = function(produto){
+    angular.forEach($scope.carrinhoCompras, function (item, i) {
+        if (item.Nome === produto.Nome) {
+            $scope.carrinhoCompras.splice(i, 1);
+        }
+    });
+    $scope.messageEmptyCart = $scope.carrinhoCompras.length > 0;
+  }
 }]);

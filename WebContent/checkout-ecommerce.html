@@ -4,8 +4,8 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link href="resources/css/ext/bootstrap/style.css" rel="stylesheet" />
 	<link href="resources/css/ext/bootstrap/bootstrap.css" rel="stylesheet" />
+	<link href="resources/css/ext/bootstrap/style.css" rel="stylesheet" />
 	<script src="resources/js/ext/ng/angular.min.js"></script>
 	<script src="resources/js/ext/ng/appAngular.js"></script>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
@@ -77,36 +77,48 @@
 				<p class="cart">Você não possui itens em seu carrinho de compras.<br>Clique <a href="index-ecommerce.html">aqui</a> para continuar comprando</p>
 			</div>
 		</div>
-		<div class="wrap">
+		<div class="wrap" ng-show="messageEmptyCart">
 			<h4 class="title">Carrinho de compras</h4>
+			<div class="btn-group btn-group-sm" role="group" aria-label="..." style="padding: 2% 0 1% 2%;">
+				<a href="index-ecommerce.html" class="btn btn-primary">Continuar Comprando</a>
+			</div>
 			<table class="table table-condensed">
 				<thead>
 					<tr>
-						<th></th>
+						<th style="width: 1%;"></th>
 						<th><strong>Quantidade</strong></th>
-						<th><strong>Produto</strong></th>
-						<th><strong>Preço</strong></th>
+						<th style="padding-left: 5%;"><strong>Produto</strong></th>
+						<th style="text-align: center;"><strong>Unit.</strong></th>
+						<th style="text-align: center;"><strong>Total</strong></th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody ng-repeat="produto in carrinhoCompras">
 					<tr>
-						<td><a href="#"><span class="glyphicon glyphicon-remove" style="color: red"></span></a></td>
-						<td style="padding-left: 3%;">{{produto.Quantidade}}</td>
-						<td>{{produto.Nome}}</td>
-						<td>{{produto.Preco}}</td>
+						<td><a href="#" ng-click="removerProdutoCarrinho(produto)"><span class="glyphicon glyphicon-remove" style="color: red"></span></a></td>
+						<td ng-model="produto.Quantidade"style="padding-left: 4%;width: 11%;">{{produto.Quantidade}}
+							<ul id="listIconsCart">
+								<li><a href="#" ng-click="produto.Quantidade >= 1 ? produto.Quantidade=produto.Quantidade+1 : produto.Quantidade"><span class="glyphicon glyphicon-plus"></span></a></li>
+								<li><a href="#" ng-click="produto.Quantidade > 1 ? produto.Quantidade=produto.Quantidade-1 : produto.Quantidade=1"><span class="glyphicon glyphicon-minus"></span></a></li>
+							<ul>
+						</td>
+						<td ng-model="produto.Nome" style="padding-left: 5%;">{{produto.Nome}}</td>
+						<td ng-model="produto.Preco" style="text-align: center; width: 11%;">{{produto.Preco  | currency:"R$ "}}</td>
+						<td ng-model="produto.Preco" style="text-align: center; width: 11%;">{{produto.Preco * produto.Quantidade  | currency:"R$ "}}</td>
 					</tr>
 				</tbody>
+				<tfoot>
+					<td></td>
+					<td></td>
+					<td></td>
+					<td class="tableFooterAlign"><strong>Total</strong></td>
+					<td style="text-align: center;">{{totalCarrinho() | currency:"R$ "}}</td>
+				</tfoot>
 			</table>
-			<!--<ul style="list-style: none; font-size: small; margin-left: 3%;">
-				<li><a href="#"><span class="glyphicon glyphicon-remove" style="color: red">
-					</span></a><input type="number" value="{{produto.Quantidade}}"ng-model="produto.Quantidade" style="max-width: 55px;"> 
-					<label>{{produto.Nome}}</label>
-					<label>{{produto.Preco}}</label></li>
-				<li>Salve seus dados e facilite compras futuras</li>
-			</ul>-->
+			<div class="btn-group btn-group-sm" role="group" aria-label="..." style="padding-left: 2%">
+				<a href="index-ecommerce.html" class="btn btn-primary">Continuar Comprando</a>
+			</div>
 		</div>
 	</div>
-
 	<!-- RODAPÉ -->
 	<ng-include src="'PartialView/footer.html'"></ng-include>
 
