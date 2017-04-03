@@ -73,51 +73,70 @@
 		<div class="wrap">
 			<h4 class="title">Finalização da Compra</h4>
 			<form name="payment">
-				<!--<div class="col_1_of_2 span_1_of_2" >
-					<div><input type="text" ng-model="usuario.Nome" placeholder="Nome" required ></div>
-					<div><input type="text" ng-model="usuario.Sobrenome" placeholder="Sobrenome" required></div>
-					<div><input type="text" ng-model="usuario.Email" placeholder="Email" required></div>
-					<div><input type="password" ng-model="usuario.Senha" placeholder="Senha" required></div>
-					<div><input type="password" ng-model="usuario.SenhaConfirma" placeholder="Confirmar Senha" ng-blur="verifyPassword(usuario.Senha,usuario.SenhaConfirma)" required></div>
-					<div style="margin-bottom: 20px"><strong style="font-size: small; color: red;" ng-show="errorMessage">Senha e confirmação de senha inválidos!</strong></div>
-					<div class="btn-group btn-group-sm" role="group" aria-label="..."  style="padding: 1.5% 2% 0% 0%; float: left;">
-						<a href="register-ecommerce.html" class="btn btn-success" style="min-width: 148px;">Cadastrar</a>
+					<div class="col_1_of_2 span_1_of_2">
+						<h1 class="title">Endereço de Entrega</h1>
+						<div><input type="text" ng-model="usuario.Endereco" ng-init="usuario.Endereco" placeholder="Endereço" required ng-disabled="!isEditMode"></div>
+						<div>
+					<select id="country" ng-model="usuario.Pais" name="País" class="frm-field required" required ng-disabled="!isEditMode">
+						<option value="">Selecione um País</option>         
+						<option ng-repeat="pais in paises" value="{{pais.sigla}}" ng-selected="usuario.Pais == pais.sigla ? pais.nome_pais : ''">{{pais.nome_pais}}</option ng-disabled="!isEditMode">
+					</select></div>
+						<div><input type="text" ng-model="usuario.Cidade" ng-init="usuario.Cidade" placeholder="Cidade" required ng-disabled="!isEditMode"></div>
+						<input type="text" ng-model="usuario.Cep" ng-init="usuario.Cep" lass="code" placeholder="Cep" required ng-disabled="!isEditMode">
+						<input type="text" ng-model="usuario.Telefone" ng-init="usuario.Telefone" placeholder="Telefone" required ng-disabled="!isEditMode">
+						<div class="btn-group btn-group-sm" role="group" aria-label="..."  style="padding: 1.5% 5% 0% 0%; float: right;">
+							<a href class="btn btn-primary" style="min-width: 148px;" ng-show="!isEditMode" ng-click="isEditMode=!isEditMode">Alterar Endereço</a>
+							<a href class="btn btn-success" style="min-width: 148px;" ng-show="isEditMode" ng-click="payment.$valid ? isEditMode=!isEditMode : ''">Concluir</a>
+						</div>
 					</div>
-				</div>-->
-				<div class="col_1_of_2 span_1_of_2">
-					<h1 class="title">Endereço de Entrega</h1>
-					<div><input type="text" ng-model="usuario.Endereco" ng-init="usuario.Endereco" placeholder="Endereço" required ng-disabled="!isEditMode"></div>
-					<div>
-				<select id="country" ng-model="usuario.Pais" name="País" class="frm-field required" required ng-disabled="!isEditMode">
-		            <option value="">Selecione um País</option>         
-		            <option ng-repeat="pais in paises" value="{{pais.sigla}}" ng-selected="usuario.Pais == pais.sigla ? pais.nome_pais : ''">{{pais.nome_pais}}</option ng-disabled="!isEditMode">
-		         </select></div>
-					<div><input type="text" ng-model="usuario.Cidade" ng-init="usuario.Cidade" placeholder="Cidade" required ng-disabled="!isEditMode"></div>
-					<input type="text" ng-model="usuario.Cep" ng-init="usuario.Cep" lass="code" placeholder="Cep" required ng-disabled="!isEditMode">
-					<input type="text" ng-model="usuario.Telefone" ng-init="usuario.Telefone" placeholder="Telefone" required ng-disabled="!isEditMode">
-					<div class="btn-group btn-group-sm" role="group" aria-label="..."  style="padding: 1.5% 5% 0% 0%; float: right;">
-						<a href class="btn btn-primary" style="min-width: 148px;" ng-show="!isEditMode" ng-click="isEditMode=!isEditMode">Alterar Endereço</a>
-						<a href class="btn btn-success" style="min-width: 148px;" ng-show="isEditMode" ng-click="payment.$valid ? isEditMode=!isEditMode : ''">Concluir</a>
+				</form>
+					<div class="col_1_of_2 span_1_of_2">
+						<h1 class="title">Forma de Pagamento</h1>
+						<div class="btn-group btn-group-sm" style="padding: 2% 0% 2% 0%; width: 100%;" >
+							<a class="btn btn-primary" ng-click="tab=1" ng-init="tab=1" ng-class="{'active' : tab==1}" style="margin-right: 1%;">Cartão de Crédito</a>
+							<a class="btn btn-primary" ng-click="tab=2" ng-class="{'active' : tab==2}" style="margin-right: 1%;">Transferência Bancária</a>
+							<a class="btn btn-primary" ng-click="tab=3; usuario.Ticket = true;" ng-class="{'active' : tab==3}" style="margin-right: 1%;">Gerar Boleto</a>
+							{{usuario.Ticket}}
+						</div>
+						<div class="tabs-container">
+							<form name="cardPayment">
+								<div class="tab-content" ng-show="tab == 1"> <!-- Cartão de Crédito -->
+									<div><input type="text" ng-model="usuario.Card.NumeroCartao" placeholder="Numero do Cartão" required ng-disabled="paymentEditMode"></div>
+									<div><input type="text" ng-model="usuario.Card.Nome" placeholder="Nome Completo" required ng-disabled="paymentEditMode"></div>
+									<div><input type="text" ng-model="usuario.Card.Validade" placeholder="Validade do Cartão" required ng-disabled="paymentEditMode"></div>
+									<div><input type="text" ng-model="usuario.Card.CodigoSeguranca" placeholder="Código de Segurança" required ng-disabled="paymentEditMode"></div>
+									<div class="btn-group btn-group-sm" role="group" aria-label="..."  style="padding: 1.5% 5% 0% 0%; float: right;">
+										<a href class="btn btn-primary" style="min-width: 148px;" ng-show="paymentEditMode" ng-click="paymentEditMode=!paymentEditMode" >Alterar Dados</a>
+										<a href class="btn btn-success" style="min-width: 148px;" ng-show="!paymentEditMode" ng-click="cardPayment.$valid ? paymentEditMode=!paymentEditMode : ''; usuario.Transfer = []; usuario.Ticket = false;">Concluir</a>
+									</div>
+								</form>
+							</div>
+							<div class="tab-content" ng-show="tab == 2"> <!-- Transferencia Bancária -->
+								<form name="transferPayment">
+									<div><input type="text" ng-model="usuario.Transfer.Banco" placeholder="Banco" required ng-disabled="paymentTransferEditMode"></div>
+									<div><input type="text" ng-model="usuario.Transfer.Agencia" placeholder="Agência" required ng-disabled="paymentTransferEditMode"></div>
+									<div><input type="text" ng-model="usuario.Transfer.NumeroConta" placeholder="Numero da Conta" required ng-disabled="paymentTransferEditMode"></div>
+									<div class="btn-group btn-group-sm" role="group" aria-label="..."  style="padding: 1.5% 5% 0% 0%; float: right;">
+										<a href class="btn btn-primary" style="min-width: 148px;" ng-show="paymentTransferEditMode" ng-click="paymentTransferEditMode=!paymentTransferEditMode" >Alterar Dados</a>
+										<a href class="btn btn-success" style="min-width: 148px;" ng-show="!paymentTransferEditMode" ng-click="transferPayment.$valid ? paymentTransferEditMode=!paymentTransferEditMode : ''; usuario.Card = []; usuario.Ticket = false;">Concluir</a>
+									</div>
+								</form>
+							</div>
+							<div class="tab-content" ng-show="tab == 3"> <!-- Boleto Bancário -->
+								<form name="ticketPayment" style="margin-top:11%;">
+									<input type="hidden" ng-model="usuario.Ticket" ng-init="1"/>
+									<span class="glyphicon glyphicon-ok" aria-hidden="true" style="font-size: xx-large; color: green;"></span>
+									<span style="margin-left: 3%;"> Você optou pelo pagamento através de boleto bancário.</span>
+								</form>
+							</div>
+							
+						</div>
 					</div>
-				</div>
-				<div class="col_1_of_2 span_1_of_2">
-					<h1 class="title">Forma de Pagamento</h1>
-					<div><input type="text" ng-model="usuario.Endereco" placeholder="Endereço" required ng-disabled="!isEditMode"></div>
-					<div>
-				<select id="country" ng-model="usuario.Pais" name="País" class="frm-field required" required ng-disabled="!isEditMode">
-		            <option value="">Selecione um País</option>         
-		            <option ng-repeat="pais in paises" value="{{pais.sigla}}" ng-selected="usuario.Pais == pais.sigla ? pais.nome_pais : ''">{{pais.nome_pais}}</option ng-disabled="!isEditMode">
-		         </select></div>
-					<div><input type="text" ng-model="usuario.Cidade" ng-init="usuario.Cidade" placeholder="Cidade" required ng-disabled="!isEditMode"></div>
-					<input type="text" ng-model="usuario.Cep" ng-init="usuario.Cep" lass="code" placeholder="Cep" required ng-disabled="!isEditMode">
-					<input type="text" ng-model="usuario.Telefone" ng-init="usuario.Telefone" placeholder="Telefone" required ng-disabled="!isEditMode">
-					<div class="btn-group btn-group-sm" role="group" aria-label="..."  style="padding: 1.5% 5% 0% 0%; float: right;">
-						<a href class="btn btn-primary" style="min-width: 148px;" ng-show="!isEditMode" ng-click="isEditMode=!isEditMode">Alterar Endereço</a>
-						<a href class="btn btn-success" style="min-width: 148px;" ng-show="isEditMode" ng-click="payment.$valid ? isEditMode=!isEditMode : ''">Concluir</a>
-					</div>
-				</div>
 				<div class="clear"></div>
-			</form>
+		</div>
+		<div class="btn-group btn-group-sm" style="padding: 5% 0% 2% 38.5%; width: 100%;" >
+			<a href class="btn btn-danger" style="min-width: 148px;">Cancelar Compra</a>
+			<a href class="btn btn-info" style="min-width: 148px; margin-left:1%;">Finalizar Compra</a>
 		</div>
 	</div>
 

@@ -1364,12 +1364,19 @@ app.controller('accountController',['$scope', '$filter', '$http', function ($sco
   }
 
 //payment mode
-  $scope.isEditMode = false;
-  $scope.usuario = {Endereco:'Rua 13 de Maio, 123',
+  $scope.usuario = {Nome:'Camaleão Ferreira', 
+                    Endereco:'Rua 13 de Maio, 123',
                     Pais: 'BR', 
                     Cidade: 'São Paulo',
                     Cep: '04674-080',
-                    Telefone: '(11) 95610-0878'};
+                    Telefone: '(11) 95610-0878',
+                    ValorCompra: 1250};
+  
+  //data de vencimento do boleto
+  $scope.dateToday = new Date();
+  $scope.date = new Date();
+  $scope.date.setDate($scope.date.getDate() + 7);
+
 }]);
 
   //controller ==> shop-ecommerce.html
