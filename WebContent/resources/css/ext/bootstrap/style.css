@@ -3977,3 +3977,11 @@ p.cart {
 .tableFooterAlign{
     text-align: right;
 }
+
+#tableBody > tbody, tr, td{
+    border-top: thin solid;
+    border-left: thin solid;
+    border-right: thin solid;
+    border-bottom: thin solid;
+    font-size: 96%;
+}
