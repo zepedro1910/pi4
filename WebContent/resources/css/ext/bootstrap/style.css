@@ -126,11 +126,14 @@ body {
 
 .logo {
     float: left;
-    margin-right: 46.5%;
+}
+
+.logo img{
+    max-width: 15%;
 }
 
 .cssmenu {
-    float: left;
+    float: right;
     margin-top: 11px;
 }
 
@@ -1462,6 +1465,7 @@ h5.sub_title {
 
 .login {
     padding-bottom: 3%;
+    padding-top: 3%;
 }
 
 .comments-area input[type="text"] {
@@ -3978,7 +3982,7 @@ p.cart {
     text-align: right;
 }
 
-#tableBody > tbody, tr, td{
+#tableBody > tbody tr td{
     border-top: thin solid;
     border-left: thin solid;
     border-right: thin solid;
