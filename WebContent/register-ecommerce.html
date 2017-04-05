@@ -74,11 +74,11 @@
 			<h4 class="title">Criar Conta</h4>
 			<form name="enjoy">
 				<div class="col_1_of_2 span_1_of_2">
-					<div><input type="text" ng-model="usuario.Nome" placeholder="Nome" required></div>
-					<div><input type="text" ng-model="usuario.Sobrenome" placeholder="Sobrenome" required></div>
-					<div><input type="text" ng-model="usuario.Email" placeholder="Email" required></div>
-					<div><input type="password" ng-model="usuario.Senha" placeholder="Senha" required></div>
-					<div><input type="password" ng-model="usuario.SenhaConfirma" placeholder="Confirmar Senha" ng-blur="verifyPassword(usuario.Senha,usuario.SenhaConfirma)" required></div>
+					<div><input type="text" ng-model="consumer.Nome" placeholder="Nome" required></div>
+					<div><input type="text" ng-model="consumer.Sobrenome" placeholder="Sobrenome" required></div>
+					<div><input type="text" ng-model="consumer.Email" placeholder="Email" required></div>
+					<div><input type="password" ng-model="consumer.Senha" placeholder="Senha" required></div>
+					<div><input type="password" ng-model="consumer.SenhaConfirma" placeholder="Confirmar Senha" ng-blur="verifyPassword(consumer.Senha,consumer.SenhaConfirma)" required></div>
 					<div style="margin-bottom: 20px"><strong style="font-size: small; color: red;" ng-show="errorMessage">Senha e confirmação de senha inválidos!</strong></div>
 					<div class="btn-group btn-group-sm" role="group" aria-label="..."  style="padding: 1.5% 2% 0% 0%; float: left;">
 						<a href="register-ecommerce.html" class="btn btn-success" style="min-width: 148px;">Cadastrar</a>
@@ -86,21 +86,26 @@
 				<p class="terms">Ao clicar em 'Cadastrar' você concorda com os <a href="#">Termos &amp; Condições do site</a>.</p>
 				</div>
 				<div class="col_1_of_2 span_1_of_2">
-					<div><input type="text" ng-model="usuario.Endereco" placeholder="Endereço" required></div>
+					<div><input type="text" ng-model="consumer.Endereco" placeholder="Endereço" required></div>
+					<input type="text" ng-model="consumer.Cep" class="code" placeholder="Cep" required>
 					<div>
-				<select id="country" ng-model="usuario.Pais" name="País" class="frm-field required" required>
-		            <option value="">Selecione um País</option>         
-		            <option ng-repeat="pais in paises" value="{{pais.sigla}}">{{pais.nome_pais}}</option>
-		         </select></div>
-					<div><input type="text" ng-model="usuario.Cidade" placeholder="Cidade" required></div>
-					<input type="text" ng-model="usuario.Cep" class="code" placeholder="Cep" required>
-					<input type="text" ng-model="usuario.Telefone" placeholder="Telefone" required>
+						<select id="state" ng-model="consumer.Estado" name="Estado" class="frm-field required" required>
+							<option value="" ng-selected="true">Selecione um Estado</option>         
+							<option ng-repeat="(key,state) in estados" value="{{state.sigla}}" ng-click="onClickOption(key); consumer.Cidade = '';">{{state.nome}}</option>
+						</select>
+						<select id="city" ng-model="consumer.Cidade" name="Cidade" class="frm-field required" required>
+							<option value="" ng-selected="true">Selecione uma Cidade</option>
+							<option ng-repeat="city in estados[state_selected].cidades" value="{{city}}">{{city}}</option>
+						</select>
+					</div>
+					
+					<input type="text" ng-model="consumer.Telefone" placeholder="Telefone" required>
 				</div>
 				<div class="clear"></div>
 			</form>
+			{{consumer}}
 		</div>
 	</div>
-
 	<!-- RODAPÉ -->
 	<ng-include src="'PartialView/footer.html'"></ng-include>
 	
