@@ -70,9 +70,37 @@
 	<ng-include src="'PartialView/headerBottom.html'"></ng-include>
 
 	<div class="register_account" >
+		
 		<div class="wrap" ng-show="!final">
+			<div ng-controller="checkOutController">
+					<h4 class="title" style="background: lavenderblush; border-radius: 100%;">Descrição do Pedido</h4>
+					<table class="table table-condensed">
+						<thead>
+							<tr>
+								<th><strong>Quantidade</strong></th>
+								<th style="padding-left: 5%;"><strong>Produto</strong></th>
+								<th style="text-align: center;"><strong>Unit.</strong></th>
+								<th style="text-align: center;"><strong>Total</strong></th>
+							</tr>
+						</thead>
+						<tbody ng-repeat="produto in carrinhoCompras">
+							<tr>
+								<td ng-model="produto.Quantidade"style="padding-left: 4%;width: 11%;">{{produto.Quantidade}}</td>
+								<td ng-model="produto.Nome" style="padding-left: 5%;">{{produto.Nome}}</td>
+								<td ng-model="produto.Preco" style="text-align: center; width: 11%;">{{produto.Preco  | currency:"R$ "}}</td>
+								<td ng-model="produto.PrecoTotal" style="text-align: center; width: 11%;">{{produto.Preco * produto.Quantidade  | currency:"R$ "}}</td>
+							</tr>
+						</tbody>
+						<tfoot>
+							<td></td>
+							<td></td>
+							<td class="tableFooterAlign"><strong>Total</strong></td>
+							<td style="text-align: center;">{{totalCarrinho() | currency:"R$ "}}</td>
+						</tfoot>
+					</table>
+				</div>
 			<div id="paymentContent">
-				<h4 class="title">Finalização da Compra</h4>
+				<h4 class="title" style="background: lavenderblush; border-radius: 100%;">Finalização da Compra</h4>
 				<form name="adressConfirmation">
 						<div class="col_1_of_2 span_1_of_2">
 							<h1 class="title">Endereço de Entrega</h1>
@@ -88,7 +116,6 @@
 									<option ng-repeat="city in estados[state_selected].cidades" ng-selected="usuario.Cidade == city ? city : ''" value="{{city}}" >{{city}}</option>
 								</select>
 							</div>
-							{{usuario}}
 							<input type="text" ng-model="usuario.Telefone" ng-init="usuario.Telefone" placeholder="Telefone" required ng-disabled="!isEditMode">
 							<div class="btn-group btn-group-sm" role="group" aria-label="..."  style="padding: 1.5% 5% 0% 0%; float: right;">
 								<a href class="btn btn-primary" style="min-width: 148px;" ng-show="!isEditMode" ng-click="isEditMode=!isEditMode">Alterar Endereço</a>
@@ -135,9 +162,11 @@
 									</form>
 								</div>
 							</div>
+							
 						</div>
 					</div>
 				<div class="clear"></div>
+				
 			<div class="btn-group btn-group-sm" style="padding: 5% 0% 2% 38.5%; width: 100%;" >
 				<a href class="btn btn-danger" style="min-width: 148px;">Cancelar Compra</a>
 				<a href class="btn btn-info" ng-click="adressConfirmation.$valid && cardPayment.$valid || transferPayment.$valid || usuario.Ticket ? final=!final:''"style="min-width: 148px; margin-left:1%;">Finalizar Compra</a>

@@ -103,7 +103,7 @@
 						</td>
 						<td ng-model="produto.Nome" style="padding-left: 5%;">{{produto.Nome}}</td>
 						<td ng-model="produto.Preco" style="text-align: center; width: 11%;">{{produto.Preco  | currency:"R$ "}}</td>
-						<td ng-model="produto.Preco" style="text-align: center; width: 11%;">{{produto.Preco * produto.Quantidade  | currency:"R$ "}}</td>
+						<td ng-model="produto.PrecoTotal" style="text-align: center; width: 11%;">{{produto.Preco * produto.Quantidade  | currency:"R$ "}}</td>
 					</tr>
 				</tbody>
 				<tfoot>
