@@ -1,5 +1,7 @@
 package br.com.senac.domain;
 
+import java.time.LocalDate;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,12 +11,23 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonFormat.Shape;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+
 import net.sf.oval.constraint.NotEmpty;
 import net.sf.oval.constraint.NotNull;
 
 @Entity
 @Table(name = "pessoa")
 public class Pessoa {
+
+	public Pessoa() {
+		super();
+	}
 
 	@Id
 	@Column(name = "id")
@@ -31,20 +44,20 @@ public class Pessoa {
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private Endereco endereco;
+	
+	@JsonDeserialize(using = LocalDateDeserializer.class)
+	@JsonSerialize(using = LocalDateSerializer.class)
+	@JsonFormat(shape = Shape.STRING, pattern = "ddMMyyyy")
+	private LocalDate dataNasc;
 
 	private String celular;
-
 	private String fixo;
 	private String rg;
 	private String cpf;
 	private String sexo;
-	private String dataNasc;
 	private String email;
 	private String senha;
 
-	public Pessoa() {
-		super();
-	}
 
 	public String getCelular() {
 		return celular;
@@ -54,7 +67,7 @@ public class Pessoa {
 		return cpf;
 	}
 
-	public String getDataNasc() {
+	public LocalDate getDataNasc() {
 		return dataNasc;
 	}
 
@@ -102,7 +115,7 @@ public class Pessoa {
 		this.cpf = cpf;
 	}
 
-	public void setDataNasc(final String dataNasc) {
+	public void setDataNasc(final LocalDate dataNasc) {
 		this.dataNasc = dataNasc;
 	}
 
@@ -141,5 +154,4 @@ public class Pessoa {
 	public void setSobrenome(final String sobrenome) {
 		this.sobrenome = sobrenome;
 	}
-
 }

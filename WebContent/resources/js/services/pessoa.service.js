@@ -27,6 +27,12 @@ cadastroModule.factory('PessoaService', [
 	         		url : 'pessoa/countUser',
 	         		data : findBy
 	         	});
+	         },
+	         listEstate : function(){
+	         	return $http({
+	         		method : 'GET',
+	         		url : 'pessoa/listEstate'
+	         	})
 	         }
 	      };
       }

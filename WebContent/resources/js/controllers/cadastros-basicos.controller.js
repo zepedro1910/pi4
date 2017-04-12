@@ -1,6 +1,11 @@
 cadastroModule.controller('cadastroController', [
       '$scope', '$http', 'PessoaService', function($scope, $http, service) {
-
+      	
+      	//Recebe os estados do back-end
+      	service.listEstate().then(function(res){
+      		$scope.listEstates = res.data; 	
+      	});
+      	
 	      $scope.isNovo = false;
 
 	      $scope.currentPage = 1;
@@ -13,8 +18,8 @@ cadastroModule.controller('cadastroController', [
 		         fistItem : ($scope.itemsPerPage * (currentPage - 1))
 		      };
 		      return pagination;
-	      }
-	      ;
+	      };
+	       
 	      // Conta o numero total de usuarios para paginacao
 	      service.countUser({name : null}).then(function(res) {
 		      $scope.totalItems = res.data;
@@ -45,10 +50,13 @@ cadastroModule.controller('cadastroController', [
 	      };
 
 	      // Funcao para salvar usuario
-	      $scope.save = function(pessoa) {
-		      service.save(pessoa);
-		      $scope.pessoa = {};
-		      $scope.isNovo = false;
+	      $scope.save = function(pessoa, isValid) {
+		      
+	      	if (isValid) {
+	      		service.save(pessoa);
+	      		$scope.pessoa = {};
+	      		$scope.isNovo = false;
+            };
 	      };
 
 	      // Funcao para buscar usuario e atualizar o grid
@@ -82,7 +90,8 @@ cadastroModule.controller('cadastroController', [
 
 	      // Exibe formulario de novo cliente
 	      $scope.novoCliente = function() {
-		      $scope.isNovo = true;
+		      $scope.pessoa = {};
+	      	$scope.isNovo = true;
 	      }
 
       }

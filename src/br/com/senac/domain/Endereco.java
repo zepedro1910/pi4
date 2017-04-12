@@ -15,14 +15,14 @@ public class Endereco {
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
+	private Estados estado;
 	private String cep;
 	private String logradouro;
 	private String numero;
 	private String complemento;
 	private String cidade;
 	private String bairro;
-	private String estado;
 	
 	public String getCep() {
 		return cep;
@@ -72,11 +72,11 @@ public class Endereco {
 		this.bairro = bairro;
 	}
 
-	public String getEstado() {
+	public Estados getEstado() {
 		return estado;
 	}
 
-	public void setEstado(String estado) {
+	public void setEstado(Estados estado) {
 		this.estado = estado;
 	}
 }

@@ -2,45 +2,51 @@
 			<md-card ng-if="isNovo"> <md-card-content>
 			<div class="row">
 				<div class="col-md-12">
-					<form>
+					<form name="userForm" ng-submit="save(pessoa, userForm.$valid)" novalidate>
+						<p class="help-block">* Campos obrigatórios</p>
 						<fieldset>
 							<legend>Dados Pessoais</legend>
-							<div class="row">
+								<div class="row">
 								<div class="col-md-3">
 									<md-input-container> <label>Nome</label> <input
-										ng-model=pessoa.nome ng-required="true"> </md-input-container>
-								</div>
+										name="nome" ng-model=pessoa.nome ng-required="true" maxlength="30" ng-pattern="/^[a-zA-Z ]+$/"> 
+										<p ng-show="userForm.nome.$error.pattern && !userForm.nome.$pristine" class="help-block">Somente letras</p>
+    							</div></md-input-container>
+							
 								<div class="col-md-3">
-									<md-input-container> <label>Sobrenome</label>
-									<input ng-model=pessoa.sobrenome ng-required="true"> </md-input-container>
+									<md-input-container> <label>Sobrenome</label><input 
+										name="sobrenome"ng-model=pessoa.sobrenome ng-required="true" maxlength="30" ng-pattern="/^[a-zA-Z ]+$/">
+										<p ng-show="userForm.sobrenome.$error.pattern && !userForm.nome.$pristine" class="help-block">Somente letras</p>
+								</div></md-input-container>
+							
+								<div class="col-md-3">
+									<md-input-container> <label>Telefone
+										Fixo</label> <input ng-model=pessoa.fixo ui-mask="(99)99999-9999"> </md-input-container>
 								</div>
 								<div class="col-md-3">
 									<md-input-container> <label>Telefone
-										Fixo</label> <input ng-model=pessoa.fixo> </md-input-container>
-								</div>
-								<div class="col-md-3">
-									<md-input-container> <label>Telefone
-										Celular</label> <input ng-model="pessoa.celular"> </md-input-container>
+										Celular</label> <input ng-model="pessoa.celular" ui-mask="(99)99999-9999"> </md-input-container>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-3">
 									<md-input-container> <label>Rg</label> <input
-										ng-model=pessoa.rg ng-required="true"> </md-input-container>
+										ng-model=pessoa.rg ng-required="true" ui-mask="99.999.999-9"> </md-input-container>
 								</div>
 								<div class="col-md-3">
 									<md-input-container> <label>Cpf</label> <input
-										ng-model="pessoa.cpf" ng-required="true"> </md-input-container>
+										ng-model="pessoa.cpf" ng-required="true" ui-mask="999.999.999-99"> </md-input-container>
 								</div>
 								<div class="col-md-3">
 									<md-input-container> <label>Sexo</label> <md-select
-										name="type" ng-model="pessoa.sexo" ng-required="true">
+										ng-model="pessoa.sexo" ng-required="true">
 									<md-option value="m">Masculino</md-option> <md-option value="f">Feminino</md-option>
 									</md-select> </md-input-container>
 								</div>
-								<div class="col-md-3" flex-gt-xs style="margin-top: 15px;">
-									<md-datepicker ng-model="pessoa.dataNasc"
-										md-current-view="year" md-placeholder="Data Nasc"></md-datepicker>
+								 <div class="col-md-3">
+									<md-input-container> <label>Data Nascimento</label> <input
+										type="text" ng-model="pessoa.dataNasc" ng-required="true" ui-mask="99/99/9999">
+									</md-select> </md-input-container>
 								</div>
 							</div>
 						</fieldset>
@@ -50,38 +56,44 @@
 							<div class="row">
 								<div class="col-md-3">
 									<md-input-container> <label>Cep</label> <input
-										ng-model=pessoa.endereco.cep ng-required="true"> </md-input-container>
+										ng-model="pessoa.endereco.cep" ng-required="true" ui-mask="99999-999"> </md-input-container>
 								</div>
 								<div class="col-md-3">
 									<md-input-container> <label>Logradouro</label>
-									<input ng-model=pessoa.endereco.logradouro ng-required="true">
+									<input ng-model="pessoa.endereco.logradouro" ng-required="true" maxlength="20">
 									</md-input-container>
 								</div>
 								<div class="col-md-3">
 									<md-input-container> <label>Numero
-									</label> <input ng-model=pessoa.endereco.numero> </md-input-container>
+									</label> <input name="numero" ng-model="pessoa.endereco.numero" ng-pattern="/^[0-9]+$/" ng-maxlength="6">
+									<p ng-show="userForm.numero.$error.pattern" class="help-block">Somente números</p>
+									<p ng-show="userForm.numero.$error.maxlength" class="help-block">Maximo 6 caracteres</p>
+									 </md-input-container>
 								</div>
 								<div class="col-md-3">
 									<md-input-container> <label>
-										Complemento</label> <input ng-model="pessoa.endereco.complemento">
+										Complemento</label> <input ng-model="pessoa.endereco.complemento" maxlength="20">
 									</md-input-container>
 								</div>
 							</div>
 							<div class="row">
 								<div class="col-md-3">
-									<md-input-container> <label>Cidade</label>
-									<input ng-model=pessoa.endereco.cidade ng-required="true">
+									<md-input-container> <label>Cidade</label>								  
+									<input name="cidade" ng-model="pessoa.endereco.cidade" ng-required="true" ng-pattern="/^[a-zA-Z ]+$/" maxlength="20">
+									<p ng-show="userForm.cidade.$error.pattern" class="help-block">Somente letras</p>
 									</md-input-container>
 								</div>
 								<div class="col-md-3">
 									<md-input-container> <label>Bairro</label>
-									<input ng-model=pessoa.endereco.bairro> </md-input-container>
+									<input name="bairro" ng-model="pessoa.endereco.bairro" ng-pattern="/^[a-zA-Z ]+$/" maxlength="20"> 
+									<p ng-show="userForm.bairro.$error.pattern" class="help-block">Somente letras</p>
+									</md-input-container>
 								</div>
 								<div class="col-md-3">
 									<md-input-container> <label>Estado</label>
-									<md-select name="type" ng-model="pessoa.endereco.estado"
-										ng-required="true"> <md-option value="m">Masculino</md-option>
-									<md-option value="f">Feminino</md-option> </md-select> </md-input-container>
+									<md-select ng-model="pessoa.endereco.estado" ng-required="true">
+									<md-option ng-value="item.state" ng-repeat="item in listEstates">{{item.abrev}}</md-option> 
+									</md-select> </md-input-container>
 								</div>
 							</div>
 						</fieldset>
@@ -91,23 +103,25 @@
 							<div class="row">
 								<div class="col-md-4">
 									<md-input-container> <label>E-mail</label>
-									<input ng-model=pessoa.email ng-required="true"> </md-input-container>
+									<input name="email" type="email" ng-model="pessoa.email" ng-required="true" maxlength="40">
+									<p ng-show="userForm.$error.email" class="help-block">E-mail invalido</p>
+									 </md-input-container>
 								</div>
 								<div class="col-md-4">
 									<md-input-container> <label>Senha</label>
-									<input ng-model=pessoa.primeiraSenha ng-required="true">
+									<input type="password" ng-model="pessoa.primeiraSenha" ng-required="true">
 									</md-input-container>
 								</div>
 								<div class="col-md-4">
 									<md-input-container> <label>Confirmar
-										Senha</label> <input ng-model=pessoa.senha ng-required="true">
+										Senha</label> <input type="password" ng-model="pessoa.senha" ng-required="true">
 									</md-input-container>
 								</div>
 							</div>
 						</fieldset>
 						<div class="row">
 							<div class="col-md-12" align="right">
-								<md-button class="md-raised md-primary" ng-click="save(pessoa)">Salvar</md-button>
+								<md-button type="submit" class="md-raised md-primary">Salvar</md-button>
 							</div>
 						</div>
 					</form>
