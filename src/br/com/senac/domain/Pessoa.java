@@ -57,6 +57,7 @@ public class Pessoa {
 	private String sexo;
 	private String email;
 	private String senha;
+	private boolean isInactive;
 
 
 	public String getCelular() {
@@ -153,5 +154,13 @@ public class Pessoa {
 
 	public void setSobrenome(final String sobrenome) {
 		this.sobrenome = sobrenome;
+	}
+
+	public boolean isInactive() {
+		return isInactive;
+	}
+
+	public void setInactive(boolean isInactive) {
+		this.isInactive = isInactive;
 	}
 }

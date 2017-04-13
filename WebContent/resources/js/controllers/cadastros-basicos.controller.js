@@ -1,11 +1,11 @@
 cadastroModule.controller('cadastroController', [
       '$scope', '$http', 'PessoaService', function($scope, $http, service) {
-      	
-      	//Recebe os estados do back-end
-      	service.listEstate().then(function(res){
-      		$scope.listEstates = res.data; 	
-      	});
-      	
+
+	      // Recebe os estados do back-end
+	      service.listEstate().then(function(res) {
+		      $scope.listEstates = res.data;
+	      });
+
 	      $scope.isNovo = false;
 
 	      $scope.currentPage = 1;
@@ -18,10 +18,13 @@ cadastroModule.controller('cadastroController', [
 		         fistItem : ($scope.itemsPerPage * (currentPage - 1))
 		      };
 		      return pagination;
-	      };
-	       
+	      }
+	      ;
+
 	      // Conta o numero total de usuarios para paginacao
-	      service.countUser({name : null}).then(function(res) {
+	      service.countUser({
+		      name : null
+	      }).then(function(res) {
 		      $scope.totalItems = res.data;
 	      }, function(err) {
 		      console.log(err);
@@ -37,12 +40,12 @@ cadastroModule.controller('cadastroController', [
 	      // Faz a requisão para o banco trazer os usuarios e popula o grid
 	      // conforme a paginação
 	      $scope.changePage = function(currentPage, findBy) {
-		      
-	      	findBy = findBy ? findBy : {};
-	      	findBy.maxResult = getPagination(currentPage).maxResult;
-	      	findBy.fistItem = getPagination(currentPage).fistItem;
-	      	
-	      	service.findUser(findBy).then(function(res) {
+
+		      findBy = findBy ? findBy : {};
+		      findBy.maxResult = getPagination(currentPage).maxResult;
+		      findBy.fistItem = getPagination(currentPage).fistItem;
+
+		      service.findUser(findBy).then(function(res) {
 			      $scope.userList = res.data;
 		      }, function(err) {
 			      console.log(err);
@@ -51,35 +54,48 @@ cadastroModule.controller('cadastroController', [
 
 	      // Funcao para salvar usuario
 	      $scope.save = function(pessoa, isValid) {
-		      
-	      	if (isValid) {
-	      		service.save(pessoa);
-	      		$scope.pessoa = {};
-	      		$scope.isNovo = false;
-            };
+	      	
+	      	if(isValid){
+	      		if (pessoa.primeiraSenha === pessoa.senha) {
+	      			service.save(pessoa);
+	      			$scope.pessoa = {};
+	      			$scope.isNovo = false;
+	      		}else {
+	      			alert("Senhas não conferem")
+	      		}
+	      	};
+	      	
+	      	for (var int = 0; int < 100000000; int++) {
+	            var aux = int;
+            }
+	      	
+	      	service.findUser(getPagination($scope.currentPage)).then(function(res) {
+			      $scope.userList = res.data;
+		      }, function(err) {
+			      console.log(err);
+		      });
 	      };
 
 	      // Funcao para buscar usuario e atualizar o grid
 	      $scope.search = function(findBy) {
-	      	
-	      	service.countUser(findBy).then(function(res) {
+
+		      service.countUser(findBy).then(function(res) {
 			      $scope.totalItems = res.data;
 		      }, function(err) {
 			      console.log(err);
 		      });
-	      	
-	      	delete $scope.currentPage;
-	      	$scope.currentPage = 1;
-	      	findBy.maxResult = $scope.itemsPerPage;
-	      	findBy.fistItem = ($scope.itemsPerPage * ($scope.currentPage - 1));
-	      	
+
+		      delete $scope.currentPage;
+		      $scope.currentPage = 1;
+		      findBy.maxResult = $scope.itemsPerPage;
+		      findBy.fistItem = ($scope.itemsPerPage * ($scope.currentPage - 1));
+
 		      service.findUser(findBy).then(function(res) {
-		      	$scope.userList = res.data;
+			      $scope.userList = res.data;
 		      }, function(err) {
 			      console.log(err);
 		      });
-		      
-		      
+
 	      };
 
 	      // Funcao para editar usuario
@@ -91,7 +107,7 @@ cadastroModule.controller('cadastroController', [
 	      // Exibe formulario de novo cliente
 	      $scope.novoCliente = function() {
 		      $scope.pessoa = {};
-	      	$scope.isNovo = true;
+		      $scope.isNovo = true;
 	      }
 
       }

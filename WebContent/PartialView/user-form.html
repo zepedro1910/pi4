@@ -120,7 +120,12 @@
 							</div>
 						</fieldset>
 						<div class="row">
-							<div class="col-md-12" align="right">
+							<div class="col-md-2">
+          						<md-checkbox class="md-primary" ng-model="pessoa.isInactive" aria-label="Cliente inativo">
+          						  Cliente inativo{{pessoa.isInactive}}
+          						</md-checkbox>
+							</div>
+							<div class="col-md-9" align="right">
 								<md-button type="submit" class="md-raised md-primary">Salvar</md-button>
 							</div>
 						</div>
