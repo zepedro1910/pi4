@@ -23,6 +23,7 @@
 	<script type="text/javascript" src="resources/js/controllers/cadastros-basicos.controller.js"></script>
 	<script type="text/javascript" src="resources/js/services/pessoa.service.js"></script>
 	<script type="text/javascript" src="resources/js/controllers/cadastros-basicos.config.js"></script>
+	<script type="text/javascript" src="resources/js/controllers/employee.Controller.js"></script>
 	
 
 </head>
@@ -36,7 +37,7 @@
 				<md-content>
 					<md-toolbar class="md-tall md-accent" style="background-color: silver;">
 						<h2 class="md-toolbar-tools">
-							<span style="text-align: center;">Shop Canecas</span>
+							<span style="text-align: center;">Top vinils</span>
 						</h2>
 					</md-toolbar>
 				</md-content>
@@ -55,9 +56,7 @@
 				</md-tab>
 				<md-tab label="Funcionarios">
 					<md-content class="md-padding">
-						<h1 class="md-display-2">Tab Two</h1>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla venenatis ante augue. Phasellus volutpat neque ac dui
-							mattis volutpat non ac est. Praesent ligula diam, congue eu enim scelerisque, finibus commodo lectus.</p>
+						<ng-include src="'PartialView/employee.html'"></ng-include>
 					</md-content>
 				</md-tab>
 				<md-tab label="Produtos">

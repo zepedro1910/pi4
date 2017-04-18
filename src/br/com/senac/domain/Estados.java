@@ -10,7 +10,7 @@ public enum Estados {
 	CEARA("CE"),//	 
 	DISTRITO_FEDERAL("DF"),//	 
 	ESPIRITO_SANTO("ES"),//	 
-	GOIÁS("GO"),//	 
+	GOIAS("GO"),//	 
 	MARANHÃO("MA"),//	 
 	MATO_GROSSO("MT"),//	 
 	MATO_GROSSO_DO_SUL("MS"),//	 
