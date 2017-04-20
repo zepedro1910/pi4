@@ -1,0 +1,74 @@
+<html ng-app="cadastro">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Shop Canecas</title>
+	
+	<!--           Style Dependencies           -->
+	<link rel="stylesheet" href="resources/css/ext/bootstrap/bootstrap.min.css">
+	<link rel="stylesheet" href="resources/css/ext/ng/material/ng.material.min.css">
+	
+	<!--           Angular and Utils Dependencies           -->
+    <script type="text/javascript" src="resources/js/ext/jQuery/jquery.min.js"></script>
+    <script type="text/javascript" src="resources/js/ext/bootstrap/bootstrap.min.js"></script>
+	<script type="text/javascript" src="resources/js/ext/ng/angular.min.js"></script>
+	<script type="text/javascript" src="resources/js/ext/ng/ui/ui-bootstrap-tpls-2.5.0.min.js"></script>
+	<script type="text/javascript" src="resources/js/ext/ng/material/ng.material.min.js"></script>
+	<script type="text/javascript" src="resources/js/ext/ng/animate/animate.min.js"></script>
+	<script type="text/javascript" src="resources/js/ext/ng/aria/aria.min.js"></script>
+	<script type="text/javascript" src="resources/js/ext/ng/messages/messages.min.js"></script>
+	<script type="text/javascript" src="resources/js/ext/ng/mask/mask.js"></script>
+	<!--           Module, Services and Controllers           -->
+	<script type="text/javascript" src="resources/js/modules/cadastros-basicos.module.js"></script>
+	<script type="text/javascript" src="resources/js/controllers/cadastros-basicos.controller.js"></script>
+	<script type="text/javascript" src="resources/js/services/pessoa.service.js"></script>
+	<script type="text/javascript" src="resources/js/controllers/cadastros-basicos.config.js"></script>
+	<script type="text/javascript" src="resources/js/controllers/employee.controller.js"></script>
+	<script type="text/javascript" src="resources/js/controllers/product.controller.js"></script>
+	
+	
+
+</head>
+
+<body ng-cloak>
+
+	<div class="container-fluid">
+
+		<div class="row">
+			<div class="col-md-12">
+				<md-content>
+					<md-toolbar class="md-tall md-accent" style="background-color: silver;">
+						<h2 class="md-toolbar-tools">
+							<span style="text-align: center;">Shop Canecas</span>
+						</h2>
+					</md-toolbar>
+				</md-content>
+			</div>
+		</div>
+
+
+		<md-content class="col-md-12">
+			<md-tabs md-dynamic-height md-border-bottom md-stretch-tabs="always">
+				<md-tab label="Clientes">
+					<md-content>
+						<md-content class="col-md-12">
+							<ng-include src="'PartialView/user.html'"></ng-include>
+						</md-content>
+					</md-content>
+				</md-tab>
+				<md-tab label="Funcionarios">
+					<md-content class="md-padding">
+						<ng-include src="'PartialView/employee.html'"></ng-include>
+					</md-content>
+				</md-tab>
+				<md-tab label="Produtos">
+					<md-content class="md-padding">
+					<ng-include src="'PartialView/product.html'"></ng-include>
+					</md-content>
+				</md-tab>
+			</md-tabs>
+		</md-content>
+	</div>
+</body>
+
+</html>
