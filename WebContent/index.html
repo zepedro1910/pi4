@@ -23,12 +23,14 @@
 	<script type="text/javascript" src="resources/js/controllers/cadastros-basicos.controller.js"></script>
 	<script type="text/javascript" src="resources/js/services/pessoa.service.js"></script>
 	<script type="text/javascript" src="resources/js/controllers/cadastros-basicos.config.js"></script>
-	<script type="text/javascript" src="resources/js/controllers/employee.Controller.js"></script>
+	<script type="text/javascript" src="resources/js/controllers/employee.controller.js"></script>
+	<script type="text/javascript" src="resources/js/controllers/product.controller.js"></script>
+	
 	
 
 </head>
 
-<body ng-cloak ng-controller="cadastroController as cadCtrl">
+<body ng-cloak>
 
 	<div class="container-fluid">
 
@@ -37,7 +39,7 @@
 				<md-content>
 					<md-toolbar class="md-tall md-accent" style="background-color: silver;">
 						<h2 class="md-toolbar-tools">
-							<span style="text-align: center;">Top vinils</span>
+							<span style="text-align: center;">Shop Canecas</span>
 						</h2>
 					</md-toolbar>
 				</md-content>
@@ -61,8 +63,7 @@
 				</md-tab>
 				<md-tab label="Produtos">
 					<md-content class="md-padding">
-						<h1 class="md-display-2">Tab Three</h1>
-						<p>Integer turpis erat, porttitor vitae mi faucibus, laoreet scelerisque, finibus commodo lectus.</p>
+					<ng-include src="'PartialView/product.html'"></ng-include>
 					</md-content>
 				</md-tab>
 			</md-tabs>

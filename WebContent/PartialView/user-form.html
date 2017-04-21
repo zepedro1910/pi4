@@ -2,7 +2,7 @@
 			<md-card ng-if="isNovo"> <md-card-content>
 			<div class="row">
 				<div class="col-md-12">
-					<form name="userForm" ng-submit="save(pessoa, userForm.$valid)" novalidate>
+					<form name="userForm" ng-submit="save(pessoa)" novalidate><!-- ,userForm.$valid -->
 						<p class="help-block">* Campos obrigatórios</p>
 						<fieldset>
 							<legend>Dados Pessoais</legend>

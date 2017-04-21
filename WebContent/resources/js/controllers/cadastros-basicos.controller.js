@@ -18,8 +18,7 @@ cadastroModule.controller('cadastroController', [
 		         fistItem : ($scope.itemsPerPage * (currentPage - 1))
 		      };
 		      return pagination;
-	      }
-	      ;
+	      };
 
 	      // Conta o numero total de usuarios para paginacao
 	      service.countUser({
@@ -37,8 +36,9 @@ cadastroModule.controller('cadastroController', [
 		      console.log(err);
 	      });
 
-	      // Faz a requisão para o banco trazer os usuarios e popula o grid
-	      // conforme a paginação
+	      // Faz a requisicao para o banco trazer os usuarios e popula o
+			// grid
+	      // conforme a paginacao
 	      $scope.changePage = function(currentPage, findBy) {
 
 		      findBy = findBy ? findBy : {};
@@ -53,27 +53,23 @@ cadastroModule.controller('cadastroController', [
 	      };
 
 	      // Funcao para salvar usuario
-	      $scope.save = function(pessoa, isValid) {
+	      $scope.save = function(pessoa /* ,isValid */) {
 	      	
-	      	if(isValid){
-	      		if (pessoa.primeiraSenha === pessoa.senha) {
-	      			service.save(pessoa);
+	     /*
+			 * if(isValid){ if (pessoa.primeiraSenha === pessoa.senha) {
+			 */		service.save(pessoa);
 	      			$scope.pessoa = {};
 	      			$scope.isNovo = false;
-	      		}else {
-	      			alert("Senhas não conferem")
-	      		}
+	      	/*
+			 * }else { alert("Senhas nao conferem") }
+			 
 	      	};
-	      	
-	      	for (var int = 0; int < 100000000; int++) {
-	            var aux = int;
-            }
-	      	
-	      	service.findUser(getPagination($scope.currentPage)).then(function(res) {
+	      	*/
+	      /*	service.findUser(getPagination($scope.currentPage)).then(function(res) {
 			      $scope.userList = res.data;
 		      }, function(err) {
 			      console.log(err);
-		      });
+		      });*/
 	      };
 
 	      // Funcao para buscar usuario e atualizar o grid
