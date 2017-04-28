@@ -1,9 +1,12 @@
+		<head>
+		<meta charset="UTF-8">
+		</head>
 		<div class="col-md-8">
 			<md-card ng-if="isNovo"> <md-card-content>
 			<div class="row">
 				<div class="col-md-12">
 					<form name="userForm" ng-submit="save(pessoa)" novalidate><!-- ,userForm.$valid -->
-						<p class="help-block">* Campos obrigatórios</p>
+						<p class="help-block">* Campos obrigatorios</p>
 						<fieldset>
 							<legend>Dados Pessoais</legend>
 								<div class="row">
@@ -66,7 +69,7 @@
 								<div class="col-md-3">
 									<md-input-container> <label>Numero
 									</label> <input name="numero" ng-model="pessoa.endereco.numero" ng-pattern="/^[0-9]+$/" ng-maxlength="6">
-									<p ng-show="userForm.numero.$error.pattern" class="help-block">Somente números</p>
+									<p ng-show="userForm.numero.$error.pattern" class="help-block">Somente nÃºmeros</p>
 									<p ng-show="userForm.numero.$error.maxlength" class="help-block">Maximo 6 caracteres</p>
 									 </md-input-container>
 								</div>
@@ -122,7 +125,7 @@
 						<div class="row">
 							<div class="col-md-2">
           						<md-checkbox class="md-primary" ng-model="pessoa.isInactive" aria-label="Cliente inativo">
-          						  Cliente inativo{{pessoa.isInactive}}
+          						  Cliente inativo
           						</md-checkbox>
 							</div>
 							<div class="col-md-9" align="right">

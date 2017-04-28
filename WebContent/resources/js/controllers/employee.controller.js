@@ -1,11 +1,20 @@
-cadastroModule.controller('employeeController', [ '$scope', '$http',
-		'PessoaService', function($scope, $http, service) {
-
+cadastroModule.controller('employeeController', ['$scope', '$http',
+		'PessoaService', '$mdDialog', function($scope, $http, service, $mdDialog) {
+			
+	$scope.alerts = [
+	    { type: 'danger', msg: 'Senhas não conferem.' },
+	  ];
+	
+	$scope.closeAlert = function(index) {
+	    $scope.alerts.splice(index, 1);
+	  };
+	
+	
 			$scope.isNovo = false;
 			$scope.currentPage = 1;
 		    $scope.maxSize = 5;
 		    $scope.itemsPerPage = 8;
-			
+			$scope.senhaInvalida = false;
 		    
 		    service.countEmployees({
 			      name : null
@@ -14,6 +23,10 @@ cadastroModule.controller('employeeController', [ '$scope', '$http',
 		      }, function(err) {
 			      console.log(err);
 		      });
+		    
+		    service.getCargos().then(function(res){
+		    	$scope.cargos = res.data;
+		    });
 		    
 		    function getPagination(currentPage) {
 			      var pagination = {
@@ -38,7 +51,14 @@ cadastroModule.controller('employeeController', [ '$scope', '$http',
 			}
 
 			// Funcao para salvar usuario
-			$scope.save = function(funcionario) {
+			$scope.save = function(funcionario, ev) {
+				$scope.senhaInvalida = false;
+				if(funcionario.primeiraSenha != funcionario.senha){
+					funcionario.primeiraSenha = "";
+					funcionario.senha = "";
+					$scope.senhaInvalida = true;
+					return;
+				}
 				service.saveEmployee(funcionario);
 				$scope.funcionario = {};
 				$scope.isNovo = false;

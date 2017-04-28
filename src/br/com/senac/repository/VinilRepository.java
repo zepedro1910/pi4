@@ -6,10 +6,10 @@ import br.com.senac.domain.Vinil;
 
 public interface VinilRepository {
 
-      public Integer countVinil(String nome, Integer id);
+      public Integer countVinil(String nome, Long id);
 
       public Long saveVinil(Vinil vinil);
 
-      public List<Vinil> find(int fistItem, int lastItem, String name, Integer id);
+      public List<Vinil> find(int fistItem, int lastItem, String name, Long id);
 
 }

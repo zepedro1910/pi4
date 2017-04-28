@@ -1,5 +1,10 @@
 package br.com.senac.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonValue;
+
 public enum Categoria {
 
       ROCK_INTERNACIONAL("ROCK INTERNACIONAL"), //
@@ -11,8 +16,7 @@ public enum Categoria {
       TRILHAS("TRILHAS"), //
       REGGAE("REGGAE"), //
       RAP_E_RIPHOP("RAP E RIP-HOP"), //
-      DIVERSOS("DIVERSOS"), //
-      TODOS("TODOS");
+      DIVERSOS("DIVERSOS"); //
 
       private Categoria(final String descricao) {
             this.descricao = descricao;
@@ -20,8 +24,17 @@ public enum Categoria {
 
       private String descricao;
 
+      @JsonValue
       public String getDescricao() {
             return descricao;
+      }
+
+      public static List<String> getCategorias() {
+            final List<String> categorias = new ArrayList<>();
+            for (final Categoria c : Categoria.values()) {
+                  categorias.add(c.getDescricao());
+            }
+            return categorias;
       }
 
 }

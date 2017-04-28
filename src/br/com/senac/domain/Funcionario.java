@@ -17,12 +17,6 @@ public class Funcionario extends Pessoa {
             super();
       }
 
-      public Funcionario(final Cargo cargo, final Double salario) {
-            super();
-            this.cargo = cargo;
-            this.salario = salario;
-      }
-
       @Id
       @GeneratedValue(strategy = GenerationType.TABLE)
       private Long id;

@@ -7,7 +7,7 @@ import br.com.senac.domain.Funcionario;
 
 public interface FuncionarioService {
 
-      public void save(Funcionario funcionario);
+      public Long save(Funcionario funcionario) throws Exception;
 
       public Integer count(Map<String, Object> map);
 

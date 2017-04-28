@@ -1,11 +1,14 @@
 package br.com.senac.domain;
 
-import javax.persistence.Column;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name = "TB_VINIL")
@@ -13,20 +16,39 @@ public class Vinil {
 
       @Id
       @GeneratedValue(strategy = GenerationType.TABLE)
-      @Column(name = "ID_VINIL")
       private Long id;
 
-      @Column(nullable = false)
+      //@Column(nullable = false)
       private String nome;
 
-      @Column(nullable = false)
+      private Categoria categoria;
+
       private Double preco;
 
-      @Column(nullable = false)
       private String descricao;
 
-      @Column(nullable = false)
       private Integer quantidade;
+
+      @OneToOne(cascade = CascadeType.ALL)
+      private Imagem imagem;
+
+      private boolean isInactive;
+
+      public Imagem getImagem() {
+            return imagem;
+      }
+
+      public void setImagem(final Imagem imagem) {
+            this.imagem = imagem;
+      }
+
+      public boolean isInactive() {
+            return isInactive;
+      }
+
+      public void setInactive(final boolean isInactive) {
+            this.isInactive = isInactive;
+      }
 
       public Integer getQuantidade() {
             return quantidade;
@@ -76,7 +98,13 @@ public class Vinil {
             this.categoria = categoria;
       }
 
-      @Column(nullable = false)
-      private Categoria categoria;
+      @JsonProperty(value = "isInactive")
+      public boolean isInative() {
+            return isInactive;
+      }
+
+      public void setInative(final boolean isInative) {
+            isInactive = isInative;
+      }
 
 }

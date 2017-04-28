@@ -1,1 +1,76 @@
-asdasd
+
+<head>
+<meta charset="UTF-8">
+</head>
+<div class="col-md-8">
+	<md-card ng-if="isNovo"> <md-card-content>
+	<div class="row">
+		<div class="col-md-12">
+			<form name="userForm" ng-submit="save(produto)" novalidate>
+				<!-- ,userForm.$valid -->
+				<p class="help-block">* Campos obrigatorios</p>
+				<fieldset>
+					<legend>Dados Pessoais</legend>
+					<div class="row">
+						<div class="col-md-2">
+							<md-input-container> <label>Cod.
+								Prod.</label> <input ng-model="produto.id" ng-disabled="true">
+						</div>
+						</md-input-container>
+
+						<div class="col-md-5">
+							<md-input-container style="width:100%"> <label>Nome</label>
+							<input name="sobrenome" ng-model=produto.nome ng-required="true">
+						</div>
+						</md-input-container>
+
+						<div class="col-md-5" align="center">
+							<md-input-container style="min-width: 191px"> <label>Categoria</label>
+							<md-select ng-model="produto.categoria" ng-required="true">
+							<md-option ng-value="item" ng-repeat="item in categorias">{{item}}</md-option>
+							</md-select> </md-input-container>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-2">
+							<md-input-container> <label>Preço</label> <input
+								type="number" ng-model=produto.preco ng-required="true"> </md-input-container>
+						</div>
+						<div class="col-md-2">
+							<md-input-container> <label>Quantidade</label>
+							<input type="number" ng-model="produto.quantidade" ng-required="true">
+							</md-input-container>
+						</div>
+
+						<div class="col-md-8">
+							<md-input-container style="width:84%"> <label>Descrição</label>
+							<input ng-model="produto.descricao" ng-required="true">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<md-input-container style="width: 100%"> <label>Imagem</label>
+							<input ng-model="produto.imagem.base64">
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12" align="center">
+							<img data-ng-src="{{produto.imagem.base64}}" />
+						</div>
+					</div>
+				</fieldset>
+				<br />
+				<div class="row">
+					<div class="col-md-2">
+						<md-checkbox class="md-primary" ng-model="produto.isInactive"
+							aria-label="Produto inativo"> Produto inativo </md-checkbox>
+					</div>
+					<div class="col-md-9" align="right">
+						<md-button type="submit" class="md-raised md-primary">Salvar</md-button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	</md-card-content></md-card>
+</div>

@@ -39,6 +39,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
       }
 
       @Override
+      @Transactional(propagation = Propagation.REQUIRED)
       public Integer countUser(final String name, final String cpf) {
             final DetachedCriteria criteria = extracted(name, cpf);
             final ProjectionList list = Projections.projectionList();
@@ -60,6 +61,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 
       @SuppressWarnings("unchecked")
       @Override
+      @Transactional(propagation = Propagation.REQUIRED)
       public List<Usuario> findUser(final int fistItem, final int lastItem, final String name, final String cpf) {
             final DetachedCriteria criteria = extracted(name, cpf).addOrder(Order.asc("nome"));
             return (List<Usuario>) hibernateTemplate.findByCriteria(criteria, fistItem, lastItem);

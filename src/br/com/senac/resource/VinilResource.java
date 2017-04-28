@@ -1,6 +1,5 @@
 package br.com.senac.resource;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -27,13 +26,9 @@ public class VinilResource {
             this.vinilService = vinilService;
       }
 
-      @RequestMapping(value = "categorias", method = RequestMethod.GET)
+      @RequestMapping(value = "/categorias", method = RequestMethod.GET)
       public List<String> getCategorias() {
-            final List<String> categorias = new ArrayList<>();
-            for (final Categoria c : Categoria.values()) {
-                  categorias.add(c.getDescricao());
-            }
-            return categorias;
+            return Categoria.getCategorias();
       }
 
       @RequestMapping(value = "/count", method = RequestMethod.POST)

@@ -30,21 +30,21 @@ public class VinilRepositoryImpl implements VinilRepository {
       }
 
       @Override
-      public Integer countVinil(final String nome, final Integer id) {
+      public Integer countVinil(final String nome, final Long id) {
             final DetachedCriteria criteria = extracted(nome, id);
             final ProjectionList list = Projections.projectionList();
-            list.add(Projections.count("ID_VINIL"));
+            list.add(Projections.count("id"));
             criteria.setProjection(list);
             return ((Long) hibernateTemplate.findByCriteria(criteria).get(0)).intValue();
       }
 
-      private DetachedCriteria extracted(final String name, final Integer id) {
+      private DetachedCriteria extracted(final String name, final Long id) {
             final DetachedCriteria criteria = DetachedCriteria.forClass(Vinil.class);
             if (Objects.nonNull(name)) {
                   criteria.add(Restrictions.like("nome", name, MatchMode.ANYWHERE).ignoreCase());
             }
             if (Objects.nonNull(id)) {
-                  criteria.add(Restrictions.eq("ID_VINIL", id));
+                  criteria.add(Restrictions.eq("id", id));
             }
             return criteria;
       }
@@ -59,7 +59,7 @@ public class VinilRepositoryImpl implements VinilRepository {
 
       @SuppressWarnings("unchecked")
       @Override
-      public List<Vinil> find(final int fistItem, final int lastItem, final String name, final Integer id) {
+      public List<Vinil> find(final int fistItem, final int lastItem, final String name, final Long id) {
             final DetachedCriteria criteria = extracted(name, id).addOrder(Order.asc("nome"));
             return (List<Vinil>) hibernateTemplate.findByCriteria(criteria, fistItem, lastItem);
       }

@@ -47,6 +47,39 @@ cadastroModule.factory('PessoaService', [ '$q', '$http', function($q, $http) {
 				url : 'funcionario/findEmployee',
 				data : findBy
 			})
+		},
+		getCategorias : function() {
+			return $http({
+				method : 'GET',
+				url : 'vinil/categorias'
+			})
+		},
+		countVinil : function(findBy) {
+			return $http({
+				method : 'POST',
+				url : 'vinil/count',
+				data : findBy
+			})
+		},
+		findVinil : function(findBy) {
+			return $http({
+				method : 'POST',
+				url : 'vinil/find',
+				data : findBy
+			})
+		},
+		saveProduto : function(produto){
+			return $http ({
+				method : 'POST',
+				url : 'vinil/save',
+				data : produto
+			})
+		},
+		getCargos : function() {
+			return $http({
+				method : 'GET',
+				url : 'funcionario/cargos'
+			})
 		}
 	};
 } ]);

@@ -2,6 +2,7 @@ package br.com.senac.service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import javax.inject.Inject;
 
@@ -24,7 +25,7 @@ public class VinilServiceImpl implements VinilService {
       @Override
       public Integer countVinil(final Map<String, Object> map) {
             final String nome = getNameKey(map);
-            final Integer id = getIdKey(map);
+            final Long id = getIdKey(map);
             return vinilRepository.countVinil(nome, id);
       }
 
@@ -38,7 +39,7 @@ public class VinilServiceImpl implements VinilService {
             final int fistItem = (int) map.get("fistItem");
             final int lastItem = (int) map.get("maxResult");
             final String name = getNameKey(map);
-            final Integer id = getIdKey(map);
+            final Long id = getIdKey(map);
             return vinilRepository.find(fistItem, lastItem, name, id);
       }
 
@@ -50,10 +51,10 @@ public class VinilServiceImpl implements VinilService {
             return name;
       }
 
-      private Integer getIdKey(final Map<String, Object> map) {
-            Integer id = null;
-            if (map.containsKey("id")) {
-                  id = (Integer) map.get("id");
+      private Long getIdKey(final Map<String, Object> map) {
+            Long id = null;
+            if (map.containsKey("codProd") && Objects.nonNull(map.get("codProd"))) {
+                  id = ((Integer) map.get("codProd")).longValue();
             }
             return id;
       }

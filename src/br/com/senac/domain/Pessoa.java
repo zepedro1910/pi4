@@ -14,6 +14,7 @@ import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonFormat.Shape;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
@@ -52,7 +53,9 @@ public abstract class Pessoa {
       private String rg;
       private String sexo;
       private String email;
+      private String primeiraSenha;
       private String senha;
+      private boolean isInactive;
 
       public Pessoa() {
             super();
@@ -144,6 +147,23 @@ public abstract class Pessoa {
 
       public void setSobrenome(final String sobrenome) {
             this.sobrenome = sobrenome;
+      }
+
+      public String getPrimeiraSenha() {
+            return primeiraSenha;
+      }
+
+      public void setPrimeiraSenha(final String primeiraSenha) {
+            this.primeiraSenha = primeiraSenha;
+      }
+
+      public boolean isInactive() {
+            return isInactive;
+      }
+
+      @JsonProperty(value = "isInactive")
+      public void setInactive(final boolean isInactive) {
+            this.isInactive = isInactive;
       }
 
 }

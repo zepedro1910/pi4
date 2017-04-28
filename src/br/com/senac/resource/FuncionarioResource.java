@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.senac.domain.Cargo;
 import br.com.senac.domain.Funcionario;
 import br.com.senac.service.FuncionarioService;
 
@@ -25,8 +26,13 @@ public class FuncionarioResource {
             this.funcionarioService = funcionarioService;
       }
 
+      @RequestMapping(value = "/cargos", method = RequestMethod.GET)
+      public Cargo[] getCargos() {
+            return Cargo.values();
+      }
+
       @RequestMapping(value = "/save", method = RequestMethod.POST)
-      public void saveFuncionario(@RequestBody final Funcionario funcionario) {
+      public void saveFuncionario(@RequestBody final Funcionario funcionario) throws Exception {
             funcionarioService.save(funcionario);
       }
 

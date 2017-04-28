@@ -22,8 +22,11 @@ public class FuncionarioServiceImpl implements FuncionarioService {
       }
 
       @Override
-      public void save(final Funcionario funcionario) {
-            funcionarioRepository.save(funcionario);
+      public Long save(final Funcionario funcionario) throws Exception {
+            if (funcionario.getSenha().equals(funcionario.getPrimeiraSenha())) {
+                  return funcionarioRepository.save(funcionario);
+            }
+            throw new Exception();
       }
 
       @Override
