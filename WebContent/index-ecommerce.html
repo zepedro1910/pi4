@@ -62,7 +62,7 @@
     </script>
 </head>
 
-<body ng-controller="appController">
+<body ng-controller="appController" ng-init="loadIndexItems()";>
 
     <!-- MENU SUPERIOR -->
     <ng-include src="'PartialView/header.html'"></ng-include>
@@ -70,82 +70,68 @@
     <!-- SUB-MENU SUPERIOR -->
     <ng-include src="'PartialView/headerBottom.html'"></ng-include>
 
-    <div class="index-banner">
+    <div class="index-banner" ng-show="produtos1.length > 2">
         <div class="wmuSlider example1" style="height: 560px;">
             <div class="wmuSliderWrapper">
                 <article style="position: relative; width: 100%; opacity: 1;">
-                    <div class="banner-wrap">
-                        <div class="slider-left">
-                            <img src="" alt="" />
-                        </div>
+                    <div class="banner-wrap" style="float: right;">
                         <div class="slider-right">
-                            <h1>Classic</h1>
-                            <h2>White</h2>
-                            <p>Lorem ipsum dolor sit amet</p>
+                            <h3>{{produtos1[0].nome}}</h3>
+                            <h4>{{produtos1[0].descricao}}</h4>
+                            <p>{{produtos1[0].preco | currency:"R$ "}}</p>
                             <div class="btn"><a href="shop-ecommerce.html">Comprar Já</a></div>
                         </div>
                         <div class="clear"></div>
                     </div>
+                    <img ng-src="{{produtos1[0].imagem.base64}}" />
                 </article>
                 <article style="position: absolute; width: 100%; opacity: 0;">
-                    <div class="banner-wrap">
-                        <div class="slider-left">
-                            <!--<img src="resources/images/banner2.jpg" alt="" />-->
-                            <img src="" alt="" />
-                        </div>
+                    <div class="banner-wrap" style="float: right;">
                         <div class="slider-right">
-                            <h1>Classic</h1>
-                            <h2>White</h2>
-                            <p>Lorem ipsum dolor sit amet</p>
-                            <div class="btn"><a href="shop.html">Shop Now</a></div>
+                            <h3>{{produtos1[1].nome}}</h3>
+                            <h4>{{produtos1[1].descricao}}</h4>
+                            <p>{{produtos1[1].preco | currency:"R$ "}}</p>
+                            <div class="btn"><a href="shop-ecommerce.html">Comprar Já</a></div>
                         </div>
                         <div class="clear"></div>
                     </div>
+                    <img ng-src="{{produtos1[1].imagem.base64}}" />
                 </article>
                 <article style="position: absolute; width: 100%; opacity: 0;">
-                    <div class="banner-wrap">
-                        <div class="slider-left">
-                            <!--<img src="resources/images/banner1.jpg" alt="" />-->
-                            <img src="" alt="" />
-                        </div>
+                    <div class="banner-wrap" style="float: right;">
                         <div class="slider-right">
-                            <h1>Classic</h1>
-                            <h2>White</h2>
-                            <p>Lorem ipsum dolor sit amet</p>
-                            <div class="btn"><a href="shop.html">Shop Now</a></div>
+                            <h3>{{produtos1[2].nome}}</h3>
+                            <h4>{{produtos1[2].descricao}}</h4>
+                            <p>{{produtos1[2].preco | currency:"R$ "}}</p>
+                            <div class="btn"><a href="shop-ecommerce.html">Comprar Já</a></div>
                         </div>
                         <div class="clear"></div>
                     </div>
+                    <img ng-src="{{produtos1[2].imagem.base64}}" />
                 </article>
                 <article style="position: absolute; width: 100%; opacity: 0;">
-                    <div class="banner-wrap">
-                        <div class="slider-left">
-                            <!--<img src="resources/images/banner2.jpg" alt="" />-->
-                            <img src="" alt="" />
-                        </div>
+                    <div class="banner-wrap" style="float: right;">
                         <div class="slider-right">
-                            <h1>Classic</h1>
-                            <h2>White</h2>
-                            <p>Lorem ipsum dolor sit amet</p>
-                            <div class="btn"><a href="shop.html">Shop Now</a></div>
+                            <h3>{{produtos1[3].nome}}</h3>
+                            <h4>{{produtos1[3].descricao}}</h4>
+                            <p>{{produtos1[3].preco | currency:"R$ "}}</p>
+                            <div class="btn"><a href="shop-ecommerce.html">Comprar Já</a></div>
                         </div>
                         <div class="clear"></div>
                     </div>
+                    <img ng-src="{{produtos1[3].imagem.base64}}" />
                 </article>
                 <article style="position: absolute; width: 100%; opacity: 0;">
-                    <div class="banner-wrap">
-                        <div class="slider-left">
-                            <!--<img src="resources/images/banner1.jpg" alt="" />-->
-                            <img src="" alt="" />
-                        </div>
+                    <div class="banner-wrap" style="float: right;">
                         <div class="slider-right">
-                            <h1>Classic</h1>
-                            <h2>White</h2>
-                            <p>Lorem ipsum dolor sit amet</p>
-                            <div class="btn"><a href="shop.html">Shop Now</a></div>
+                            <h3>{{produtos1[4].nome}}</h3>
+                            <h4>{{produtos1[4].descricao}}</h4>
+                            <p>{{produtos1[4].preco | currency:"R$ " }}</p>
+                            <div class="btn"><a href="shop-ecommerce.html">Comprar Já</a></div>
                         </div>
                         <div class="clear"></div>
                     </div>
+                    <img ng-src="{{produtos1[4].imagem.base64}}" />
                 </article>
             </div>
             <a class="wmuSliderPrev">Previous</a><a class="wmuSliderNext">Next</a>
@@ -182,10 +168,10 @@
                         <a href="details-ecommerce.html">
                             <div class="view view-fifth">
                                 <div class="top_box">
-                                    <h3 class="m_1">{{produto.titulo}}</h3>
-                                    <p class="m_2">{{produto.subtitulo}}</p>
+                                    <h3 class="m_1">{{produto.nome}}</h3>
+                                    <p class="m_2">{{produto.descricao}}</p>
                                     <div class="grid_img">
-                                        <div class="css3"><img ng-src="{{produto.img}}" alt="" /></div>
+                                        <div class="css3"><img ng-src="{{produto.imagem.base64}}" alt="" /></div>
                                         <div class="mask">
                                             <div class="info">Visualizar</div>
                                         </div>
@@ -204,7 +190,7 @@
                                                     <h2>Adicionar ao carrinho?</h2>
                                                 </li><br />
                                                 <li>
-                                                    <h3>{{produto.titulo}} ({{produto.subtitulo}})</h3>
+                                                    <h3>{{produto.nome}} ({{produto.descricao}})</h3>
                                                 </li>
                                                 <li>
                                                     <p>{{produto.preco | currency:"R$ "}}</p>

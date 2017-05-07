@@ -231,7 +231,8 @@ body {
             width: auto;
             height: auto;
             display: block;
-            margin: 0 auto;
+/*             margin: 0 auto; */
+            margin-left: 28%;
         }
 
 .wmuGallery .wmuGalleryImage {
@@ -311,6 +312,7 @@ body {
     float: left;
     text-align: right;
     margin-top: 4%;
+    margin-left: 30%;
 }
 
     .slider-right h1 {
