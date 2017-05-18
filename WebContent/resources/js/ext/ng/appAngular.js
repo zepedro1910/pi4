@@ -4,7 +4,7 @@ app.controller('headerController',['$scope', '$filter', '$http', function ($scop
 	
 	$scope.redirectToCategory = function(categoria){
 		window.sessionStorage.setItem('categoria', JSON.stringify(categoria));
-        window.location.href='index-ecommerce.html'
+        window.location.href='shop-ecommerce.html'
 	}
 	
 	$scope.categoria = [];
@@ -17,34 +17,21 @@ app.controller('headerController',['$scope', '$filter', '$http', function ($scop
 	});
 }]);
 
-//controller ==> index-ecommerce.html
+// controller ==> index-ecommerce.html
 app.controller('appController', ['$scope', '$filter', '$http', function ($scope, $filter, $http) {
 	
     $scope.produtos1 = [];
-    $scope.categoria = JSON.parse(window.sessionStorage.getItem('categoria'));
     
-    if($scope.categoria == null){
-    	$scope.loadIndexItems = function(){
-        	$http({
-        		method:'POST',
-        		url:'vinil/find',
-        		data: {maxResult:0, fistItem: 0}
-        	}).then(function(response){
-        		$scope.produtos1 = response.data;
-        	});
+	$scope.loadIndexItems = function(){
+    	$http({
+    		method:'POST',
+    		url:'vinil/find',
+    		data: {maxResult:0, fistItem: 0}
+    	}).then(function(response){
+    		$scope.produtos1 = response.data;
+    	});
+	}
         	
-        }
-    }else{
-        	$http({
-        		method:'POST',
-        		url:'vinil/buscaPorCategoria',
-        		data: {categoria:$scope.categoria}
-        	}).then(function(response){
-        		$scope.produtos1 = response.data;
-        	});
-    }
-    
-    
     $scope.viewDetails = function(produto){
     	window.sessionStorage.setItem('produto', JSON.stringify(produto));
         window.location.href='details-ecommerce.html'
@@ -53,22 +40,23 @@ app.controller('appController', ['$scope', '$filter', '$http', function ($scope,
     
 }]);
 
-//controller ==> details-ecommerce.html
+// controller ==> details-ecommerce.html
 app.controller('produtoController', ['$scope', '$filter', '$http', function ($scope, $filter, $http) {
 	$scope.produto = JSON.parse(window.sessionStorage.getItem('produto'));
 }]);
 
-//controller ==> login-ecommerce.html
+// controller ==> login-ecommerce.html
 app.controller('loginController', ['$scope', '$filter', '$http', function ($scope, $filter, $http) {
 }]);
 
-// app.controller('paymentController', ['$scope', '$filter', '$http', function ($scope, $filter, $http) {
-//   $scope.isEditMode = false;
-//   $scope.usuario = {Endereco:'Rua 13 de Maio, 123',
-//                     Pais: 'BR', 
-//                     Cidade: 'São Paulo',
-//                     Cep: '04674-080',
-//                     Telefone: '(11) 95610-0878'};
+// app.controller('paymentController', ['$scope', '$filter', '$http', function
+// ($scope, $filter, $http) {
+// $scope.isEditMode = false;
+// $scope.usuario = {Endereco:'Rua 13 de Maio, 123',
+// Pais: 'BR',
+// Cidade: 'São Paulo',
+// Cep: '04674-080',
+// Telefone: '(11) 95610-0878'};
 // }]);
 
 
@@ -77,7 +65,7 @@ app.controller('autenticacaoController', ['$scope', '$filter', '$http', function
   $scope.usuarioAutenticado = true ;
 }]);
 
-//controller ==> register-ecommerce.html
+// controller ==> register-ecommerce.html
 app.controller('accountController',['$scope', '$filter', '$http', function ($scope, $filter, $http){
 
   $scope.state_selected;
@@ -5824,7 +5812,7 @@ app.controller('accountController',['$scope', '$filter', '$http', function ($sco
       }
   }
 
-//payment mode
+// payment mode
   $scope.usuario = {Nome:'Camaleão Ferreira', 
                     Endereco:'Rua 13 de Maio, 123',
                     Estado: 'SP', 
@@ -5833,144 +5821,46 @@ app.controller('accountController',['$scope', '$filter', '$http', function ($sco
                     Telefone: '(11) 95610-0878',
                     ValorCompra: 1250};
   
-  //data de vencimento do boleto
+  // data de vencimento do boleto
   $scope.dateToday = new Date();
   $scope.date = new Date();
   $scope.date.setDate($scope.date.getDate() + 7);
 
 }]);
 
-  //controller ==> shop-ecommerce.html
+  // controller ==> shop-ecommerce.html
 app.controller('shopCatalogController',['$scope', '$filter', '$http', function ($scope, $filter, $http){
 
 
-  $scope.produtosSecao = [{
-          img: 'C:/Users/edward.silva/Documents/pi4/WebContent/resources/images/banner1.jpg',
-          titulo: 'Classico',
-          subtitulo: 'White',
-          preco: '1'
-      }, {
-          img: 'C:/Users/edward.silva/Documents/pi4/WebContent/resources/images/banner2.jpg',
-          titulo: 'Classico',
-          subtitulo: 'White',
-          preco: '2'
-      }, {
-          img: 'C:/Users/edward.silva/Documents/pi4/WebContent/resources/images/banner1.jpg',
-          titulo: 'Classico',
-          subtitulo: 'White',
-          preco: '3'
-      }, {
-          img: 'C:/Users/edward.silva/Documents/pi4/WebContent/resources/images/banner2.jpg',
-          titulo: 'Classico',
-          subtitulo: 'White',
-          preco: '4'
-      }, {
-          img: 'C:/Users/edward.silva/Documents/pi4/WebContent/resources/images/banner1.jpg',
-          titulo: 'Classico',
-          subtitulo: 'White',
-          preco: '5'
-      }, {
-          img: 'C:/Users/edward.silva/Documents/pi4/WebContent/resources/images/banner2.jpg',
-          titulo: 'Classico',
-          subtitulo: 'White',
-          preco: '6'
-      },{
-          img: 'C:/Users/edward.silva/Documents/pi4/WebContent/resources/images/banner1.jpg',
-          titulo: 'Classico',
-          subtitulo: 'White',
-          preco: '7'
-      }, {
-          img: 'C:/Users/edward.silva/Documents/pi4/WebContent/resources/images/banner2.jpg',
-          titulo: 'Classico',
-          subtitulo: 'White',
-          preco: '8'
-      }, {
-          img: 'C:/Users/edward.silva/Documents/pi4/WebContent/resources/images/banner1.jpg',
-          titulo: 'Classico',
-          subtitulo: 'White',
-          preco: '9'
-      }, {
-          img: 'C:/Users/edward.silva/Documents/pi4/WebContent/resources/images/banner2.jpg',
-          titulo: 'Classico',
-          subtitulo: 'White',
-          preco: '10'
-      }, {
-          img: 'C:/Users/edward.silva/Documents/pi4/WebContent/resources/images/banner1.jpg',
-          titulo: 'Classico',
-          subtitulo: 'White',
-          preco: '11'
-      }, {
-          img: 'C:/Users/edward.silva/Documents/pi4/WebContent/resources/images/banner2.jpg',
-          titulo: 'Classico',
-          subtitulo: 'White',
-          preco: '12'
-      },{
-          img: 'C:/Users/edward.silva/Documents/pi4/WebContent/resources/images/banner1.jpg',
-          titulo: 'Classico',
-          subtitulo: 'White',
-          preco: '13'
-      }, {
-          img: 'C:/Users/edward.silva/Documents/pi4/WebContent/resources/images/banner2.jpg',
-          titulo: 'Classico',
-          subtitulo: 'White',
-          preco: '14'
-      }, {
-          img: 'C:/Users/edward.silva/Documents/pi4/WebContent/resources/images/banner1.jpg',
-          titulo: 'Classico',
-          subtitulo: 'White',
-          preco: '15'
-      }, {
-          img: 'C:/Users/edward.silva/Documents/pi4/WebContent/resources/images/banner2.jpg',
-          titulo: 'Classico',
-          subtitulo: 'White',
-          preco: '16'
-      }, {
-          img: 'C:/Users/edward.silva/Documents/pi4/WebContent/resources/images/banner1.jpg',
-          titulo: 'Classico',
-          subtitulo: 'White',
-          preco: '17'
-      }, {
-          img: 'C:/Users/edward.silva/Documents/pi4/WebContent/resources/images/banner2.jpg',
-          titulo: 'Classico',
-          subtitulo: 'White',
-          preco: '18'
-      },{
-          img: 'C:/Users/edward.silva/Documents/pi4/WebContent/resources/images/banner1.jpg',
-          titulo: 'Classico',
-          subtitulo: 'White',
-          preco: '19'
-      }, {
-          img: 'C:/Users/edward.silva/Documents/pi4/WebContent/resources/images/banner2.jpg',
-          titulo: 'Classico',
-          subtitulo: 'White',
-          preco: '20'
-      }, {
-          img: 'C:/Users/edward.silva/Documents/pi4/WebContent/resources/images/banner1.jpg',
-          titulo: 'Classico',
-          subtitulo: 'White',
-          preco: '21'
-      }, {
-          img: 'C:/Users/edward.silva/Documents/pi4/WebContent/resources/images/banner2.jpg',
-          titulo: 'Classico',
-          subtitulo: 'White',
-          preco: '22'
-      }, {
-          img: 'C:/Users/edward.silva/Documents/pi4/WebContent/resources/images/banner1.jpg',
-          titulo: 'Classico',
-          subtitulo: 'White',
-          preco: '23'
-      }, {
-          img: 'C:/Users/edward.silva/Documents/pi4/WebContent/resources/images/banner2.jpg',
-          titulo: 'Classico',
-          subtitulo: 'White',
-          preco: '24'
-      }];
+  $scope.produtosSecao= [];
+  
+  $scope.viewDetails = function(produto){
+  	window.sessionStorage.setItem('produto', JSON.stringify(produto));
+      window.location.href='details-ecommerce.html'
+  }
 
+  $scope.categoria = JSON.parse(window.sessionStorage.getItem('categoria'));
+      
+  $http({
+		method:'POST',
+		url:'vinil/buscaPorCategoria',
+		data: {categoria:$scope.categoria}
+	}).then(function(response){
+		$scope.produtosSecao = response.data;
+	});
 
   $scope.currentpage = 0;
   $scope.pageSize = 9;
-  $scope.numberOfPages = Math.ceil($scope.produtosSecao.length/$scope.pageSize) - 1;
+  $scope.numberOfPages = Math.ceil($scope.produtosSecao.length/$scope.pageSize) - 1 == -1 ? 0:Math.ceil($scope.produtosSecao.length/$scope.pageSize) - 1;
 
+  if($scope.currentpage == $scope.numberOfPages){
+      $('#listaProdutos ul li span:last').hide();
+    }
+  
+  if($scope.currentpage == 0){
+      $('#listaProdutos ul li span:first').hide();
+    }
+  
   $scope.prevPage = function (){
     if($scope.currentpage > 0){
       $('#listaProdutos ul li span:first').show();
@@ -5998,7 +5888,7 @@ app.controller('shopCatalogController',['$scope', '$filter', '$http', function (
 
 app.filter('startFrom', function() {
   return function(input, start) {
-      start = +start; //parse to int
+      start = +start; // parse to int
       return input.slice(start).length > 0 ? input.slice(start) : "" ;
   }
 });

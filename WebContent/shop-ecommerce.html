@@ -92,13 +92,13 @@
 				<div class="clear"></div>
 				<div class="box1" ng-repeat="produto in produtosSecao | startFrom:currentpage*pageSize | limitTo:pageSize">
 					<div class="col_1_of_single1 span_1_of_single1">
-						<a href="single.html">
+						<a href="" ng-click="viewDetails(produto)">
 							<div class="view1 view-fifth1">
 								<div class="top_box">
-									<h3 class="m_1">{{produto.titulo}}</h3>
-									<p class="m_2">{{produto.subtitulo}}</p>
+									<h3 class="m_1">{{produto.nome}}</h3>
+									<p class="m_2">{{produto.descricao}}</p>
 									<div class="grid_img">
-										<div class="css3"><img src="{{produto.img}}" alt="" /></div>
+										<div class="css3"><img src="{{produto.imagem.base64}}" alt="" /></div>
 										<div class="mask1">
 											<div class="info">Visualizar</div>
 										</div>
@@ -117,7 +117,7 @@
 													<h2>Adicionar ao carrinho?</h2>
 												</li><br />
 												<li>
-													<h3>{{produto.titulo}} ({{produto.subtitulo}})</h3>
+													<h3>{{produto.nome}} ({{produto.descricao}})</h3>
 												</li>
 												<li>
 													<p>{{produto.preco | currency:"R$ "}}</p>
