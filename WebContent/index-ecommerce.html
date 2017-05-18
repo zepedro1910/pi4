@@ -165,18 +165,18 @@
             <div class="content-bottom">
                 <div class="box1">
                     <div class="col_1_of_3 span_1_of_3" ng-repeat="produto in produtos1" style="margin-left:10px">
-                        <a href="details-ecommerce.html">
+                        <a href ng-click="viewDetails(produto)">
                             <div class="view view-fifth">
                                 <div class="top_box">
-                                    <h3 class="m_1">{{produto.nome}}</h3>
-                                    <p class="m_2">{{produto.descricao}}</p>
+                                    <h3 ng-model="produto.nome" class="m_1">{{produto.nome}}</h3>
+                                    <p ng-model= "produto.descricao" class="m_2">{{produto.descricao}}</p>
                                     <div class="grid_img">
-                                        <div class="css3"><img ng-src="{{produto.imagem.base64}}" alt="" /></div>
+                                        <div class="css3"><img ng-model="produto.imagem.base64" ng-src="{{produto.imagem.base64}}" alt="" /></div>
                                         <div class="mask">
                                             <div class="info">Visualizar</div>
                                         </div>
                                     </div>
-                                    <div class="price">{{produto.preco | currency:"R$ "}}</div>
+                                    <div ng-model="produto.preco" class="price">{{produto.preco | currency:"R$ "}}</div>
                                 </div>
                             </div>
                             <ul class="list">

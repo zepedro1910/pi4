@@ -12,4 +12,6 @@ public interface VinilRepository {
 
       public List<Vinil> find(int fistItem, int lastItem, String name, Long id);
 
+      public List<Vinil> buscaPorCategoria(String categoria);
+
 }

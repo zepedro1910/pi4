@@ -11,11 +11,13 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.ProjectionList;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.criterion.SimpleExpression;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.com.senac.domain.Categoria;
 import br.com.senac.domain.Vinil;
 
 @Repository
@@ -62,5 +64,14 @@ public class VinilRepositoryImpl implements VinilRepository {
       public List<Vinil> find(final int fistItem, final int lastItem, final String name, final Long id) {
             final DetachedCriteria criteria = extracted(name, id).addOrder(Order.asc("nome"));
             return (List<Vinil>) hibernateTemplate.findByCriteria(criteria, fistItem, lastItem);
+      }
+
+      @Override
+      public List<Vinil> buscaPorCategoria(final String descricao) {
+            final Categoria categoria = Categoria.getEnum(descricao);
+            final DetachedCriteria criteria = DetachedCriteria.forClass(Vinil.class);
+            final SimpleExpression restrictions = Restrictions.like("categoria", categoria);
+            criteria.add(restrictions);
+            return (List<Vinil>) hibernateTemplate.findByCriteria(criteria);
       }
 }

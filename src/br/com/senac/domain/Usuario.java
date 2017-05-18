@@ -14,6 +14,9 @@ public class Usuario extends Pessoa {
       @GeneratedValue(strategy = GenerationType.TABLE)
       private Long id;
 
+      //@OneToOne(cascade = CascadeType.ALL)
+      //private CarrinhoDeCompra carrinho;
+
       public Usuario() {
             super();
       }

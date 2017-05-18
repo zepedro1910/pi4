@@ -1,30 +1,61 @@
 ﻿var app = angular.module('app', []);
 
+app.controller('headerController',['$scope', '$filter', '$http', function ($scope, $filter, $http){
+	
+	$scope.redirectToCategory = function(categoria){
+		window.sessionStorage.setItem('categoria', JSON.stringify(categoria));
+        window.location.href='index-ecommerce.html'
+	}
+	
+	$scope.categoria = [];
+	
+	$http({
+		url:'vinil/categorias',
+		method:'GET'
+	}).then(function(response){
+		$scope.categoria = response.data;
+	});
+}]);
+
 //controller ==> index-ecommerce.html
 app.controller('appController', ['$scope', '$filter', '$http', function ($scope, $filter, $http) {
 	
     $scope.produtos1 = [];
+    $scope.categoria = JSON.parse(window.sessionStorage.getItem('categoria'));
     
-    $scope.loadIndexItems = function(){
-    	$http({
-    		method:'POST',
-    		url:'vinil/find',
-    		data: {maxResult:0, fistItem: 0}
-    	}).then(function(response){
-    		$scope.produtos1 = response.data;
-    	});
-    	
+    if($scope.categoria == null){
+    	$scope.loadIndexItems = function(){
+        	$http({
+        		method:'POST',
+        		url:'vinil/find',
+        		data: {maxResult:0, fistItem: 0}
+        	}).then(function(response){
+        		$scope.produtos1 = response.data;
+        	});
+        	
+        }
+    }else{
+        	$http({
+        		method:'POST',
+        		url:'vinil/buscaPorCategoria',
+        		data: {categoria:$scope.categoria}
+        	}).then(function(response){
+        		$scope.produtos1 = response.data;
+        	});
     }
+    
+    
+    $scope.viewDetails = function(produto){
+    	window.sessionStorage.setItem('produto', JSON.stringify(produto));
+        window.location.href='details-ecommerce.html'
+    }
+    
+    
 }]);
 
 //controller ==> details-ecommerce.html
 app.controller('produtoController', ['$scope', '$filter', '$http', function ($scope, $filter, $http) {
-    $scope.produto = {
-        nome: 'Caneca Game of Thrones',
-        img: '#',
-        preco: 'R$ 25,00',
-        descricao: 'Caneca em cerâmica da série Game of Thrones'
-    };
+	$scope.produto = JSON.parse(window.sessionStorage.getItem('produto'));
 }]);
 
 //controller ==> login-ecommerce.html

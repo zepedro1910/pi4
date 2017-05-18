@@ -29,6 +29,15 @@ public enum Categoria {
             return descricao;
       }
 
+      public static Categoria getEnum(final String descricao) {
+            for (final Categoria categoria : Categoria.values()) {
+                  if (categoria.getDescricao().equalsIgnoreCase(descricao)) {
+                        return categoria;
+                  }
+            }
+            return null;
+      }
+
       public static List<String> getCategorias() {
             final List<String> categorias = new ArrayList<>();
             for (final Categoria c : Categoria.values()) {

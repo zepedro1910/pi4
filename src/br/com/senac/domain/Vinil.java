@@ -1,6 +1,7 @@
 package br.com.senac.domain;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +19,7 @@ public class Vinil {
       @GeneratedValue(strategy = GenerationType.TABLE)
       private Long id;
 
-      //@Column(nullable = false)
+      @Column(nullable = false)
       private String nome;
 
       private Categoria categoria;
@@ -34,30 +35,6 @@ public class Vinil {
 
       private boolean isInactive;
 
-      public Imagem getImagem() {
-            return imagem;
-      }
-
-      public void setImagem(final Imagem imagem) {
-            this.imagem = imagem;
-      }
-
-      public boolean isInactive() {
-            return isInactive;
-      }
-
-      public void setInactive(final boolean isInactive) {
-            this.isInactive = isInactive;
-      }
-
-      public Integer getQuantidade() {
-            return quantidade;
-      }
-
-      public void setQuantidade(final Integer quantidade) {
-            this.quantidade = quantidade;
-      }
-
       public Long getId() {
             return id;
       }
@@ -72,6 +49,14 @@ public class Vinil {
 
       public void setNome(final String nome) {
             this.nome = nome;
+      }
+
+      public Categoria getCategoria() {
+            return categoria;
+      }
+
+      public void setCategoria(final Categoria categoria) {
+            this.categoria = categoria;
       }
 
       public Double getPreco() {
@@ -90,21 +75,29 @@ public class Vinil {
             this.descricao = descricao;
       }
 
-      public Categoria getCategoria() {
-            return categoria;
+      public Integer getQuantidade() {
+            return quantidade;
       }
 
-      public void setCategoria(final Categoria categoria) {
-            this.categoria = categoria;
+      public void setQuantidade(final Integer quantidade) {
+            this.quantidade = quantidade;
+      }
+
+      public Imagem getImagem() {
+            return imagem;
+      }
+
+      public void setImagem(final Imagem imagem) {
+            this.imagem = imagem;
       }
 
       @JsonProperty(value = "isInactive")
-      public boolean isInative() {
+      public boolean isInactive() {
             return isInactive;
       }
 
-      public void setInative(final boolean isInative) {
-            isInactive = isInative;
+      public void setInactive(final boolean isInactive) {
+            this.isInactive = isInactive;
       }
 
 }

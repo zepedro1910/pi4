@@ -109,8 +109,8 @@
 					<ul id="etalage">
 						<li>
 							<a href="optionallink.html">
-								<img class="etalage_thumb_image" ng-src="{{produto.img}}" />
-								<img class="etalage_source_image" ng-src="{{produto.img}}" />
+								<img class="etalage_thumb_image" ng-src="{{produto.imagem.base64}}" />
+								<img class="etalage_source_image" ng-src="{{produto.imagem.base64}}" />
 							</a>
 						</li>
 					</ul>
@@ -118,6 +118,7 @@
 				</div>
 				<div class="cont1 span_2_of_a1">
 					<h3 class="m_3">{{produto.nome}}</h3>
+					<p class="m_desc">{{produto.descricao}}</p>
 
 					<div class="price_single">
 						<span class="actual">{{produto.preco | currency:"R$ "}}</span>
@@ -127,8 +128,6 @@
 							<input type="submit" value="Comprar" title="">
 						</form>
 					</div>
-					<p class="m_desc">{{produto.descricao}}</p>
-
 					<div class="social_single">
 						<ul>
 							<li class="fb"><a href="#"><span> </span></a></li>

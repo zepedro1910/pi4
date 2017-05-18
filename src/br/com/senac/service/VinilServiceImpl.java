@@ -58,4 +58,13 @@ public class VinilServiceImpl implements VinilService {
             }
             return id;
       }
+
+      @Override
+      public List<Vinil> buscaPorCategoria(final Map<String, Object> map) {
+            String categoria = null;
+            if (map.containsKey("categoria")) {
+                  categoria = (String) map.get("categoria");
+            }
+            return vinilRepository.buscaPorCategoria(categoria);
+      }
 }

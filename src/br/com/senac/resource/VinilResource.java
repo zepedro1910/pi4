@@ -12,18 +12,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.senac.domain.Categoria;
 import br.com.senac.domain.Vinil;
+import br.com.senac.repository.VinilRepository;
 import br.com.senac.service.VinilService;
 
 @RestController
 @RequestMapping(value = "/vinil")
 public class VinilResource {
 
+      private final VinilRepository vinilRepository;
       private final VinilService vinilService;
 
       @Inject
-      public VinilResource(final VinilService vinilService) {
-            super();
+      public VinilResource(final VinilService vinilService, final VinilRepository vinilRepository) {
             this.vinilService = vinilService;
+            this.vinilRepository = vinilRepository;
       }
 
       @RequestMapping(value = "/categorias", method = RequestMethod.GET)
@@ -44,6 +46,11 @@ public class VinilResource {
       @RequestMapping(value = "/find", method = RequestMethod.POST)
       public List<Vinil> findBy(@RequestBody final Map<String, Object> map) {
             return vinilService.findVinil(map);
+      }
+
+      @RequestMapping(value = "/buscaPorCategoria", method = RequestMethod.POST)
+      public List<Vinil> buscaPorCategoria(@RequestBody final Map<String, Object> map) {
+            return vinilService.buscaPorCategoria(map);
       }
 
 }
