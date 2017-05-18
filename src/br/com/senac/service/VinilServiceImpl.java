@@ -67,4 +67,9 @@ public class VinilServiceImpl implements VinilService {
             }
             return vinilRepository.buscaPorCategoria(categoria);
       }
+
+	@Override
+	public Vinil find(Long id) {
+		return vinilRepository.find(id);
+	}
 }

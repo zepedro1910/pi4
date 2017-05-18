@@ -74,4 +74,10 @@ public class VinilRepositoryImpl implements VinilRepository {
             criteria.add(restrictions);
             return (List<Vinil>) hibernateTemplate.findByCriteria(criteria);
       }
+
+	@Override
+	public Vinil find(Long id) {
+		
+		return hibernateTemplate.get(Vinil.class, id);
+	}
 }

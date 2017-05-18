@@ -62,7 +62,7 @@ app.controller('loginController', ['$scope', '$filter', '$http', function ($scop
 
 app.controller('autenticacaoController', ['$scope', '$filter', '$http', function ($scope, $filter, $http) {
   $scope.usuario = {Nome:'Edward Carvalho',Id:'123'};
-  $scope.usuarioAutenticado = true ;
+  $scope.usuarioAutenticado = false ;
 }]);
 
 // controller ==> register-ecommerce.html
@@ -5810,6 +5810,16 @@ app.controller('accountController',['$scope', '$filter', '$http', function ($sco
       }else{
           $scope.errorMessage = false;
       }
+  }
+  
+  $scope.cadastrarUsuario = function(consumer){
+	  $http({
+		  url:'pessoa/save',
+		  method:'POST',
+		  data: consumer
+	  }).then(function(response){
+		  var bla = response.data;
+	  });
   }
 
 // payment mode

@@ -2,7 +2,7 @@ package br.com.senac.domain;
 
 public enum Estados {
 
-      ACRE("AC"), //	
+      Acre("AC"), //	
       ALAGOAS("AL"), //	 
       AMAPA("AP"), //	 
       AMAZONAS("AM"), //	

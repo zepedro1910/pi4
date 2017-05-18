@@ -14,4 +14,6 @@ public interface VinilRepository {
 
       public List<Vinil> buscaPorCategoria(String categoria);
 
+      public Vinil find(Long id);
+
 }

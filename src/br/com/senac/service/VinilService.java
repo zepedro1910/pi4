@@ -15,4 +15,6 @@ public interface VinilService {
 
       public List<Vinil> buscaPorCategoria(Map<String, Object> map);
 
+      public Vinil find(Long id);
+
 }
