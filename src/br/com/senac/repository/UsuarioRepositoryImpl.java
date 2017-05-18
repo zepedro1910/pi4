@@ -54,7 +54,7 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
       }
 
       private DetachedCriteria extracted(final String name, final String cpf) {
-            final DetachedCriteria criteria = DetachedCriteria.forClass(Usuario.class);
+            final DetachedCriteria criteria = DetachedCriteria.forClass(Pessoa.class);
             if (Objects.nonNull(name)) {
                   criteria.add(Restrictions.like("nome", name, MatchMode.ANYWHERE).ignoreCase());
             }
@@ -67,9 +67,9 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
       @SuppressWarnings("unchecked")
       @Override
       @Transactional(propagation = Propagation.REQUIRED)
-      public List<Usuario> findUser(final int fistItem, final int lastItem, final String name, final String cpf) {
+      public List<Pessoa> findUser(final int fistItem, final int lastItem, final String name, final String cpf) {
             final DetachedCriteria criteria = extracted(name, cpf).addOrder(Order.asc("nome"));
-            return (List<Usuario>) hibernateTemplate.findByCriteria(criteria, fistItem, lastItem);
+            return (List<Pessoa>) hibernateTemplate.findByCriteria(criteria, fistItem, lastItem);
       }
 
 	@Override

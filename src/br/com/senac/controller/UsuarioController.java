@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.senac.domain.Estados;
 import br.com.senac.domain.Pessoa;
-import br.com.senac.domain.Usuario;
 import br.com.senac.service.UsuarioService;
 
 @RestController
@@ -37,7 +36,7 @@ public class UsuarioController {
       }
 
       @RequestMapping(value = "/findUser", method = RequestMethod.POST)
-      public List<Usuario> findBy(@RequestBody final Map<String, Object> map) {
+      public List<Pessoa> findBy(@RequestBody final Map<String, Object> map) {
             return userService.findUser(map);
       }
 

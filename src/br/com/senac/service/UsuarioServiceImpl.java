@@ -37,7 +37,7 @@ public class UsuarioServiceImpl implements UsuarioService {
       }
 
       @Override
-      public List<Usuario> findUser(final Map<String, Object> map) {
+      public List<Pessoa> findUser(final Map<String, Object> map) {
             final int fistItem = (int) map.get("fistItem");
             final int lastItem = (int) map.get("maxResult");
             final String nome = getNameKey(map);

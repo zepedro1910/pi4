@@ -9,7 +9,7 @@ public interface UsuarioRepository {
 
       Integer countUser(String name, String cpf);
 
-      public List<Usuario> findUser(int fistItem, int lastItem, String name, String cpf);
+      public List<Pessoa> findUser(int fistItem, int lastItem, String name, String cpf);
 
       public Long saveUsuario(Pessoa usuario);
 

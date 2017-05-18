@@ -8,7 +8,7 @@ import br.com.senac.domain.Usuario;
 
 public interface UsuarioService {
 
-      public List<Usuario> findUser(Map<String, Object> map);
+      public List<Pessoa> findUser(Map<String, Object> map);
 
       public Integer countUser(Map<String, Object> map);
 
