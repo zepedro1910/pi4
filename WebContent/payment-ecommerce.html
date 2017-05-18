@@ -85,10 +85,10 @@
 						</thead>
 						<tbody ng-repeat="produto in carrinhoCompras">
 							<tr>
-								<td ng-model="produto.Quantidade"style="padding-left: 4%;width: 11%;">{{produto.Quantidade}}</td>
-								<td ng-model="produto.Nome" style="padding-left: 5%;">{{produto.Nome}}</td>
-								<td ng-model="produto.Preco" style="text-align: center; width: 11%;">{{produto.Preco  | currency:"R$ "}}</td>
-								<td ng-model="produto.PrecoTotal" style="text-align: center; width: 11%;">{{produto.Preco * produto.Quantidade  | currency:"R$ "}}</td>
+								<td ng-model="produto.quantidade"style="padding-left: 4%;width: 11%;">{{produto.quantidade}}</td>
+								<td ng-model="produto.nome" style="padding-left: 5%;">{{produto.nome}}</td>
+								<td ng-model="produto.precoUnitario" style="text-align: center; width: 11%;">{{produto.preco  | currency:"R$ "}}</td>
+								<td ng-model="produto.precoTotal" style="text-align: center; width: 11%;">{{produto.precoUnitario * produto.quantidade  | currency:"R$ "}}</td>
 							</tr>
 						</tbody>
 						<tfoot>

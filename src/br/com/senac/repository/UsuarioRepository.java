@@ -12,4 +12,6 @@ public interface UsuarioRepository {
 
       public Long saveUsuario(Usuario usuario);
 
+	public Usuario checkLoginDataUser(String email, String senha);
+
 }

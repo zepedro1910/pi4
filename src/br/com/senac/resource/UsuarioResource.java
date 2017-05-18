@@ -34,12 +34,9 @@ public class UsuarioResource {
       }
 
       @RequestMapping(value = "/save", method = RequestMethod.POST)
-      public void save(@RequestBody final Usuario usuario,  HttpServletRequest request, HttpServletResponse response) {
+      public void save(@RequestBody final Usuario usuario) {
             userService.save(usuario);
-            Usuario user = (Usuario) userService.findUser((Map<String, Object>) usuario);
-            Cookie cookie = new Cookie("userId",user.getId().toString());
-            cookie.setMaxAge(2592000); //30 dias
-            response.addCookie(cookie);
+  
       }
 
       @RequestMapping(value = "/findUser", method = RequestMethod.POST)
@@ -64,11 +61,4 @@ public class UsuarioResource {
             return mapList;
       }
       
-      @RequestMapping(value = "/create-cookie", method = RequestMethod.GET)
-      public String createCookie(Model model, HttpServletRequest request, HttpServletResponse response) {
-          Cookie cookie = new Cookie("userId","cookie-value");
-          cookie.setMaxAge(60*60*24); //24 hour
-          response.addCookie(cookie);
-          return "redirect:/";
-      }
-}
+  }

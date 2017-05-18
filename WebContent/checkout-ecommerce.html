@@ -70,7 +70,7 @@
 	<!-- SUB-MENU SUPERIOR -->
 	<ng-include src="'PartialView/headerBottom.html'"></ng-include>
 
-	<div style="padding-bottom: 3%">
+	<div style="padding: 3% 0;">
 		<div ng-show="!messageEmptyCart">
 			<div class="wrap">
 				<h4 class="title">Carrinho de compras vazio</h4>
@@ -94,16 +94,16 @@
 				</thead>
 				<tbody ng-repeat="produto in carrinhoCompras">
 					<tr>
-						<td><a href="#" ng-click="removerProdutoCarrinho(produto)"><span class="glyphicon glyphicon-remove" style="color: red"></span></a></td>
-						<td ng-model="produto.Quantidade"style="padding-left: 4%;width: 11%;">{{produto.Quantidade}}
+						<td><a href="#" ng-click="removerProdutoCarrinho(produto.id)"><span class="glyphicon glyphicon-remove" style="color: red"></span></a></td>
+						<td ng-model="produto.quantidade"style="padding-left: 4%;width: 11%;">{{produto.quantidade}}
 							<ul id="listIconsCart">
-								<li><a href="#" ng-click="produto.Quantidade >= 1 ? produto.Quantidade=produto.Quantidade+1 : produto.Quantidade"><span class="glyphicon glyphicon-plus"></span></a></li>
-								<li><a href="#" ng-click="produto.Quantidade > 1 ? produto.Quantidade=produto.Quantidade-1 : produto.Quantidade=1"><span class="glyphicon glyphicon-minus"></span></a></li>
+								<li><a href="#" ng-click="mudaQuantidade(produto.id,true)"><span class="glyphicon glyphicon-plus"></span></a></li>
+								<li><a href="#" ng-click="mudaQuantidade(produto.id,false)"><span class="glyphicon glyphicon-minus"></span></a></li>
 							<ul>
 						</td>
-						<td ng-model="produto.Nome" style="padding-left: 5%;">{{produto.Nome}}</td>
-						<td ng-model="produto.Preco" style="text-align: center; width: 11%;">{{produto.Preco  | currency:"R$ "}}</td>
-						<td ng-model="produto.PrecoTotal" style="text-align: center; width: 11%;">{{produto.Preco * produto.Quantidade  | currency:"R$ "}}</td>
+						<td ng-model="produto.nome" style="padding-left: 5%;">{{produto.nome}}</td>
+						<td ng-model="produto.precoUnitario" style="text-align: center; width: 11%;">{{produto.precoUnitario  | currency:"R$ "}}</td>
+						<td ng-model="produto.precoTotal" style="text-align: center; width: 11%;">{{produto.precoTotal  | currency:"R$ "}}</td>
 					</tr>
 				</tbody>
 				<tfoot>
@@ -118,7 +118,7 @@
 				<a href="index-ecommerce.html" class="btn btn-primary">Continuar Comprando</a>
 			</div>
 			<div class="btn-group btn-group-sm" role="group" aria-label="..." style="padding-right: 13%; float: right;">
-				<a href="index-ecommerce.html" class="btn btn-success" style="min-width: 148px;">Comprar</a>
+				<a href="" class="btn btn-success" style="min-width: 148px;" ng-click="redirectToPayment(carrinhoCompras)">Comprar</a>
 			</div>
 		</div>
 	</div>

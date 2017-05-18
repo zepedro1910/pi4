@@ -4,13 +4,17 @@ import java.util.List;
 import java.util.Objects;
 
 import javax.inject.Inject;
+import javax.persistence.NoResultException;
 
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.ProjectionList;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.orm.hibernate5.HibernateCallback;
 import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
@@ -66,4 +70,24 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
             final DetachedCriteria criteria = extracted(name, cpf).addOrder(Order.asc("nome"));
             return (List<Usuario>) hibernateTemplate.findByCriteria(criteria, fistItem, lastItem);
       }
+
+	@Override
+	public Usuario checkLoginDataUser(String email, String senha) {
+		try {
+			Usuario user = hibernateTemplate.execute(new HibernateCallback<Usuario>() {
+
+				@Override
+				public Usuario doInHibernate(Session session) throws HibernateException {
+					return (Usuario) session.createQuery("FROM br.com.senac.domain.Usuario WHERE email = :email AND senha = :senha")
+					.setParameter("email", email)
+					.setParameter("senha", senha).getSingleResult();
+					
+				}
+			});
+			return user;	
+		} catch (NoResultException e) {
+			return null;
+		}
+			
+	}
 }

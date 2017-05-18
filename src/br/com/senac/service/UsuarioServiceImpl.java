@@ -60,4 +60,12 @@ public class UsuarioServiceImpl implements UsuarioService {
             return cpf;
       }
 
+	@Override
+	public List<Usuario> checkLoginData(String email, String senha) {
+		if(email != "" && senha != ""){
+			userRepository.checkLoginDataUser(email,senha);
+		}
+		return null;
+	}
+
 }

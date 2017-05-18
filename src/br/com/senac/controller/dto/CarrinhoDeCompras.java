@@ -1,5 +1,6 @@
 package br.com.senac.controller.dto;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,6 +21,29 @@ public class CarrinhoDeCompras {
 		
 		produtos.put(vinil.getId(), produto);
 		
+	}
+
+	public Collection<Produto> produtos() {
+		
+		return produtos.values();
+		
+	}
+	
+	public CarrinhoDeCompras removeProduto(Long id){
+		produtos.remove(id);
+		
+		return this;
+	}
+
+	public CarrinhoDeCompras aumentaQuantidadeProduto(Long id) {
+		
+		produtos.get(id).aumentaQuantidade();
+		return this;
+	}
+
+	public CarrinhoDeCompras diminuiQuantidadeProduto(Long id) {
+		produtos.get(id).diminuiQuantidade();
+		return this;
 	}
 
 }

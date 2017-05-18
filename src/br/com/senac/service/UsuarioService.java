@@ -12,4 +12,6 @@ public interface UsuarioService {
       public Integer countUser(Map<String, Object> map);
 
       public void save(Usuario usuario);
+
+	public List<Usuario> checkLoginData(String email, String senha);
 }

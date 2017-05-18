@@ -1,6 +1,6 @@
 package br.com.senac.controller.dto;
 
-public class CadastraProdutoRequest {
+public class ProdutoRequest {
 	
 	private Long id;
 

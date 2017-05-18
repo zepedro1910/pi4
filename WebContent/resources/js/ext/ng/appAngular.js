@@ -37,16 +37,53 @@ app.controller('appController', ['$scope', '$filter', '$http', function ($scope,
         window.location.href='details-ecommerce.html'
     }
     
+    $scope.addCarrinho = function(produto){
+    	$http({
+    		url:'carrinhos/produtos',
+    		method:'POST',
+    		data: produto
+    	}).then(function(response){
+    		alert("Produto Adicionado ao Carrinho!");
+    	});
+    }
     
 }]);
 
 // controller ==> details-ecommerce.html
 app.controller('produtoController', ['$scope', '$filter', '$http', function ($scope, $filter, $http) {
 	$scope.produto = JSON.parse(window.sessionStorage.getItem('produto'));
+	
+	 $scope.addCarrinho = function(produto){
+	    	$http({
+	    		url:'carrinhos/produtos',
+	    		method:'POST',
+	    		data: produto
+	    	}).then(function(response){
+	    		alert("Produto Adicionado ao Carrinho!");
+	    	});
+	    }
 }]);
 
 // controller ==> login-ecommerce.html
 app.controller('loginController', ['$scope', '$filter', '$http', function ($scope, $filter, $http) {
+	
+	$scope.logar = function(usuario){
+		$http({
+			url:'pessoa/login',
+			method:'POST',
+			data: usuario
+		}).then(function(response){
+			if(response.data == "valido")
+				window.sessionStorage.setItem('usuario', JSON.stringify(usuario));
+			else
+				alert("Senha ou Email inválido.");
+			
+		}).catch(function(e){
+			
+		});
+	}
+
+	
 }]);
 
 // app.controller('paymentController', ['$scope', '$filter', '$http', function
@@ -61,8 +98,13 @@ app.controller('loginController', ['$scope', '$filter', '$http', function ($scop
 
 
 app.controller('autenticacaoController', ['$scope', '$filter', '$http', function ($scope, $filter, $http) {
-  $scope.usuario = {Nome:'Edward Carvalho',Id:'123'};
-  $scope.usuarioAutenticado = false ;
+	
+ 	$scope.usuario = JSON.parse(window.sessionStorage.getItem('usuario'));
+	if($scope.usuario != null)
+		$scope.usuarioAutenticado = true ;
+	else
+		$scope.usuarioAutenticado = false ;
+  
 }]);
 
 // controller ==> register-ecommerce.html
@@ -5848,6 +5890,16 @@ app.controller('shopCatalogController',['$scope', '$filter', '$http', function (
   	window.sessionStorage.setItem('produto', JSON.stringify(produto));
       window.location.href='details-ecommerce.html'
   }
+  
+  $scope.addCarrinho = function(produto){
+  	$http({
+  		url:'carrinhos/produtos',
+  		method:'POST',
+  		data: produto
+  	}).then(function(response){
+  		alert("Produto Adicionado ao Carrinho!");
+  	});
+  }
 
   $scope.categoria = JSON.parse(window.sessionStorage.getItem('categoria'));
       
@@ -5905,32 +5957,61 @@ app.filter('startFrom', function() {
 
 app.controller('checkOutController', ['$scope', '$filter', '$http', function ($scope, $filter, $http){
   
-  $scope.carrinhoCompras = [{
-    Quantidade : 1,
-    Nome: 'Caneca São Paulo FC',
-    Preco : 35
-  },{
-    Quantidade : 2,
-    Nome: 'Caneca Seleção Brasileira',
-    Preco : 15
-  }];
-  $scope.messageEmptyCart = $scope.carrinhoCompras.length > 0;
-
+  $scope.carrinhoCompras = [];
+  $scope.messageEmptyCart = true;
+  
+  $http({
+  	url:'carrinhos/produtos',
+  	method:'GET'
+  }).then(function(response){
+  	$scope.carrinhoCompras = response.data;
+  	$scope.messageEmptyCart = $scope.carrinhoCompras.length > 0;
+  }).catch(function(e){
+	  console.log(e);
+  });
+  
+  $scope.mudaQuantidade = function(id,flag){
+	  $http({
+		  url:'carrinhos/produtos',
+		  method:'PATCH',
+		  data: {'id': id, 'adiciona': flag}
+	  }).then(function(response){
+		  $scope.carrinhoCompras = response.data;
+	  		$scope.messageEmptyCart = $scope.carrinhoCompras.length > 0;
+	  }).catch(function(e){
+		  console.log(e);
+	  })
+  }
+  
   $scope.totalCarrinho = function (){
     var array = $scope.carrinhoCompras;
     var total = 0;
     array.forEach(function(produto) {
-      total += (produto.Quantidade * produto.Preco);
+      total += (produto.quantidade * produto.precoUnitario);
     });
     return total;
   }
 
-  $scope.removerProdutoCarrinho = function(produto){
-    angular.forEach($scope.carrinhoCompras, function (item, i) {
-        if (item.Nome === produto.Nome) {
-            $scope.carrinhoCompras.splice(i, 1);
-        }
-    });
-    $scope.messageEmptyCart = $scope.carrinhoCompras.length > 0;
+  $scope.removerProdutoCarrinho = function(id){
+	  $http({
+		  url:'carrinhos/produtos/ex',
+		  method:'POST',
+		  data: {'id': id}
+	  }).then(function(response){
+		  $scope.carrinhoCompras = response.data;
+	  		$scope.messageEmptyCart = $scope.carrinhoCompras.length > 0;
+	  }).catch(function(e){
+		  console.log(e);
+	  })
   }
+  
+  $scope.redirectToPayment = function(carrinhoCompras){
+	  if(carrinhoCompras.length > 0){
+		  window.sessionStorage.setItem('carrinho', JSON.stringify(carrinhoCompras));
+	      window.location.href='payment-ecommerce.html';
+	  }else{
+		  alert("Carrinho de compras Vazio!");
+	  }
+  }
+  
 }]);

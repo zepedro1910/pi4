@@ -92,18 +92,18 @@
 							<p>
 								<label>Nome</label>
 								<span>*</span>
-								<input type="text" value="">
+								<input type="text" value="" ng-model="usuario.email">
 							</p>
 							<p>
 								<label>Senha</label>
 								<span>*</span>
-								<input type="password" value="">
+								<input type="password" value="" ng-model="usuario.senha">
 							</p>
 							<p id="login-form-remember">
 								<label><a href="#">Esqueci minha senha</a></label>
 							</p>
 								<div class="btn-group btn-group-sm" role="group" aria-label="..."  style="padding: 10% 3% 1% 2%;float:right;">
-									<a href="register-ecommerce.html" class="btn btn-success" style="min-width: 148px;">Continuar</a>
+									<a href="" class="btn btn-success" style="min-width: 148px;" ng-click="logar(usuario)">Continuar</a>
 								</div>
 						</form>
 					</div>
