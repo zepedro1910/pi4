@@ -7,6 +7,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import br.com.senac.domain.Pessoa;
 import br.com.senac.domain.Usuario;
 import br.com.senac.repository.UsuarioRepository;
 
@@ -22,7 +23,7 @@ public class UsuarioServiceImpl implements UsuarioService {
       }
 
       @Override
-      public void save(final Usuario usuario) {
+      public void save(final Pessoa usuario) {
           //TODO  
     	  
     	  userRepository.saveUsuario(usuario);

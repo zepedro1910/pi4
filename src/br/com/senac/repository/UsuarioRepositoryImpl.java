@@ -20,6 +20,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import br.com.senac.domain.Pessoa;
 import br.com.senac.domain.Usuario;
 import net.sf.oval.Validator;
 import net.sf.oval.constraint.AssertValid;
@@ -37,8 +38,8 @@ public class UsuarioRepositoryImpl implements UsuarioRepository {
 
       @Override
       @Transactional(propagation = Propagation.REQUIRED)
-      public Long saveUsuario(@AssertValid final Usuario usuario) {
-            final Usuario mergeUsuario = hibernateTemplate.merge(usuario);
+      public Long saveUsuario(@AssertValid final Pessoa usuario) {
+            final Pessoa mergeUsuario = hibernateTemplate.merge(usuario);
             return mergeUsuario.getId();
       }
 

@@ -1,4 +1,4 @@
-package br.com.senac.resource;
+package br.com.senac.controller;
 
 import java.util.List;
 import java.util.Map;
@@ -17,13 +17,13 @@ import br.com.senac.service.VinilService;
 
 @RestController
 @RequestMapping(value = "/vinil")
-public class VinilResource {
+public class VinilController {
 
       private final VinilRepository vinilRepository;
       private final VinilService vinilService;
 
       @Inject
-      public VinilResource(final VinilService vinilService, final VinilRepository vinilRepository) {
+      public VinilController(final VinilService vinilService, final VinilRepository vinilRepository) {
             this.vinilService = vinilService;
             this.vinilRepository = vinilRepository;
       }

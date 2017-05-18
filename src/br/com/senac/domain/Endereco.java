@@ -1,18 +1,14 @@
 package br.com.senac.domain;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
-@Table(name = "TB_ENDERECO")
 public class Endereco {
 
       @Id
-      @Column(name = "id_endereco")
       @GeneratedValue(strategy = GenerationType.IDENTITY)
       private Long id;
 

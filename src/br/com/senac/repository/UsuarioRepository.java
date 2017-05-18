@@ -2,6 +2,7 @@ package br.com.senac.repository;
 
 import java.util.List;
 
+import br.com.senac.domain.Pessoa;
 import br.com.senac.domain.Usuario;
 
 public interface UsuarioRepository {
@@ -10,7 +11,7 @@ public interface UsuarioRepository {
 
       public List<Usuario> findUser(int fistItem, int lastItem, String name, String cpf);
 
-      public Long saveUsuario(Usuario usuario);
+      public Long saveUsuario(Pessoa usuario);
 
 	public Usuario checkLoginDataUser(String email, String senha);
 
