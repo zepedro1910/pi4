@@ -71,8 +71,8 @@
 
 	<div class="register_account" >
 		
-		<div class="wrap" ng-show="!final">
-			<div ng-controller="checkOutController">
+		<div ng-controller="checkOutController" class="wrap" ng-show="!final">
+			<div>
 					<h4 class="title" style="background: lavenderblush; border-radius: 100%;">Descrição do Pedido</h4>
 					<table class="table table-condensed">
 						<thead>
@@ -164,13 +164,14 @@
 							</div>
 							
 						</div>
+						<div class="btn-group btn-group-sm" style="padding: 5% 0% 2% 38.5%; width: 100%;" >
+				<a href class="btn btn-danger" style="min-width: 148px;">Cancelar Compra</a>
+				<a href class="btn btn-info" ng-click="adressConfirmation.$valid && cardPayment.$valid || transferPayment.$valid || usuario.Ticket ? final=!final:''; finalizarCompra();" style="min-width: 148px; margin-left:1%;">Finalizar Compra</a>
+			</div>
 					</div>
 				<div class="clear"></div>
 				
-			<div class="btn-group btn-group-sm" style="padding: 5% 0% 2% 38.5%; width: 100%;" >
-				<a href class="btn btn-danger" style="min-width: 148px;">Cancelar Compra</a>
-				<a href class="btn btn-info" ng-click="adressConfirmation.$valid && cardPayment.$valid || transferPayment.$valid || usuario.Ticket ? final=!final:''"style="min-width: 148px; margin-left:1%;">Finalizar Compra</a>
-			</div>
+			
 			<!--adress => {{adressConfirmation.$valid}} card => {{cardPayment.$valid }} transf => {{transferPayment.$valid }} ticket => {{usuario.Ticket}}-->
 		</div>
 		<div id="paymentFinalContent" style="text-align: center;" >

@@ -6014,4 +6014,21 @@ app.controller('checkOutController', ['$scope', '$filter', '$http', function ($s
 	  }
   }
   
+  $scope.finalizarCompra = function(){
+	  
+	  $http({
+		  url:'carrinhos/produtos/finaliza',
+		  method:'POST',
+		  data: {'id':22, 'idCliente': 1,'carrinho':JSON.stringify($scope.carrinhoCompras)}
+	  }).then(function(response){
+		  
+		 console.log(response.data);
+		 
+	  }).catch(function(e){
+		  
+		  console.log(e);
+	  })
+	  
+  }
+  
 }]);
