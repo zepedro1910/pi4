@@ -85,13 +85,14 @@ app.controller('loginController', ['$scope', '$filter', '$http', function ($scop
 			method:'POST',
 			data: usuario
 		}).then(function(response){
-			if(response.data == "valido")
-				window.sessionStorage.setItem('usuario', JSON.stringify(usuario));
-			else
+			if(response.data == ""){
 				alert("Senha ou Email inválido.");
-			
+			}else{
+				window.sessionStorage.setItem('UsuarioLogado', JSON.stringify(response.data));
+				window.location.href='index-ecommerce.html';
+			}
 		}).catch(function(e){
-			
+			console.log(e);
 		});
 	}
 
@@ -303,11 +304,15 @@ app.controller('checkOutController', ['$scope', '$filter', '$http', function ($s
   }
   
   $scope.redirectToPayment = function(carrinhoCompras){
-	  if(carrinhoCompras.length > 0){
-		  window.sessionStorage.setItem('carrinho', JSON.stringify(carrinhoCompras));
-	      window.location.href='payment-ecommerce.html';
+	  if(window.sessionStorage.getItem('UsuarioLogado') != null){
+		  if(carrinhoCompras.length > 0){
+			  window.sessionStorage.setItem('carrinho', JSON.stringify(carrinhoCompras));
+		      window.location.href='payment-ecommerce.html';
+		  }else{
+			  alert("Carrinho de compras Vazio!");
+		  }
 	  }else{
-		  alert("Carrinho de compras Vazio!");
+		  window.location.href='login-ecommerce.html';
 	  }
   }
   

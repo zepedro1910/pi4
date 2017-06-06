@@ -93,5 +93,39 @@ public class UsuarioServiceImpl implements UsuarioService {
 		
 		return null;
 	}
+	
+
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	public Usuario login(Map<String, Object> map) {
+		String email = null, senha = null;
+		if (map.containsKey("email")) {
+			email = (String) map.get("email");
+		}
+		if (map.containsKey("senha")) {
+			senha = (String) map.get("senha");
+		}
+		
+		if(email != null && senha != null){
+			DetachedCriteria criteria = DetachedCriteria.forClass(Usuario.class);
+			criteria.add(Restrictions.eq("email", email));
+			List<Usuario> list = (List<Usuario>) hibernateTemplate.findByCriteria(criteria);
+			
+			if (!list.isEmpty()) {
+				Usuario user = list.get(0);
+				if(user.getSenha().equals(senha)){
+					return user;
+				}else{
+					return null;
+				}
+			}
+		}
+		
+		return null;
+	}
+	
+	
+	
 
 }

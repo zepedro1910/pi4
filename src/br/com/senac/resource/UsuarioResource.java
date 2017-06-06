@@ -68,6 +68,11 @@ public class UsuarioResource {
             return mapList;
       }
       
+      @RequestMapping(value = "/login", method = RequestMethod.POST)
+      public Usuario login(@RequestBody final Map<String, Object> map) {
+            return userService.login(map);
+      }
+      
       @RequestMapping(value = "/findByCpf", method = RequestMethod.POST)
       public Usuario findByCpf(@RequestBody final Map<String, Object> map) {
             return userService.findByCpf(map);

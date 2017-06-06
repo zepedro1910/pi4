@@ -16,4 +16,6 @@ public interface UsuarioService {
 	public List<Usuario> checkLoginData(String email, String senha);
 
 	public Usuario findByCpf(Map<String, Object> map);
+
+	public Usuario login(Map<String, Object> map);
 }
