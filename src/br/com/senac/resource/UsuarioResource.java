@@ -11,6 +11,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,8 +36,13 @@ public class UsuarioResource {
       }
 
       @RequestMapping(value = "/save", method = RequestMethod.POST)
-      public void save(@RequestBody final Usuario usuario) {
+      public ResponseEntity<Usuario> save(@RequestBody final Usuario usuario) {
             userService.save(usuario);
+            
+            Map<String, Object> user = new HashMap<String,Object>();
+            user.put("cpf", usuario.getCpf());
+            Usuario userCad = (Usuario) userService.findByCpf(user);
+            return new ResponseEntity<Usuario>(userCad,HttpStatus.OK);
   
       }
 
@@ -60,5 +67,12 @@ public class UsuarioResource {
             });
             return mapList;
       }
+      
+      @RequestMapping(value = "/findByCpf", method = RequestMethod.POST)
+      public Usuario findByCpf(@RequestBody final Map<String, Object> map) {
+            return userService.findByCpf(map);
+      }
+      
+      
       
   }

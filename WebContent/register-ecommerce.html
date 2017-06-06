@@ -76,7 +76,14 @@
 				<div class="col_1_of_2 span_1_of_2">
 					<div><input type="text" ng-model="consumer.nome" placeholder="Nome" required></div>
 					<div><input type="text" ng-model="consumer.sobrenome" placeholder="Sobrenome" required></div>
+					<select id="state" ng-model="consumer.sexo" class="frm-field required" required>
+							<option value="" ng-selected="true">Sexo</option>         
+							<option value="masculino">Masculino</option>
+							<option value="femino">Feminino</option>
+						</select>
 					<div><input type="text" ng-model="consumer.email" placeholder="Email" required></div>
+					<div><input type="text" ng-model="consumer.rg" placeholder="RG" required>
+						<input type="text" ng-model="consumer.cpf" placeholder="CPF" required></div>
 					<div><input type="password" ng-model="consumer.primeiraSenha" placeholder="Senha" required></div>
 					<div><input type="password" ng-model="consumer.senha" placeholder="Confirmar Senha" ng-blur="verifyPassword(consumer.Senha,consumer.SenhaConfirma)" required></div>
 					<div style="margin-bottom: 20px"><strong style="font-size: small; color: red;" ng-show="errorMessage">Senha e confirmação de senha inválidos!</strong></div>
@@ -86,17 +93,19 @@
 				<p class="terms">Ao clicar em 'Cadastrar' você concorda com os <a href="#">Termos &amp; Condições do site</a>.</p>
 				</div>
 				<div class="col_1_of_2 span_1_of_2">
-					<div><input type="text" ng-model="consumer.endereco.logradouro" placeholder="Endereço" required></div>
-					<input type="text" ng-model="consumer.endereco.cep" class="code" placeholder="Cep" required>
 					<div>
-						<select id="state" ng-model="consumer.endereco.estado" name="Estado" class="frm-field required" required>
+						
+						<input type="text" ng-model="consumer.endereco.logradouro" placeholder="Endereço" required>
+					</div>
+					<input type="text" ng-model="consumer.endereco.numero" class="code" placeholder="Numero" required>
+					<input type="text" ng-model="consumer.endereco.cep" class="code" placeholder="Cep" required>
+					<input type="text" ng-model="consumer.endereco.bairro" placeholder="Bairro" required>
+					<div>
+						<select id="state" ng-model="consumer.endereco.estado" name="Estado" class="frm-field required" required ng-init="carregarEstados()">
 							<option value="" ng-selected="true">Selecione um Estado</option>         
-							<option ng-repeat="(key,state) in estados" value="{{state.nome}}" ng-click="onClickOption(key); consumer.Cidade = '';">{{state.nome}}</option>
+							<option ng-value="item.state" ng-repeat="item in listEstates">{{item.abrev}}</option>
 						</select>
-						<select id="city" ng-model="consumer.endereco.cidade" name="Cidade" class="frm-field required" required>
-							<option value="" ng-selected="true">Selecione uma Cidade</option>
-							<option ng-repeat="city in estados[state_selected].cidades" value="{{city}}">{{city}}</option>
-						</select>
+						<input type="text" id="city" ng-model="consumer.endereco.cidade" placeholder="Cidade" name="Cidade" class="frm-field required" required>
 					</div>
 					
 					<input type="text" ng-model="consumer.celular" placeholder="Telefone" required>

@@ -5,7 +5,12 @@ import java.util.Map;
 
 import javax.inject.Inject;
 
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
+import org.springframework.orm.hibernate5.HibernateTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import br.com.senac.domain.Usuario;
 import br.com.senac.repository.UsuarioRepository;
@@ -14,11 +19,13 @@ import br.com.senac.repository.UsuarioRepository;
 public class UsuarioServiceImpl implements UsuarioService {
 
       private final UsuarioRepository userRepository;
+      private final HibernateTemplate hibernateTemplate;
 
       @Inject
-      public UsuarioServiceImpl(final UsuarioRepository pessoaRepository) {
+      public UsuarioServiceImpl(final UsuarioRepository pessoaRepository, HibernateTemplate hibernateTemplate) {
             super();
             userRepository = pessoaRepository;
+            this.hibernateTemplate = hibernateTemplate;
       }
 
       @Override
@@ -65,6 +72,25 @@ public class UsuarioServiceImpl implements UsuarioService {
 		if(email != "" && senha != ""){
 			userRepository.checkLoginDataUser(email,senha);
 		}
+		return null;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	public Usuario findByCpf(Map<String, Object> map) {
+		String cpf = null;
+		if (map.containsKey("cpf")) {
+			cpf = (String) map.get("cpf");
+		}
+		DetachedCriteria criteria = DetachedCriteria.forClass(Usuario.class);
+		criteria.add(Restrictions.eq("cpf", cpf));
+		List<Usuario> list = (List<Usuario>) hibernateTemplate.findByCriteria(criteria);
+		
+		if (!list.isEmpty()) {
+			return list.get(0);
+		}
+		
 		return null;
 	}
 

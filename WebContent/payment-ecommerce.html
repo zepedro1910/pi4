@@ -104,19 +104,16 @@
 				<form name="adressConfirmation">
 						<div class="col_1_of_2 span_1_of_2">
 							<h1 class="title">Endereço de Entrega</h1>
-							<div><input type="text" ng-model="usuario.Endereco" ng-init="usuario.Endereco" placeholder="Endereço" required ng-disabled="!isEditMode"></div>
-							<input type="text" ng-model="usuario.Cep" ng-init="usuario.Cep" lass="code" placeholder="Cep" required ng-disabled="!isEditMode">
+							<div><input type="text" ng-model="usuario.endereco.logradouro" ng-init="usuario.endereco.logradouro" placeholder="Endereço" required ng-disabled="!isEditMode"></div>
+							<input type="text" ng-model="usuario.endereco.cep" ng-init="usuario.endereco.cep" lass="code" placeholder="Cep" required ng-disabled="!isEditMode">
 							<div>
-								<select id="state" ng-model="usuario.Estado" name="Estado" class="frm-field required" required ng-disabled="!isEditMode">
+								<select id="state" ng-model="usuario.endereco.estado" ng-init="carregarEstados()" name="Estado" class="frm-field required" required ng-disabled="!isEditMode">
 									<option value="">Selecione um Estado</option>         
-									<option ng-repeat="(key,estado) in estados" value="{{estado.sigla}}" ng-selected="usuario.Estado == estado.sigla ? onClickOption(key,estado) : ''" ng-click="onClickOption(key); usuario.Cidade = '';">{{estado.nome}}</option>
+									<option ng-repeat="item in listEstates" value="item" ng-selected="usuario.endereco.estado == item.state ? item.abrev:'' ">{{item.abrev}}</option>
 								</select>
-								<select id="city" ng-model="usuario.Cidade" name="Cidade" class="frm-field required" required ng-disabled="!isEditMode">
-									<option value="">Selecione uma Cidade</option>
-									<option ng-repeat="city in estados[state_selected].cidades" ng-selected="usuario.Cidade == city ? city : ''" value="{{city}}" >{{city}}</option>
-								</select>
+								<input type="text" ng-model="usuario.endereco.cidade" ng-init="usuario.endereco.cidade" placeholder="Cidade" required ng-disabled="!isEditMode">
 							</div>
-							<input type="text" ng-model="usuario.Telefone" ng-init="usuario.Telefone" placeholder="Telefone" required ng-disabled="!isEditMode">
+							<input type="text" ng-model="usuario.celular" ng-init="usuario.celular" placeholder="Telefone" required ng-disabled="!isEditMode">
 							<div class="btn-group btn-group-sm" role="group" aria-label="..."  style="padding: 1.5% 5% 0% 0%; float: right;">
 								<a href class="btn btn-primary" style="min-width: 148px;" ng-show="!isEditMode" ng-click="isEditMode=!isEditMode">Alterar Endereço</a>
 								<a href class="btn btn-success" style="min-width: 148px;" ng-show="isEditMode" ng-click="adressConfirmation.$valid ? isEditMode=!isEditMode : ''">Concluir</a>
