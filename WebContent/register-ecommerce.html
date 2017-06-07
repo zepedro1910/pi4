@@ -11,8 +11,11 @@
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
 	<script src="resources/js/ext/jQuery/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="resources/js/ext/jQuery/jquery.maskedinput.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function () {
+			
+		
 			$(".dropdown img.flag").addClass("flagvisibility");
 
 			$(".dropdown dt a").click(function () {
@@ -83,7 +86,7 @@
 						</select>
 					<div><input type="text" ng-model="consumer.email" placeholder="Email" required></div>
 					<div><input type="text" ng-model="consumer.rg" placeholder="RG" required>
-						<input type="text" ng-model="consumer.cpf" placeholder="CPF" required></div>
+						<input type="text" id="cpf" ng-model="consumer.cpf" placeholder="CPF" required></div>
 					<div><input type="password" ng-model="consumer.primeiraSenha" placeholder="Senha" required></div>
 					<div><input type="password" ng-model="consumer.senha" placeholder="Confirmar Senha" ng-blur="verifyPassword(consumer.Senha,consumer.SenhaConfirma)" required></div>
 					<div style="margin-bottom: 20px"><strong style="font-size: small; color: red;" ng-show="errorMessage">Senha e confirmação de senha inválidos!</strong></div>
@@ -98,7 +101,7 @@
 						<input type="text" ng-model="consumer.endereco.logradouro" placeholder="Endereço" required>
 					</div>
 					<input type="text" ng-model="consumer.endereco.numero" class="code" placeholder="Numero" required>
-					<input type="text" ng-model="consumer.endereco.cep" class="code" placeholder="Cep" required>
+					<input type="text" id="cep"ng-model="consumer.endereco.cep" class="code" placeholder="Cep" required>
 					<input type="text" ng-model="consumer.endereco.bairro" placeholder="Bairro" required>
 					<div>
 						<select id="state" ng-model="consumer.endereco.estado" name="Estado" class="frm-field required" required ng-init="carregarEstados()">
@@ -108,7 +111,7 @@
 						<input type="text" id="city" ng-model="consumer.endereco.cidade" placeholder="Cidade" name="Cidade" class="frm-field required" required>
 					</div>
 					
-					<input type="text" ng-model="consumer.celular" placeholder="Telefone" required>
+					<input type="text" id="telefone" ng-model="consumer.celular" placeholder="Telefone" required>
 				</div>
 				<div class="clear"></div>
 			</form>
@@ -129,6 +132,10 @@
 			};
 
 			$().UItoTop({ easingType: 'easeOutQuart' });
+			
+			$('#cpf').mask('999.999.999-99');
+			$('#cep').mask('99999-999');
+			$('#telefone').mask('(99)99999-9999');
 
 		});
 	</script>

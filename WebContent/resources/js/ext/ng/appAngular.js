@@ -253,6 +253,13 @@ app.filter('startFrom', function() {
   }
 });
 
+app.controller('orderController', ['$scope', '$filter', '$http', function ($scope, $filter, $http){
+	
+	$scope.pgto = window.sessionStorage.getItem('tipoPgto') == 'boleto'; 
+	$scope.pedido = window.sessionStorage.getItem('numPedido');
+	
+}]);
+
 app.controller('checkOutController', ['$scope', '$filter', '$http', function ($scope, $filter, $http){
   
   $scope.carrinhoCompras = [];
@@ -329,13 +336,19 @@ app.controller('checkOutController', ['$scope', '$filter', '$http', function ($s
 		  
 		  switch(tab){
 		  case 3:
-			  $('.Ticket').removeClass('ng-hide');
+			  window.sessionStorage.setItem('numPedido', response.data);
+			  window.sessionStorage.setItem('tipoPgto', 'boleto');
+			  window.location.href='order-ecommerce.html';
 			  break;
 		  case 2:
-			  $('.transfer').removeClass('ng-hide');
+			  window.sessionStorage.setItem('numPedido', response.data);
+			  window.sessionStorage.setItem('tipoPgto', 'transf');
+			  window.location.href='order-ecommerce.html';
 			  break;
 		  case 1:
-			  $('.credit').removeClass('ng-hide');
+			  window.sessionStorage.setItem('numPedido', response.data);
+			  window.sessionStorage.setItem('tipoPgto', 'cartao');
+			  window.location.href='order-ecommerce.html';
 			  break;
 		  }
 		  $scope.numeroPedido = response.data;

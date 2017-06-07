@@ -11,6 +11,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
 	<script src="resources/js/ext/jQuery/jquery.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+		<script src="resources/js/ext/jQuery/jquery.maskedinput.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function () {
 			$(".dropdown img.flag").addClass("flagvisibility");
@@ -40,6 +41,8 @@
 			$("#flagSwitcher").click(function () {
 				$(".dropdown img.flag").toggleClass("flagvisibility");
 			});
+			
+		
 		});
 	</script>
 	<!-- start menu -->
@@ -92,7 +95,7 @@
 							<p>
 								<label>E-mail</label>
 								<span>*</span>
-								<input type="text" value="" ng-model="usuario.email">
+								<input type="text" value="" id="inputEmail" ng-model="usuario.email">
 							</p>
 							<p>
 								<label>Senha</label>

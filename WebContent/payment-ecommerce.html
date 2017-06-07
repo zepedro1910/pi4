@@ -11,6 +11,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
 	<script src="resources/js/ext/jQuery/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="resources/js/ext/jQuery/jquery.maskedinput.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function () {
 			$(".dropdown img.flag").addClass("flagvisibility");
@@ -40,6 +41,15 @@
 			$("#flagSwitcher").click(function () {
 				$(".dropdown img.flag").toggleClass("flagvisibility");
 			});
+			
+			$('#cep').mask('99999-999');
+			$('#telefone').mask('(99)99999-9999');
+			$('#card').mask('9999 9999 9999 9999');
+			$('#cardValidade').mask('99/99');
+			$('#cardCodSeg').mask('999');
+			$('#codBanco').mask('999');
+			$('#AgenciaBanco').mask('9999');
+			
 		});
 	</script>
 	<!-- start menu -->
@@ -105,7 +115,7 @@
 						<div class="col_1_of_2 span_1_of_2">
 							<h1 class="title">Endereço de Entrega</h1>
 							<div><input type="text" ng-model="usuario.endereco.logradouro" ng-init="usuario.endereco.logradouro" placeholder="Endereço" required ng-disabled="!isEditMode"></div>
-							<input type="text" ng-model="usuario.endereco.cep" ng-init="usuario.endereco.cep" lass="code" placeholder="Cep" required ng-disabled="!isEditMode">
+							<input type="text" id="cep"ng-model="usuario.endereco.cep" ng-init="usuario.endereco.cep" lass="code" placeholder="Cep" required ng-disabled="!isEditMode">
 							<div>
 								<select id="state" ng-model="usuario.endereco.estado" ng-init="carregarEstados()" name="Estado" class="frm-field required" required ng-disabled="!isEditMode">
 									<option value="">Selecione um Estado</option>         
@@ -113,7 +123,7 @@
 								</select>
 								<input type="text" ng-model="usuario.endereco.cidade" ng-init="usuario.endereco.cidade" placeholder="Cidade" required ng-disabled="!isEditMode">
 							</div>
-							<input type="text" ng-model="usuario.celular" ng-init="usuario.celular" placeholder="Telefone" required ng-disabled="!isEditMode">
+							<input type="text" id="telefone" ng-model="usuario.celular" ng-init="usuario.celular" placeholder="Telefone" required ng-disabled="!isEditMode">
 							<div class="btn-group btn-group-sm" role="group" aria-label="..."  style="padding: 1.5% 5% 0% 0%; float: right;">
 								<a href class="btn btn-primary" style="min-width: 148px;" ng-show="!isEditMode" ng-click="isEditMode=!isEditMode">Alterar Endereço</a>
 								<a href class="btn btn-success" style="min-width: 148px;" ng-show="isEditMode" ng-click="adressConfirmation.$valid ? isEditMode=!isEditMode : ''">Concluir</a>
@@ -130,21 +140,21 @@
 							<div class="tabs-container">
 								<form name="cardPayment">
 									<div class="tab-content" ng-show="tab == 1"> <!-- Cartão de Crédito -->
-										<div><input type="text" ng-model="usuario.Card.NumeroCartao" placeholder="Numero do Cartão" required ng-disabled="paymentEditMode"></div>
+										<div><input type="text" id="card" ng-model="usuario.Card.NumeroCartao" placeholder="Numero do Cartão" required ng-disabled="paymentEditMode"></div>
 										<div><input type="text" ng-model="usuario.Card.Nome" placeholder="Nome Completo" required ng-disabled="paymentEditMode"></div>
-										<div><input type="text" ng-model="usuario.Card.Validade" placeholder="Validade do Cartão" required ng-disabled="paymentEditMode"></div>
-										<div><input type="text" ng-model="usuario.Card.CodigoSeguranca" placeholder="Código de Segurança" required ng-disabled="paymentEditMode"></div>
-										<div class="btn-group btn-group-sm" role="group" aria-label="..."  style="padding: 1.5% 5% 0% 0%; float: right;">
-											<a href class="btn btn-primary" style="min-width: 148px;" ng-show="paymentEditMode" ng-click="paymentEditMode=!paymentEditMode" >Alterar Dados</a>
-											<a href class="btn btn-success" style="min-width: 148px;" ng-show="!paymentEditMode" ng-click="cardPayment.$valid ? paymentEditMode=!paymentEditMode : ''; usuario.Transfer = [];">Concluir</a>
-										</div>
+										<div><input type="text" id="cardValidade"ng-model="usuario.Card.Validade" placeholder="Validade do Cartão" required ng-disabled="paymentEditMode"></div>
+										<div><input type="text" id="cardCodSeg" ng-model="usuario.Card.CodigoSeguranca" placeholder="Código de Segurança" required ng-disabled="paymentEditMode"></div>
+<!-- 										<div class="btn-group btn-group-sm" role="group" aria-label="..."  style="padding: 1.5% 5% 0% 0%; float: right;"> -->
+<!-- 											<a href class="btn btn-primary" style="min-width: 148px;" ng-show="paymentEditMode" ng-click="paymentEditMode=!paymentEditMode" >Alterar Dados</a> -->
+<!-- 											<a href class="btn btn-success" style="min-width: 148px;" ng-show="!paymentEditMode" ng-click="cardPayment.$valid ? paymentEditMode=!paymentEditMode : ''; usuario.Transfer = [];">Concluir</a> -->
+<!-- 										</div> -->
 									</form>
 								</div>
 								<div class="tab-content" ng-show="tab == 2"> <!-- Transferencia Bancária -->
 									<form name="transferPayment">
-										<div><input type="text" ng-model="usuario.Transfer.Banco" placeholder="Banco" required ng-disabled="paymentTransferEditMode"></div>
-										<div><input type="text" ng-model="usuario.Transfer.Agencia" placeholder="Agência" required ng-disabled="paymentTransferEditMode"></div>
-										<div><input type="text" ng-model="usuario.Transfer.NumeroConta" placeholder="Numero da Conta" required ng-disabled="paymentTransferEditMode"></div>
+										<div><input type="text" id="codBanco" ng-model="usuario.Transfer.Banco" placeholder="Banco" required ng-disabled="paymentTransferEditMode"></div>
+										<div><input type="text" id="AgenciaBanco" ng-model="usuario.Transfer.Agencia" placeholder="Agência" required ng-disabled="paymentTransferEditMode"></div>
+										<div><input type="text" id="ContaBanco" ng-model="usuario.Transfer.NumeroConta" placeholder="Numero da Conta" required ng-disabled="paymentTransferEditMode"></div>
 										<div class="btn-group btn-group-sm" role="group" aria-label="..."  style="padding: 1.5% 5% 0% 0%; float: right;">
 											<a href class="btn btn-primary" style="min-width: 148px;" ng-show="paymentTransferEditMode" ng-click="paymentTransferEditMode=!paymentTransferEditMode" >Alterar Dados</a>
 											<a href class="btn btn-success" style="min-width: 148px;" ng-show="!paymentTransferEditMode" ng-click="transferPayment.$valid ? paymentTransferEditMode=!paymentTransferEditMode : ''; usuario.Card = [];">Concluir</a>
