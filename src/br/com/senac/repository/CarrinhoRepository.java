@@ -29,7 +29,7 @@ public class CarrinhoRepository {
 		DetachedCriteria criteria = DetachedCriteria.forClass(CarrinhoDeCompra.class);
 		criteria.add(Restrictions.eq("idCliente", cart.getIdCliente()));
 		List<CarrinhoDeCompra> list = (List<CarrinhoDeCompra>) hibernateTemplate.findByCriteria(criteria);
-		return list.get(0).getId();
+		return list.get(list.size() - 1).getId();
 	}
 
 }

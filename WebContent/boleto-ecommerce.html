@@ -29,7 +29,7 @@
                 <table border="1" cellpadding="0" cellspacing="0" width="700">
                     <tr valign="top">
                         <td colspan="4"> Sacado<br>
-                            <font> {{usuario.Nome}}</font>
+                            <font> {{usuario.nome}}</font>
                         </td>
                         <td>
                             <font> Número do Documento</font><br>
@@ -77,7 +77,7 @@
                         <td>
                             <font> 1(=) Valor do Documento</font><br>
                             <font>
-                                <center>{{usuario.ValorCompra | currency:"R$ "}}</center>
+                                <center>{{totalCarrinho() | currency:"R$ "}}</center>
                             </font>
                         </td>
                     </tr>
@@ -103,7 +103,7 @@
                         <td>
                             <font> Valor Cobrado</font><br>
                             <font>
-                                <center>{{usuario.ValorCompra | currency:"R$ "}}</center>
+                                <center>{{totalCarrinho() | currency:"R$ "}}</center>
                             </font>
                         </td>
                     </tr>
@@ -147,7 +147,7 @@
                     <tr>
                         <td colspan="6" style="border-top:thin solid;border-left:thin solid;border-right:thin solid">
                             <font> Cedente</font><br>
-                            <font> Canecas Mais Ltda</font>
+                            <font> Vinil Mais</font>
                         </td>
                         <td style="border-top:thin solid;border-right:thin solid">
                             <font> Agência / Código Cedente</font><br>
@@ -216,13 +216,13 @@
                         <td colspan="3" style="border-top:thin solid;border-left:thin solid;border-right:thin solid">
                             <font> Valor</font><br>
                             <font>
-                                <center>{{usuario.ValorCompra | currency: ' R$'}}</center>
+                                <center>{{totalCarrinho() | currency: ' R$'}}</center>
                             </font>
                         </td>
                         <td style="border-top:thin solid;border-right:thin solid">
                             <font> 1(=) Valor do Documento</font><br>
                             <font>
-                                <center>{{usuario.ValorCompra | currency: ' R$'}}</center>
+                                <center>{{totalCarrinho() | currency: ' R$'}}</center>
                             </font>
                         </td>
                     </tr>
@@ -273,7 +273,7 @@
                         <td style="border-top:thin solid;border-right:thin solid">
                             <font> 6(=) Valor Cobrado</font><br>
                             <font>
-                                <center>{{usuario.ValorCompra | currency: ' R$'}}</center>
+                                <center>{{totalCarrinho() | currency: ' R$'}}</center>
                             </font>
                         </td>
                     </tr>
@@ -281,7 +281,7 @@
                         <td colspan="7" style="border:thin solid">
                             <font> Sacado</font><br>
                             <font>
-                                {{usuario.Nome}}<br> {{usuario.Endereco}} - {{usuario.Cep}} - {{usuario.Cidade}}<br>
+                                {{usuario.nome}}<br> {{usuario.endereco.logradouro}},{{usuario.endereco.numero}} - {{usuario.endereco.cep}} - {{usuario.endereco.cidade}}/{{usuario.endereco.estado}}<br>
                             </font>
                         </td>
                     </tr>

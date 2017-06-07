@@ -170,6 +170,16 @@ app.controller('accountController',['$scope', '$filter', '$http', function ($sco
 
 // payment mode
   $scope.usuario = JSON.parse(window.sessionStorage.getItem("UsuarioLogado"));
+  $scope.buy = JSON.parse(window.sessionStorage.getItem("carrinho"));
+  
+  $scope.totalCarrinho = function (){
+	    var array = $scope.buy;
+	    var total = 0;
+	    array.forEach(function(produto) {
+	      total += (produto.quantidade * produto.precoUnitario);
+	    });
+	    return total;
+	  }
   
   // data de vencimento do boleto
   $scope.dateToday = new Date();

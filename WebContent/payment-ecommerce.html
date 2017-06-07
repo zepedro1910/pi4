@@ -155,10 +155,10 @@
 										<div><input type="text" id="codBanco" ng-model="usuario.Transfer.Banco" placeholder="Banco" required ng-disabled="paymentTransferEditMode"></div>
 										<div><input type="text" id="AgenciaBanco" ng-model="usuario.Transfer.Agencia" placeholder="Agência" required ng-disabled="paymentTransferEditMode"></div>
 										<div><input type="text" id="ContaBanco" ng-model="usuario.Transfer.NumeroConta" placeholder="Numero da Conta" required ng-disabled="paymentTransferEditMode"></div>
-										<div class="btn-group btn-group-sm" role="group" aria-label="..."  style="padding: 1.5% 5% 0% 0%; float: right;">
-											<a href class="btn btn-primary" style="min-width: 148px;" ng-show="paymentTransferEditMode" ng-click="paymentTransferEditMode=!paymentTransferEditMode" >Alterar Dados</a>
-											<a href class="btn btn-success" style="min-width: 148px;" ng-show="!paymentTransferEditMode" ng-click="transferPayment.$valid ? paymentTransferEditMode=!paymentTransferEditMode : ''; usuario.Card = [];">Concluir</a>
-										</div>
+<!-- 										<div class="btn-group btn-group-sm" role="group" aria-label="..."  style="padding: 1.5% 5% 0% 0%; float: right;"> -->
+<!-- 											<a href class="btn btn-primary" style="min-width: 148px;" ng-show="paymentTransferEditMode" ng-click="paymentTransferEditMode=!paymentTransferEditMode" >Alterar Dados</a> -->
+<!-- 											<a href class="btn btn-success" style="min-width: 148px;" ng-show="!paymentTransferEditMode" ng-click="transferPayment.$valid ? paymentTransferEditMode=!paymentTransferEditMode : ''; usuario.Card = [];">Concluir</a> -->
+<!-- 										</div> -->
 									</form>
 								</div>
 								<div class="tab-content" ng-show="tab == 3"> <!-- Boleto Bancário -->
@@ -178,26 +178,26 @@
 		</div>
 				<div class="clear"></div>
 		</div>
-		<div ng-controller="checkOutController" id="paymentFinalContent" style="text-align: center;" >
-			<div class="Ticket" ng-show=false style="margin:9%;">
-				<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true" style="font-size: xx-large; color:slateblue;"></span>
-				<span style="margin-left: 3%;"> Pedido realizado com sucesso!</span><br>
-				<span style="margin-left: 3%;"> Numero: {{numeroPedido}}</span>
-				<div class="btn-group btn-group-sm" style="padding: 2% 0% 0% 38.5%; width: 100%;" >
-					<a href="boleto-ecommerce.html" class="btn btn-primary" ng-click=""style="min-width: 148px; margin-left:14%;">Imprimir boleto</a>
-				</div>
-			</div>
-			<div class="transfer" ng-show="false" style="margin:9%;">
-				<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true" style="font-size: xx-large; color:slateblue;"></span>
-				<span style="margin-left: 3%;"> Pedido realizado com sucesso!</span><br>
-				<span style="margin-left: 3%;"> Numero: {{numeroPedido}}</span>
-			</div>
-			<div class="credit" ng-show="false" style="margin:9%;">
-				<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true" style="font-size: xx-large; color:slateblue;"></span>
-				<span style="margin-left: 3%;"> Pedido realizado com sucesso!</span><br>
-				<span style="margin-left: 3%;"> Numero: {{numeroPedido}}</span>
-			</div>
-		</div>
+<!-- 		<div ng-controller="checkOutController" id="paymentFinalContent" style="text-align: center;" > -->
+<!-- 			<div class="Ticket" ng-show=false style="margin:9%;"> -->
+<!-- 				<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true" style="font-size: xx-large; color:slateblue;"></span> -->
+<!-- 				<span style="margin-left: 3%;"> Pedido realizado com sucesso!</span><br> -->
+<!-- 				<span style="margin-left: 3%;"> Numero: {{numeroPedido}}</span> -->
+<!-- 				<div class="btn-group btn-group-sm" style="padding: 2% 0% 0% 38.5%; width: 100%;" > -->
+<!-- 					<a href="boleto-ecommerce.html" class="btn btn-primary" ng-click=""style="min-width: 148px; margin-left:14%;">Imprimir boleto</a> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 			<div class="transfer" ng-show="false" style="margin:9%;"> -->
+<!-- 				<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true" style="font-size: xx-large; color:slateblue;"></span> -->
+<!-- 				<span style="margin-left: 3%;"> Pedido realizado com sucesso!</span><br> -->
+<!-- 				<span style="margin-left: 3%;"> Numero: {{numeroPedido}}</span> -->
+<!-- 			</div> -->
+<!-- 			<div class="credit" ng-show="false" style="margin:9%;"> -->
+<!-- 				<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true" style="font-size: xx-large; color:slateblue;"></span> -->
+<!-- 				<span style="margin-left: 3%;"> Pedido realizado com sucesso!</span><br> -->
+<!-- 				<span style="margin-left: 3%;"> Numero: {{numeroPedido}}</span> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
 
 	<!-- RODAPÉ -->
 	<ng-include src="'PartialView/footer.html'"></ng-include>
