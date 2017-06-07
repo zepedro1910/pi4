@@ -257,6 +257,7 @@ app.controller('checkOutController', ['$scope', '$filter', '$http', function ($s
   
   $scope.carrinhoCompras = [];
   $scope.messageEmptyCart = true;
+  $scope.numeroPedido;
   
   $http({
   	url:'carrinhos/produtos',
@@ -316,16 +317,29 @@ app.controller('checkOutController', ['$scope', '$filter', '$http', function ($s
 	  }
   }
   
-  $scope.finalizarCompra = function(){
+  $scope.finalizarCompra = function(tab){
 	  
 	  $http({
 		  url:'carrinhos/produtos/finaliza',
 		  method:'POST',
-		  data: {'id':22, 'idCliente': 1,'carrinho':JSON.stringify($scope.carrinhoCompras)}
+		  data: {'idCliente': 1,'carrinho':JSON.stringify($scope.carrinhoCompras)}
 	  }).then(function(response){
 		  
-		 console.log(response.data);
-		 
+		  $scope.carrinhoCompras = [];
+		  
+		  switch(tab){
+		  case 3:
+			  $('.Ticket').removeClass('ng-hide');
+			  break;
+		  case 2:
+			  $('.transfer').removeClass('ng-hide');
+			  break;
+		  case 1:
+			  $('.credit').removeClass('ng-hide');
+			  break;
+		  }
+		  $scope.numeroPedido = response.data;
+		  console.log(response.data);
 	  }).catch(function(e){
 		  
 		  console.log(e);

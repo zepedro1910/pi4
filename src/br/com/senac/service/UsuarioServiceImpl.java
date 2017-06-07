@@ -90,7 +90,6 @@ public class UsuarioServiceImpl implements UsuarioService {
 		if (!list.isEmpty()) {
 			return list.get(0);
 		}
-		
 		return null;
 	}
 	
@@ -121,11 +120,6 @@ public class UsuarioServiceImpl implements UsuarioService {
 				}
 			}
 		}
-		
 		return null;
 	}
-	
-	
-	
-
 }

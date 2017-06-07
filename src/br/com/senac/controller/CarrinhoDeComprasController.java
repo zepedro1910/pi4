@@ -19,6 +19,7 @@ import br.com.senac.controller.dto.Produto;
 import br.com.senac.controller.dto.ProdutoRequest;
 import br.com.senac.domain.CarrinhoDeCompra;
 import br.com.senac.domain.Vinil;
+import br.com.senac.repository.CarrinhoRepository;
 import br.com.senac.service.VinilService;
 
 @RestController
@@ -29,6 +30,8 @@ public class CarrinhoDeComprasController {
 	private CarrinhoDeCompras carrinhoDeCompras;
 	@Autowired
 	private VinilService vinilService;
+	@Autowired
+	private CarrinhoRepository carrinhoRepository;
 
 	@RequestMapping(value = "/produtos", method = RequestMethod.POST)
 	public ResponseEntity<Vinil> cadastra(@RequestBody ProdutoRequest request) {
@@ -71,16 +74,18 @@ public class CarrinhoDeComprasController {
 	}
 	
 	@RequestMapping(value = "/produtos/finaliza", method = RequestMethod.POST)
-	public ResponseEntity<String> fechar(@RequestBody CarrinhoRequest request) {
+	public ResponseEntity<Long> fechar(@RequestBody CarrinhoRequest request) {
 		
 		
 		CarrinhoDeCompra cart = new CarrinhoDeCompra();
 		cart.setIdCliente(request.getIdCliente());
 		cart.setCarrinho(request.getCarrinho());
 		
-		Long idCart = carrinhoDeCompras.finalizar(cart);
+		Long idCart = carrinhoRepository.finalizar(cart);
 		
-		return  new ResponseEntity<String>("Recebido",HttpStatus.OK);
+		carrinhoDeCompras.produtos().clear();
+		
+		return  new ResponseEntity<Long>(idCart,HttpStatus.OK);
 
 	}
 

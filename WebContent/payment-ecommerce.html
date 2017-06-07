@@ -163,32 +163,29 @@
 						</div>
 						<div class="btn-group btn-group-sm" style="padding: 5% 0% 2% 38.5%; width: 100%;" >
 				<a href class="btn btn-danger" style="min-width: 148px;">Cancelar Compra</a>
-				<a href class="btn btn-info" ng-click="adressConfirmation.$valid && cardPayment.$valid || transferPayment.$valid || usuario.Ticket ? final=!final:''; finalizarCompra();" style="min-width: 148px; margin-left:1%;">Finalizar Compra</a>
+				<a href class="btn btn-info" ng-click="adressConfirmation.$valid && cardPayment.$valid || transferPayment.$valid || usuario.Ticket ? final=!final:''; finalizarCompra(tab);" style="min-width: 148px; margin-left:1%;">Finalizar Compra</a>
 			</div>
-					</div>
-				<div class="clear"></div>
-				
-			
-			<!--adress => {{adressConfirmation.$valid}} card => {{cardPayment.$valid }} transf => {{transferPayment.$valid }} ticket => {{usuario.Ticket}}-->
 		</div>
-		<div id="paymentFinalContent" style="text-align: center;" >
-			<div class="Ticket" ng-show="usuario.Ticket && final" style="margin:9%;">
+				<div class="clear"></div>
+		</div>
+		<div ng-controller="checkOutController" id="paymentFinalContent" style="text-align: center;" >
+			<div class="Ticket" ng-show=false style="margin:9%;">
 				<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true" style="font-size: xx-large; color:slateblue;"></span>
 				<span style="margin-left: 3%;"> Pedido realizado com sucesso!</span><br>
-				<span style="margin-left: 3%;"> Numero: 89794561231</span>
+				<span style="margin-left: 3%;"> Numero: {{numeroPedido}}</span>
 				<div class="btn-group btn-group-sm" style="padding: 2% 0% 0% 38.5%; width: 100%;" >
 					<a href="boleto-ecommerce.html" class="btn btn-primary" ng-click=""style="min-width: 148px; margin-left:14%;">Imprimir boleto</a>
 				</div>
 			</div>
-			<div ng-show="usuario.CardPayment && final" style="margin:9%;">
+			<div class="transfer" ng-show="false" style="margin:9%;">
 				<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true" style="font-size: xx-large; color:slateblue;"></span>
 				<span style="margin-left: 3%;"> Pedido realizado com sucesso!</span><br>
-				<span style="margin-left: 3%;"> Numero: 89794561231</span>
+				<span style="margin-left: 3%;"> Numero: {{numeroPedido}}</span>
 			</div>
-			<div ng-show="usuario.TransferPayment && final" style="margin:9%;">
+			<div class="credit" ng-show="false" style="margin:9%;">
 				<span class="glyphicon glyphicon-thumbs-up" aria-hidden="true" style="font-size: xx-large; color:slateblue;"></span>
 				<span style="margin-left: 3%;"> Pedido realizado com sucesso!</span><br>
-				<span style="margin-left: 3%;"> Numero: 89794561231</span>
+				<span style="margin-left: 3%;"> Numero: {{numeroPedido}}</span>
 			</div>
 		</div>
 

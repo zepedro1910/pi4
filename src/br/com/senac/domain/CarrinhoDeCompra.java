@@ -8,12 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.Table;
   
   @Entity
-  
   @Table(name = "TB_CARRINHO_COMPRA")
   public class CarrinhoDeCompra {
   
   @Id
-  
   @GeneratedValue(strategy = GenerationType.TABLE)
   private Long id;
   
